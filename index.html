@@ -23,41 +23,11 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="style-ice-blue.css">
+    <link rel="stylesheet" href="css/style-ice-blue.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <div class="logo-icon">❄</div>
-                    <span>LODOWE</span>
-                </div>
-                
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" class="nav-link">Start</a></li>
-                    <li><a href="#about" class="nav-link">O nas</a></li>
-                    <li><a href="#services" class="nav-link">Usługi</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="#testimonials" class="nav-link">Opinie</a></li>
-                    <li><a href="#faq" class="nav-link">FAQ</a></li>
-                    <li><a href="#contact" class="nav-link">Kontakt</a></li>
-                </ul>
-                
-                <div class="nav-cta">
-                    <a href="tel:+48511110265" class="btn-phone">
-                        <i class="fas fa-phone"></i> 511 110 265
-                    </a>
-                    <button class="hamburger" id="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div id="nav-placeholder"></div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -116,7 +86,7 @@
                         Od ponad dekady tworzymy spektakularne rzeźby lodowe i dostarczamy profesjonalny lód dla najbardziej wymagających klientów. Każde dzieło to połączenie artystycznej wizji, precyzji wykonania i najwyższej jakości surowca.
                     </p>
                     <p class="about-text">
-                        Współpracujemy z największymi eventami w Polsce, restauracjami z gwiazdkami Michelin i prestiżowymi hotelami. Nasze lodowe kreacje zachwycają gości na weselach, galach, konferencjach i imprezach firmowych.
+                        Współpracujemy z największymi eventami w Polsce, restauracjami i prestiżowymi hotelami. Nasze lodowe kreacje zachwycają gości na weselach, galach, konferencjach i imprezach firmowych.
                     </p>
                     <div class="about-features">
                         <div class="feature-item">
@@ -178,8 +148,8 @@
                         <li><i class="fas fa-check"></i> Logo firm w lodzie</li>
                         <li><i class="fas fa-check"></i> Dowolna tematyka</li>
                     </ul>
-                    <a href="#contact" class="btn-link">
-                        Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
+                    <a href="uslugi/rzezby-lodowe.html" class="btn-link">
+                        Dowiedz się więcej <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
@@ -194,7 +164,7 @@
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Krystalicznie czysty lód</li>
                         <li><i class="fas fa-check"></i> Dowolne przedmioty</li>
-                        <li><i class="fas fa-check"></i> Idealny na prezenty</li>
+                        <li><i class="fas fa-check"></i> Idealne na prezenty</li>
                     </ul>
                     <a href="#contact" class="btn-link">
                         Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
@@ -205,9 +175,9 @@
                     <div class="service-icon">
                         <i class="fas fa-wine-glass"></i>
                     </div>
-                    <h3 class="service-title">Kostki Lodu</h3>
+                    <h3 class="service-title">Produkty z lodu</h3>
                     <p class="service-description">
-                        Profesjonalny lód gastronomiczny dla restauracji, barów i klubów. Bezwonny, bezsmakowy, z filtrowanej wody.
+                        Lód to nasza specjalność! W naszej ofercie znajdziesz nie tylko lód w kostkach, ale także lód kruszony, spiry lodowe z wzorami, kostki XXL, lodowe diamenty, naczynia z lodu, japońskie kule oraz suchy lód.
                     </p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Różne wielkości kostek</li>
@@ -216,6 +186,9 @@
                     </ul>
                     <a href="#contact" class="btn-link">
                         Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="uslugi/produkty-z-lodu.html" class="btn-link">
+                        Dowiedz się więcej <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
@@ -252,6 +225,9 @@
                     </ul>
                     <a href="#contact" class="btn-link">
                         Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="uslugi/bary-lodowe.html" class="btn-link">
+                        Dowiedz się więcej <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
@@ -659,6 +635,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script-ice-blue.js"></script>
+    <script src="js/script-ice-blue.js"></script>
+    <script src="js/components-loader.js"></script>
 </body>
 </html>

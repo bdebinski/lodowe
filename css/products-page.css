@@ -1,0 +1,581 @@
+/* Products Page Specific Styles */
+
+/* Products Hero */
+.products-hero {
+    background: linear-gradient(135deg, #E0F2FE 0%, #FFFFFF 100%);
+}
+
+/* Products Grid */
+.products-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #E2E8F0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(8, 145, 178, 0.15);
+    border-color: #0891B2;
+}
+
+.product-card.featured {
+    border-color: #0891B2;
+    border-width: 3px;
+}
+
+.product-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #0891B2;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.product-badge.new {
+    background: linear-gradient(135deg, #F59E0B, #EF4444);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.product-image {
+    height: 250px;
+    background: linear-gradient(135deg, #F8FAFC, #E2E8F0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(8, 145, 178, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.product-image .image-placeholder {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.product-image .image-placeholder i {
+    font-size: 5rem;
+    color: #0891B2;
+    opacity: 0.4;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.product-image .image-placeholder p {
+    color: #64748B;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.product-content {
+    padding: 30px;
+}
+
+.product-content h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 10px;
+}
+
+.product-tagline {
+    font-size: 0.9rem;
+    color: #0891B2;
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.product-description {
+    color: #64748B;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.product-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.feature-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #F8FAFC;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #64748B;
+    border: 1px solid #E2E8F0;
+}
+
+.feature-tag i {
+    color: #0891B2;
+    font-size: 0.75rem;
+}
+
+.product-pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
+    margin-bottom: 20px;
+}
+
+.price-label {
+    font-size: 0.9rem;
+    color: #64748B;
+}
+
+.price-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0891B2;
+}
+
+.btn-order {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Logistics Section */
+.logistics-section {
+    padding: 80px 0;
+    background: #F8FAFC;
+}
+
+.logistics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.logistics-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid #E2E8F0;
+}
+
+.logistics-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #0891B2, #0E7490);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.logistics-card h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 20px;
+}
+
+.logistics-list {
+    list-style: none;
+    padding: 0;
+}
+
+.logistics-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #F1F5F9;
+    color: #64748B;
+    font-size: 0.95rem;
+}
+
+.logistics-list li:last-child {
+    border-bottom: none;
+}
+
+.logistics-list li strong {
+    color: #0F172A;
+    font-weight: 600;
+}
+
+.logistics-list li small {
+    display: block;
+    color: #94A3B8;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+.logistics-list li i {
+    color: #0891B2;
+    margin-right: 8px;
+}
+
+/* Quality Section */
+.quality-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.quality-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.quality-text h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 20px;
+}
+
+.quality-text .lead {
+    font-size: 1.15rem;
+    color: #64748B;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.quality-features {
+    display: grid;
+    gap: 25px;
+}
+
+.quality-feature {
+    display: flex;
+    gap: 20px;
+    align-items: start;
+}
+
+.quality-feature i {
+    font-size: 2rem;
+    color: #0891B2;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.quality-feature h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 5px;
+}
+
+.quality-feature p {
+    color: #64748B;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.quality-visual .image-placeholder.large {
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #0891B2, #0E7490);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.quality-visual .image-placeholder.large i {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.quality-visual .image-placeholder.large p {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+/* Order Section */
+.order-section {
+    padding: 80px 0;
+    background: #F8FAFC;
+}
+
+.order-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+}
+
+.order-info h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 30px;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #E2E8F0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a.contact-method:hover {
+    border-color: #0891B2;
+    transform: translateX(5px);
+}
+
+.method-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0891B2, #0E7490);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.method-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.method-label {
+    font-size: 0.85rem;
+    color: #64748B;
+}
+
+.method-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.order-benefits {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 2px solid #E2E8F0;
+}
+
+.order-benefits h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 15px;
+}
+
+.order-benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-benefits ul li {
+    padding: 8px 0;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-benefits ul li i {
+    color: #0891B2;
+}
+
+/* Order Form */
+.order-form-wrapper {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid #E2E8F0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.order-form h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #0F172A;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0891B2;
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.btn-full {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+    justify-content: center;
+}
+
+.form-note {
+    text-align: center;
+    color: #64748B;
+    font-size: 0.85rem;
+    margin-top: 15px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logistics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quality-content,
+    .order-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 200px;
+    }
+
+    .product-content {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .order-form-wrapper {
+        padding: 25px;
+    }
+
+    .quality-text h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-image .image-placeholder i {
+        font-size: 3.5rem;
+    }
+
+    .product-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .logistics-card,
+    .order-benefits,
+    .order-form-wrapper {
+        padding: 20px;
+    }
+}
