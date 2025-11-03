@@ -1191,6 +1191,34 @@ section {
 }
 
 /* ===================================
+   GLIGHTBOX CUSTOM STYLES
+   =================================== */
+
+.glightbox-clean .gslide-description {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.glightbox-clean .gdesc-inner {
+    padding: var(--spacing-md);
+}
+
+.glightbox-clean .gslide-title {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: var(--spacing-xs);
+}
+
+.glightbox-clean .gslide-desc {
+    font-family: var(--font-primary);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.glightbox-container .ginner-container {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+/* ===================================
    RESPONSIVE
    =================================== */
 
