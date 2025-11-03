@@ -3,16 +3,24 @@
 // ===================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    initNavigation();
     initScrollEffects();
     initFAQ();
     initPortfolioFilters();
     initContactForm();
     initScrollToTop();
     initSmoothScroll();
-    
-    console.log('%c❄️ Lodowe.com.pl - Ice Blue Version loaded!', 
+    initLightbox();
+
+    console.log('%c❄️ Lodowe.com.pl - Ice Blue Version loaded!',
         'font-size: 16px; color: #06B6D4; font-weight: bold;'
+    );
+});
+
+// Listen for navigation loaded event from components-loader
+window.addEventListener('navigationLoaded', function() {
+    initNavigation();
+    console.log('%c✓ Navigation initialized after component load',
+        'font-size: 14px; color: #10B981; font-weight: bold;'
     );
 });
 
@@ -46,8 +54,28 @@ function initNavigation() {
 
     // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function(e) {
+            // Check if this is a dropdown parent on mobile
+            const parent = this.parentElement;
+            if (parent.classList.contains('nav-dropdown') && window.innerWidth <= 768) {
+                e.preventDefault();
+                parent.classList.toggle('active');
+                return;
+            }
+
             if (hamburger && navMenu) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Handle dropdown menu clicks on mobile
+    const dropdownItems = document.querySelectorAll('.dropdown-menu a');
+    dropdownItems.forEach(link => {
+        link.addEventListener('click', function() {
+            if (hamburger && navMenu && window.innerWidth <= 768) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';
@@ -168,11 +196,11 @@ function initPortfolioFilters() {
             // Filter portfolio items with animation
             portfolioItems.forEach((item, index) => {
                 const category = item.getAttribute('data-category');
-                
+
                 // Hide all first
                 item.style.opacity = '0';
                 item.style.transform = 'scale(0.8)';
-                
+
                 setTimeout(() => {
                     if (filterValue === 'all' || category === filterValue) {
                         item.style.display = 'block';
@@ -187,18 +215,6 @@ function initPortfolioFilters() {
                     }
                 }, index * 50);
             });
-        });
-    });
-
-    // Portfolio item click handler
-    const portfolioBtns = document.querySelectorAll('.portfolio-btn');
-    portfolioBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const item = this.closest('.portfolio-item');
-            const title = item.querySelector('h3').textContent;
-            
-            showNotification('Portfolio', `Kliknięto: ${title}`, 'info');
         });
     });
 }
@@ -418,6 +434,29 @@ function initSmoothScroll() {
             }
         });
     });
+}
+
+// ===================================
+// LIGHTBOX GALLERY
+// ===================================
+
+function initLightbox() {
+    if (typeof GLightbox !== 'undefined') {
+        const lightbox = GLightbox({
+            touchNavigation: true,
+            loop: true,
+            autoplayVideos: true,
+            closeButton: true,
+            zoomable: true,
+            draggable: true,
+            skin: 'modern',
+            moreLength: 0
+        });
+
+        console.log('%c✓ Lightbox initialized',
+            'font-size: 14px; color: #10B981; font-weight: bold;'
+        );
+    }
 }
 
 // ===================================
