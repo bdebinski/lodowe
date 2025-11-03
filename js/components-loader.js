@@ -12,8 +12,10 @@
             if (element) {
                 element.innerHTML = html;
             }
+            return true; // Return success
         } catch (error) {
             console.error('Error loading component:', error);
+            return false;
         }
     }
 
@@ -28,13 +30,16 @@
     }
 
     // Load components when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', async function() {
         const basePath = getBasePath();
-        
-        // Load navigation
-        loadComponent('nav-placeholder', basePath + 'components/nav.html');
-        
+
+        // Load navigation and wait for it
+        await loadComponent('nav-placeholder', basePath + 'components/nav.html');
+
+        // Dispatch custom event to signal navigation is loaded
+        window.dispatchEvent(new CustomEvent('navigationLoaded'));
+
         // Load footer
-        loadComponent('footer-placeholder', basePath + 'components/footer.html');
+        await loadComponent('footer-placeholder', basePath + 'components/footer.html');
     });
 })();

@@ -3,16 +3,23 @@
 // ===================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    initNavigation();
     initScrollEffects();
     initFAQ();
     initPortfolioFilters();
     initContactForm();
     initScrollToTop();
     initSmoothScroll();
-    
-    console.log('%c❄️ Lodowe.com.pl - Ice Blue Version loaded!', 
+
+    console.log('%c❄️ Lodowe.com.pl - Ice Blue Version loaded!',
         'font-size: 16px; color: #06B6D4; font-weight: bold;'
+    );
+});
+
+// Listen for navigation loaded event from components-loader
+window.addEventListener('navigationLoaded', function() {
+    initNavigation();
+    console.log('%c✓ Navigation initialized after component load',
+        'font-size: 14px; color: #10B981; font-weight: bold;'
     );
 });
 
