@@ -46,8 +46,28 @@ function initNavigation() {
 
     // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function(e) {
+            // Check if this is a dropdown parent on mobile
+            const parent = this.parentElement;
+            if (parent.classList.contains('nav-dropdown') && window.innerWidth <= 768) {
+                e.preventDefault();
+                parent.classList.toggle('active');
+                return;
+            }
+
             if (hamburger && navMenu) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Handle dropdown menu clicks on mobile
+    const dropdownItems = document.querySelectorAll('.dropdown-menu a');
+    dropdownItems.forEach(link => {
+        link.addEventListener('click', function() {
+            if (hamburger && navMenu && window.innerWidth <= 768) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';
