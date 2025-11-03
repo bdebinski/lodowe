@@ -248,7 +248,6 @@ button {
     align-items: center;
     justify-content: center;
     padding-top: 80px;
-    /* background-image: url("https://www.lodowe.com.pl/wp-content/uploads/2023/04/wosp-glowna.webp"); */
     background-size: auto;
     position: relative;
     overflow: hidden;
@@ -1131,6 +1130,12 @@ section {
 /* ===================================
    RESPONSIVE
    =================================== */
+
+@media (max-width: 768px) {
+  .video-background,
+  .video-overlay {
+    display: none;
+  }
 
 @media (max-width: 1024px) {
     .about-grid {
