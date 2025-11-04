@@ -24,6 +24,14 @@ window.addEventListener('navigationLoaded', function() {
     );
 });
 
+// Listen for portfolio loaded event and reinitialize lightbox
+window.addEventListener('portfolioLoaded', function() {
+    reinitLightbox();
+    console.log('%c✓ Portfolio component loaded - lightbox reinitialized',
+        'font-size: 14px; color: #10B981; font-weight: bold;'
+    );
+});
+
 // ===================================
 // NAVIGATION
 // ===================================
@@ -440,9 +448,17 @@ function initSmoothScroll() {
 // LIGHTBOX GALLERY
 // ===================================
 
+let lightboxInstance = null;
+
 function initLightbox() {
     if (typeof GLightbox !== 'undefined') {
-        const lightbox = GLightbox({
+        // Destroy previous instance if exists
+        if (lightboxInstance) {
+            lightboxInstance.destroy();
+        }
+
+        // Create new instance
+        lightboxInstance = GLightbox({
             touchNavigation: true,
             loop: true,
             autoplayVideos: true,
@@ -453,10 +469,57 @@ function initLightbox() {
             moreLength: 0
         });
 
-        console.log('%c✓ Lightbox initialized',
+        console.log('%c✓ Lightbox initialized (' + document.querySelectorAll('.glightbox').length + ' items)',
             'font-size: 14px; color: #10B981; font-weight: bold;'
         );
     }
+}
+
+// Re-initialize lightbox when new content is loaded
+function reinitLightbox() {
+    // Wait a bit for DOM to update
+    setTimeout(() => {
+        initLightbox();
+    }, 100);
+}
+
+// Watch for dynamically added .glightbox elements
+if (typeof MutationObserver !== 'undefined') {
+    const observer = new MutationObserver(function(mutations) {
+        let shouldReinit = false;
+
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === 1) { // Element node
+                        if (node.classList && node.classList.contains('glightbox')) {
+                            shouldReinit = true;
+                        } else if (node.querySelectorAll) {
+                            const glightboxElements = node.querySelectorAll('.glightbox');
+                            if (glightboxElements.length > 0) {
+                                shouldReinit = true;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        if (shouldReinit) {
+            console.log('%c🔄 New .glightbox elements detected - reinitializing...',
+                'font-size: 14px; color: #F59E0B; font-weight: bold;'
+            );
+            reinitLightbox();
+        }
+    });
+
+    // Start observing after DOM is ready
+    window.addEventListener('load', function() {
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
 }
 
 // ===================================

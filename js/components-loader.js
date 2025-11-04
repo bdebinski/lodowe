@@ -41,5 +41,13 @@
 
         // Load footer
         await loadComponent('footer-placeholder', basePath + 'components/footer.html');
+
+        // Load portfolio if placeholder exists
+        const portfolioPlaceholder = document.getElementById('portfolio-placeholder');
+        if (portfolioPlaceholder) {
+            await loadComponent('portfolio-placeholder', basePath + 'components/portfolio.html');
+            // Dispatch event to signal portfolio is loaded
+            window.dispatchEvent(new CustomEvent('portfolioLoaded'));
+        }
     });
 })();
