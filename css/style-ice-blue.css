@@ -482,6 +482,7 @@ button {
     align-items: center;
     gap: var(--spacing-xs);
     transition: var(--transition-base);
+    /* margin-top: auto; */
 }
 
 .btn-link:hover {
@@ -655,6 +656,8 @@ section {
     padding: var(--spacing-xl);
     box-shadow: var(--shadow-md);
     transition: var(--transition-base);
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card:hover {
@@ -674,7 +677,9 @@ section {
     font-size: 1.8rem;
     margin-bottom: var(--spacing-md);
 }
-
+.service-links {
+    margin-top: auto;
+}
 .service-title {
     font-size: 1.5rem;
     font-weight: 800;

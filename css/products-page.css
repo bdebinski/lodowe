@@ -24,6 +24,8 @@
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card:hover {
@@ -116,6 +118,8 @@
 
 .product-content {
     padding: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-content h3 {
@@ -144,6 +148,7 @@
 .product-features {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     gap: 8px;
     margin-bottom: 20px;
 }
@@ -189,6 +194,7 @@
 .btn-order {
     width: 100%;
     justify-content: center;
+    margin-top: auto;
 }
 
 /* Logistics Section */
