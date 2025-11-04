@@ -515,34 +515,39 @@
     <button class="scroll-top" id="scrollTop">
         <i class="fas fa-arrow-up"></i>
     </button>
-
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script src="../js/script-ice-blue.js"></script>
     <script src="../js/components-loader.js"></script>
     <script>
-        window.addEventListener('portfolioLoaded', function () {
-            console.log('✅ portfolioLoaded event received');
+    window.addEventListener('portfolioLoaded', function () {
+    console.log('✅ portfolioLoaded event received');
 
-            // krótka pauza żeby mieć pewność, że DOM się zaktualizował
-            setTimeout(() => {
-                const items = document.querySelectorAll('.glightbox');
-                console.log('Znaleziono elementów .glightbox:', items.length);
+    // 🔁 Poczekaj 50ms aż DOM się zaktualizuje
+    setTimeout(() => {
+        const portfolioItems = document.querySelectorAll('.glightbox');
+        console.log('🔍 Po 50ms znaleziono elementów .glightbox:', portfolioItems.length);
 
-                if (typeof GLightbox === 'function' && items.length > 0) {
-                    if (window.lightboxInstance && typeof window.lightboxInstance.destroy === 'function') {
-                        window.lightboxInstance.destroy();
-                    }
-                    window.lightboxInstance = GLightbox({
-                        selector: '.glightbox',
-                        loop: true
-                    });
-                    console.log('🔵 GLightbox aktywowany po portfolioLoaded');
-                } else {
-                    console.warn('Nie znaleziono elementów .glightbox lub GLightbox niezaładowany');
-                }
-            }, 300); // 300 ms daje fetchowi czas na wstawienie HTML-a
+        if (portfolioItems.length === 0) {
+            console.warn('⚠️ Nadal brak elementów GLightbox – portfolio nie wstawione?');
+            return;
+        }
+
+        if (window.lightboxInstance) {
+            window.lightboxInstance.destroy();
+        }
+
+        window.lightboxInstance = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
+            openEffect: 'zoom',
+            closeEffect: 'fade'
         });
-    </script>
+
+        console.log('✅ GLightbox zainicjalizowany po 50ms');
+    }, 50);
+});
+</script>
 </body>
 
 </html>
