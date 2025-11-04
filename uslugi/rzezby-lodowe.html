@@ -523,65 +523,20 @@
     <script src="../js/components-loader.js"></script>
     <script>
         window.addEventListener('portfolioLoaded', function () {
-            console.log('✅ portfolioLoaded event received');
+            // Reinicjalizuj GLightbox po dynamicznym wczytaniu HTML
+            if (window.lightboxInstance) {
+                window.lightboxInstance.destroy();
+            }
 
-            // 🔁 Poczekaj 50ms aż DOM się zaktualizuje
-            setTimeout(() => {
-                const portfolioItems = document.querySelectorAll('.glightbox');
-                console.log('🔍 Po 50ms znaleziono elementów .glightbox:', portfolioItems.length);
+            window.lightboxInstance = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                openEffect: 'zoom',
+                closeEffect: 'fade'
+            });
 
-                if (portfolioItems.length === 0) {
-                    console.warn('⚠️ Nadal brak elementów GLightbox – portfolio nie wstawione?');
-                    return;
-                }
-
-                // Inicjalizuj GLightbox
-                if (window.lightboxInstance) {
-                    window.lightboxInstance.destroy();
-                }
-
-                window.lightboxInstance = GLightbox({
-                    selector: '.glightbox',
-                    touchNavigation: true,
-                    loop: true,
-                    openEffect: 'zoom',
-                    closeEffect: 'fade'
-                });
-
-                console.log('✅ GLightbox zainicjalizowany po 50ms');
-
-                // Inicjalizuj filtry
-                const filterButtons = document.querySelectorAll('.filter-btn');
-                const portfolioItemsAll = document.querySelectorAll('.portfolio-item');
-
-                if (filterButtons.length && portfolioItemsAll.length) {
-                    filterButtons.forEach(button => {
-                        button.addEventListener('click', () => {
-                            const filter = button.getAttribute('data-filter');
-
-                            // Usuń klasę active ze wszystkich
-                            filterButtons.forEach(btn => btn.classList.remove('active'));
-                            button.classList.add('active');
-
-                            // Filtruj elementy
-                            portfolioItemsAll.forEach(item => {
-                                const category = item.getAttribute('data-category');
-                                if (filter === 'all' || category === filter) {
-                                    item.style.display = 'block';
-                                    item.classList.add('visible');
-                                } else {
-                                    item.style.display = 'none';
-                                    item.classList.remove('visible');
-                                }
-                            });
-
-                            console.log(`✅ Filtr zmieniony na: ${filter}`);
-                        });
-                    });
-
-                    console.log('✅ Filtry portfolio zainicjalizowane po portfolioLoaded');
-                }
-            }, 50);
+            console.log('✅ GLightbox zainicjalizowany po portfolioLoaded');
         });
     </script>
 </body>

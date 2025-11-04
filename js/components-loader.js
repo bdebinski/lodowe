@@ -99,6 +99,15 @@ function fixPortfolioPaths() {
         if (portfolioLoaded) {
             initPortfolioControls();
             fixPortfolioPaths();
+
+            // Czekaj chwilę aż DOM się zaktualizuje, potem inicjalizuj filtry
+            setTimeout(() => {
+                if (typeof initPortfolioFilters === 'function') {
+                    initPortfolioFilters();
+                    console.log('✅ Portfolio filters initialized from components-loader');
+                }
+            }, 100);
+
             window.dispatchEvent(new CustomEvent('portfolioLoaded'));
         }
 
