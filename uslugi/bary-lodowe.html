@@ -20,6 +20,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- GLightbox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
     <link rel="stylesheet" href="../css/style-ice-blue.css">
     <link rel="stylesheet" href="../css/service-page.css">
 </head>
@@ -329,39 +332,26 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script src="../js/script-ice-blue.js"></script>
     <script src="../js/components-loader.js"></script>
-    <script src="../js/portfolio-path-fix.js"></script>
     <script>
         window.addEventListener('portfolioLoaded', function () {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            // Reinicjalizuj GLightbox po dynamicznym wczytaniu HTML
+            if (window.lightboxInstance) {
+                window.lightboxInstance.destroy();
+            }
 
-            if (!filterButtons.length || !portfolioItems.length) return;
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const filter = button.getAttribute('data-filter');
-
-                    // Usuń klasę active ze wszystkich
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    // Filtruj elementy
-                    portfolioItems.forEach(item => {
-                        const category = item.getAttribute('data-category');
-                        if (filter === 'bars' || category === filter) {
-                            item.style.display = 'block';
-                            item.classList.add('visible');
-                        } else {
-                            item.style.display = 'none';
-                            item.classList.remove('visible');
-                        }
-                    });
-                });
+            window.lightboxInstance = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                openEffect: 'zoom',
+                closeEffect: 'fade'
             });
 
-            console.log('✅ Filtry portfolio zainicjalizowane po portfolioLoaded');
+            console.log('✅ GLightbox zainicjalizowany po portfolioLoaded');
         });
     </script>
 </body>
