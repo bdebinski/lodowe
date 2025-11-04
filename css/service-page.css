@@ -180,6 +180,10 @@
     opacity: 0.6;
 }
 
+.about-visual img {
+    border-radius: 1.5rem;
+}
+
 /* Sculpture Types */
 .sculpture-types {
     padding: 80px 0;

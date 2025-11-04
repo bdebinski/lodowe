@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Profesjonalne rzeźby lodowe, bryły lodowe i dostawy lodu dla eventów, restauracji i barów. Ponad 10 lat doświadczenia w Łodzi.">
+    <meta name="description"
+        content="Profesjonalne rzeźby lodowe, bryły lodowe i dostawy lodu dla eventów, restauracji i barów. Ponad 10 lat doświadczenia w Łodzi.">
     <meta name="keywords" content="rzeźby lodowe, bryły lodowe, kostki lodu, pokazy lodowe, bary lodowe, eventy Łódź">
     <meta name="author" content="Lodowe.com.pl">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="Lodowe.com.pl - Rzeźby Lodowe & Profesjonalny Lód">
     <meta property="og:description" content="Tworzymy spektakularne dzieła lodowe i dostarczamy profesjonalny lód">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lodowe.com.pl">
-    
+
     <title>Lodowe.com.pl - Rzeźby Lodowe & Profesjonalny Lód | Łódź</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -28,88 +31,87 @@
 
     <link rel="stylesheet" href="css/style-ice-blue.css">
 </head>
-  <style>
+<style>
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        z-index: -2;
+    }
 
-.video-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -2;
-}
+    .video-background iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100vw;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        border: none;
+        pointer-events: none;
+        filter: brightness(0.7) contrast(1.1) blur(3px);
+    }
 
-.video-background iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  border: none;
-  pointer-events: none;
-  filter: brightness(0.7) contrast(1.1) blur(3px);
-}
+    /* Ciemniejszy filtr (nakładka) */
+    .video-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.55);
+        /* <-- tu kontrolujesz ciemność */
+        z-index: -1;
+    }
 
-/* Ciemniejszy filtr (nakładka) */
-.video-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.55); /* <-- tu kontrolujesz ciemność */
-  z-index: -1;
-}
+    /* Treść sekcji hero */
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        text-align: center;
 
-/* Treść sekcji hero */
-.hero-content {
-  position: relative;
-  z-index: 1;
-  color: #fff;
-  text-align: center;
+        font-family: 'Poppins', sans-serif;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
 
-  font-family: 'Poppins', sans-serif;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-}
+    .hero-content .stat-item {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        text-shadow: none;
+    }
 
-.hero-content .stat-item{
-  position: relative;
-  z-index: 1;
-  color: #fff;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  text-shadow: none;
-}
+    /* Tekst */
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
 
-/* Tekst */
-.hero-content h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
+    .hero-content p {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+        color: white;
+    }
+</style>
 
-.hero-content p {
-  font-size: 1.3rem;
-  line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto;
-  color: white;
-}
-
-  </style>
 <body>
     <!-- Navigation -->
     <div id="nav-placeholder"></div>
 
     <div class="video-background">
-        <iframe width="1920" height="1080" src="https://www.youtube.com/embed/Mr38VMFiWG4?si=7yg5CvIQa7Lntvnz&amp;start=10&controls=0&autoplay=1&mute=1&loop=1&playlist=Mr38VMFiWG4" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin"
-         allowfullscreen></iframe>
+        <iframe width="1920" height="1080"
+            src="https://www.youtube.com/embed/Mr38VMFiWG4?si=7yg5CvIQa7Lntvnz&amp;start=10&controls=0&autoplay=1&mute=1&loop=1&playlist=Mr38VMFiWG4"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
     <!-- Hero Section -->
@@ -166,10 +168,13 @@
                     <span class="section-subtitle">O nas</span>
                     <h2 class="section-title">Pasja zamrożona w lodzie</h2>
                     <p class="about-text">
-                        Od ponad dekady tworzymy spektakularne rzeźby lodowe i dostarczamy profesjonalny lód dla najbardziej wymagających klientów. Każde dzieło to połączenie artystycznej wizji, precyzji wykonania i najwyższej jakości surowca.
+                        Od ponad dekady tworzymy spektakularne rzeźby lodowe i dostarczamy profesjonalny lód dla
+                        najbardziej wymagających klientów. Każde dzieło to połączenie artystycznej wizji, precyzji
+                        wykonania i najwyższej jakości surowca.
                     </p>
                     <p class="about-text">
-                        Współpracujemy z największymi eventami w Polsce, restauracjami i prestiżowymi hotelami. Nasze lodowe kreacje zachwycają gości na weselach, galach, konferencjach i imprezach firmowych.
+                        Współpracujemy z największymi eventami w Polsce, restauracjami i prestiżowymi hotelami. Nasze
+                        lodowe kreacje zachwycają gości na weselach, galach, konferencjach i imprezach firmowych.
                     </p>
                     <div class="about-features">
                         <div class="feature-item">
@@ -193,7 +198,7 @@
                 <div class="about-visual">
                     <div class="about-image">
                         <div class="image-placeholder">
-                             <img src="static/images/crew.webp" alt="" loading="lazy" width="600" height="400">
+                            <img src="static/images/crew.webp" alt="" loading="lazy" width="600" height="400">
                         </div>
                     </div>
                     <div class="about-badge">
@@ -223,7 +228,8 @@
                     </div>
                     <h3 class="service-title">Rzeźby Lodowe</h3>
                     <p class="service-description">
-                        Spektakularne, autorskie rzeźby lodowe na każdą okazję. Przekształcamy Twoje pomysły w krystaliczne dzieła sztuki.
+                        Spektakularne, autorskie rzeźby lodowe na każdą okazję. Przekształcamy Twoje pomysły w
+                        krystaliczne dzieła sztuki.
                     </p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Projekty na zamówienie</li>
@@ -234,7 +240,7 @@
                         <a href="#contact" class="btn-link">
                             Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a href="uslugi/bary-lodowe.html" class="btn-link">
+                        <a href="uslugi/rzezby-lodowe.html" class="btn-link">
                             Dowiedz się więcej <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -247,15 +253,17 @@
                     <h3 class="service-title">Warsztaty lodowe</h3>
                     <p class="service-description">
                         Warsztaty lodowe łączą kreatywną zabawę z praktyczną nauką.
-                        Podczas integracyjnych uczestnicy wspólnie rzeźbią w lodzie, rozwijając współpracę i kreatywność.
-                        Profesjonalne skierowane są do branży gastronomicznej – uczą technik obróbki lodu, tworzenia kul i dekoracji barowych.
+                        Podczas integracyjnych uczestnicy wspólnie rzeźbią w lodzie, rozwijając współpracę i
+                        kreatywność.
+                        Profesjonalne skierowane są do branży gastronomicznej – uczą technik obróbki lodu, tworzenia kul
+                        i dekoracji barowych.
                         W obu przypadkach gwarantujemy wyjątkowe doświadczenie pracy z lodem.
                     </p>
                     <div class="service-links">
                         <a href="#contact" class="btn-link">
                             Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a href="uslugi/bary-lodowe.html" class="btn-link">
+                        <a href="uslugi/pokazy-warsztaty.html" class="btn-link">
                             Dowiedz się więcej <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -267,7 +275,9 @@
                     </div>
                     <h3 class="service-title">Produkty z lodu</h3>
                     <p class="service-description">
-                        Lód to nasza specjalność! W naszej ofercie znajdziesz nie tylko lód w kostkach, ale także lód kruszony, spiry lodowe z wzorami, kostki XXL, lodowe diamenty, naczynia z lodu, japońskie kule oraz suchy lód.
+                        Lód to nasza specjalność! W naszej ofercie znajdziesz nie tylko lód w kostkach, ale także lód
+                        kruszony, spiry lodowe z wzorami, kostki XXL, lodowe diamenty, naczynia z lodu, japońskie kule
+                        oraz suchy lód.
                     </p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Różne wielkości kostek</li>
@@ -278,7 +288,7 @@
                         <a href="#contact" class="btn-link">
                             Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a href="uslugi/bary-lodowe.html" class="btn-link">
+                        <a href="uslugi/produkty-z-lodu.html" class="btn-link">
                             Dowiedz się więcej <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -290,7 +300,8 @@
                     </div>
                     <h3 class="service-title">Pokazy Lodowe</h3>
                     <p class="service-description">
-                        Urozmaicimy Twój event niesamowitym pokazem rzeźbienia w lodzie. Warsztaty lodowe to niezapomniane przeżycie.
+                        Urozmaicimy Twój event niesamowitym pokazem rzeźbienia w lodzie. Warsztaty lodowe to
+                        niezapomniane przeżycie.
                     </p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Live carving show</li>
@@ -301,7 +312,7 @@
                         <a href="#contact" class="btn-link">
                             Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a href="uslugi/bary-lodowe.html" class="btn-link">
+                        <a href="uslugi/pokazy-warsztaty.html" class="btn-link">
                             Dowiedz się więcej <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -313,7 +324,8 @@
                     </div>
                     <h3 class="service-title">Bary Lodowe</h3>
                     <p class="service-description">
-                        Wypełnij przestrzeń kreatywnie! Bary z prawdziwego lodu idealnie sprawdzą się na weselach i eventach firmowych.
+                        Wypełnij przestrzeń kreatywnie! Bary z prawdziwego lodu idealnie sprawdzą się na weselach i
+                        eventach firmowych.
                     </p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> 100% z prawdziwego lodu</li>
@@ -357,208 +369,9 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Nasze Prace</span>
-                <h2 class="section-title">Portfolio Realizacji</h2>
-            </div>
+    <div id="portfolio-placeholder">
 
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">Wszystkie</button>
-                <button class="filter-btn" data-filter="sculptures">Rzeźby</button>
-                <button class="filter-btn" data-filter="blocks">Bryły</button>
-                <button class="filter-btn" data-filter="bars">Bary</button>
-                <button class="filter-btn" data-filter="shows">Pokazy</button>
-                <button class="filter-btn" data-filter="workshops">Warsztaty</button>
-            </div>
-            <div class="portfolio-grid">
-                <a href="static/images/bryly/galeria-bryly-11-scaled.webp" class="glightbox portfolio-item" data-category="blocks" data-gallery="portfolio" data-glightbox="title: Bryła z Logo; description: Prezent firmowy">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/bryly/galeria-bryly-11-scaled.webp" alt="Bryła z Logo" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Bryła z Logo</h3>
-                        <p>Prezent firmowy</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-                <a href="static/images/bryly/galeria-bryly-21.webp" class="glightbox portfolio-item" data-category="blocks" data-gallery="portfolio" data-glightbox="title: Bryła z Logo; description: Prezent firmowy">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/bryly/galeria-bryly-21.webp" alt="Bryła z Logo" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Bryła z Logo</h3>
-                        <p>Prezent firmowy</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-
-                <a href="static/images/bryly/galeria-bryly-140.webp" class="glightbox portfolio-item" data-category="blocks" data-gallery="portfolio" data-glightbox="title: Live Carving Show; description: Event firmowy">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/bryly/galeria-bryly-140.webp" alt="Live Carving Show" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Live Carving Show</h3>
-                        <p>Event firmowy</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-
-                <a href="static/images/bary/galeria-bary-2.webp" class="glightbox portfolio-item" data-category="bars" data-gallery="portfolio" data-glightbox="title: Bar Lodowy; description: Wesele">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/bary/galeria-bary-2.webp" alt="Bar Lodowy" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Bar Lodowy</h3>
-                        <p>Wesele</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-
-                <a href="static/images/bary/galeria-bary-61-scaled.webp" class="glightbox portfolio-item" data-category="bars" data-gallery="portfolio" data-glightbox="title: Bar Lodowy; description: Wesele">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/bary/galeria-bary-61-scaled.webp" alt="Bar Lodowy" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Bar Lodowy</h3>
-                        <p>Wesele</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-                <a href="static/images/bary/galeria-bary-69.webp" class="glightbox portfolio-item" data-category="bars" data-gallery="portfolio" data-glightbox="title: Dekoracja Lodowa; description: Gala">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/bary/galeria-bary-69.webp" alt="Dekoracja Lodowa" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Dekoracja Lodowa</h3>
-                        <p>Gala</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-                <a href="static/images/rzezby/galeria-rzezby-76.webp" class="glightbox portfolio-item" data-category="sculptures" data-gallery="portfolio" data-glightbox="title: Rzeźba Lodowa; description: Gala">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/rzezby/galeria-rzezby-76.webp" alt="Rzeźba Lodowa" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Rzeźba Lodowa</h3>
-                        <p>Gala</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-                <a href="static/images/rzezby/galeria-rzezby-116.webp" class="glightbox portfolio-item" data-category="sculptures" data-gallery="portfolio" data-glightbox="title: Rzeźba Lodowa; description: Gala">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/rzezby/galeria-rzezby-116.webp" alt="Rzeźba Lodowa" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Rzeźba Lodowa</h3>
-                        <p>Gala</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-                <a href="static/images/rzezby/galeria-rzezby-77.webp" class="glightbox portfolio-item" data-category="sculptures" data-gallery="portfolio" data-glightbox="title: Rzeźba Lodowa; description: Gala">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/rzezby/galeria-rzezby-77.webp" alt="Rzeźba Lodowa" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Rzeźba Lodowa</h3>
-                        <p>Gala</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-                <a href="static/images/pokazy/galeria-pokazy-1.webp" class="glightbox portfolio-item" data-category="shows" data-gallery="portfolio" data-glightbox="title: Pokaz Lodowy; description: Event">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/pokazy/galeria-pokazy-1.webp" alt="Pokaz Lodowy" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Pokaz Lodowy</h3>
-                        <p>Event</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-                 <a href="static/images/pokazy/galeria-pokazy-27.webp" class="glightbox portfolio-item" data-category="shows" data-gallery="portfolio" data-glightbox="title: Pokaz Lodowy; description: Event">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/pokazy/galeria-pokazy-27.webp" alt="Pokaz Lodowy" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Pokaz Lodowy</h3>
-                        <p>Event</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-                 <a href="static/images/pokazy/galeria-pokazy-31.webp" class="glightbox portfolio-item" data-category="shows" data-gallery="portfolio" data-glightbox="title: Pokaz Lodowy; description: Event">
-                    <div class="portfolio-placeholder">
-                        <img src="static/images/pokazy/galeria-pokazy-31.webp" alt="Pokaz Lodowy" loading="lazy">
-                    </div>
-                    <div class="portfolio-overlay">
-                        <h3>Pokaz Lodowy</h3>
-                        <p>Event</p>
-                        <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                    </div>
-                </a>
-                <a href="static/images/pokazy/galeria-pokazy-38.webp" class="glightbox portfolio-item" data-category="shows" data-gallery="portfolio" data-glightbox="title: Pokaz Lodowy; description: Event">
-                <div class="portfolio-placeholder">
-                    <img src="static/images/pokazy/galeria-pokazy-38.webp" alt="Pokaz Lodowy" loading="lazy">
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Pokaz Lodowy</h3>
-                    <p>Event</p>
-                    <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                </div>
-                </a>
-                <a href="static/images/warsztaty/galeria-warsztaty-1.webp" class="glightbox portfolio-item" data-category="workshops" data-gallery="portfolio" data-glightbox="title: Warsztaty Lodowe; description: Integracja">
-                <div class="portfolio-placeholder">
-                    <img src="static/images/warsztaty/galeria-warsztaty-1.webp" alt="Warsztaty Lodowe" loading="lazy">
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Warsztaty Lodowe</h3>
-                    <p>Integracja</p>
-                    <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                </div>
-                </a>
-                <a href="static/images/warsztaty/galeria-warsztaty-2.webp" class="glightbox portfolio-item" data-category="workshops" data-gallery="portfolio" data-glightbox="title: Warsztaty Lodowe; description: Integracja">
-                <div class="portfolio-placeholder">
-                    <img src="static/images/warsztaty/galeria-warsztaty-2.webp" alt="Warsztaty Lodowe" loading="lazy">
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Warsztaty Lodowe</h3>
-                    <p>Integracja</p>
-                    <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                </div>
-                </a>
-                <a href="static/images/warsztaty/galeria-warsztaty-3.webp" class="glightbox portfolio-item" data-category="workshops" data-gallery="portfolio" data-glightbox="title: Warsztaty Lodowe; description: Integracja">
-                <div class="portfolio-placeholder">
-                    <img src="static/images/warsztaty/galeria-warsztaty-3.webp" alt="Warsztaty Lodowe" loading="lazy">
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Warsztaty Lodowe</h3>
-                    <p>Integracja</p>
-                    <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                </div>
-                </a>
-                <a href="static/images/warsztaty/galeria-warsztaty-4.webp" class="glightbox portfolio-item" data-category="workshops" data-gallery="portfolio" data-glightbox="title: Warsztaty Lodowe; description: Integracja">
-                <div class="portfolio-placeholder">
-                    <img src="static/images/warsztaty/galeria-warsztaty-4.webp" alt="Warsztaty Lodowe" loading="lazy">
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Warsztaty Lodowe</h3>
-                    <p>Integracja</p>
-                    <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                </div>
-                </a>
-                <a href="static/images/warsztaty/galeria-warsztaty-15.webp" class="glightbox portfolio-item" data-category="workshops" data-gallery="portfolio" data-glightbox="title: Warsztaty Lodowe; description: Integracja">
-                <div class="portfolio-placeholder">
-                    <img src="static/images/warsztaty/galeria-warsztaty-15.webp" alt="Warsztaty Lodowe" loading="lazy">
-                </div>
-                <div class="portfolio-overlay">
-                    <h3>Warsztaty Lodowe</h3>
-                    <p>Integracja</p>
-                    <span class="portfolio-btn"><i class="fas fa-search-plus"></i></span>
-                </div>
-                </a>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
@@ -578,7 +391,8 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <p class="testimonial-text">
-                        "Lód do drinków? Rzeźby lodowe? Lodowe.com.pl zrealizuje większość Twoich pomysłów na urozmaicenie imprezy. Wiem z doświadczenia. Polecam."
+                        "Lód do drinków? Rzeźby lodowe? Lodowe.com.pl zrealizuje większość Twoich pomysłów na
+                        urozmaicenie imprezy. Wiem z doświadczenia. Polecam."
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">KD</div>
@@ -598,7 +412,8 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <p class="testimonial-text">
-                        "Świetne pokazy, piękne rzeźby i najlepszy lód! Goście na naszym weselu byli zachwyceni. Profesjonalna obsługa od początku do końca."
+                        "Świetne pokazy, piękne rzeźby i najlepszy lód! Goście na naszym weselu byli zachwyceni.
+                        Profesjonalna obsługa od początku do końca."
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">MD</div>
@@ -618,7 +433,8 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <p class="testimonial-text">
-                        "Współpracujemy już od lat. Zawsze terminowa dostawa, najwyższa jakość lodu. Idealny partner dla gastronomii. Gorąco polecamy!"
+                        "Współpracujemy już od lat. Zawsze terminowa dostawa, najwyższa jakość lodu. Idealny partner dla
+                        gastronomii. Gorąco polecamy!"
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">DT</div>
@@ -647,7 +463,9 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>W normalnych warunkach pokojowych (ok. 20°C) rzeźba lodowa utrzymuje się w dobrym stanie przez 4-8 godzin. Czas ten można znacząco wydłużyć stosując odpowiednie chłodzenie i zabezpieczenia.</p>
+                        <p>W normalnych warunkach pokojowych (ok. 20°C) rzeźba lodowa utrzymuje się w dobrym stanie
+                            przez 4-8 godzin. Czas ten można znacząco wydłużyć stosując odpowiednie chłodzenie i
+                            zabezpieczenia.</p>
                     </div>
                 </div>
 
@@ -657,7 +475,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>Dla kostek lodu - możliwa jest dostawa już następnego dnia. Rzeźby i bryły lodowe wymagają zwykle 3-5 dni roboczych. W wyjątkowych sytuacjach możemy przyspieszyć realizację.</p>
+                        <p>Dla kostek lodu - możliwa jest dostawa już następnego dnia. Rzeźby i bryły lodowe wymagają
+                            zwykle 3-5 dni roboczych. W wyjątkowych sytuacjach możemy przyspieszyć realizację.</p>
                     </div>
                 </div>
 
@@ -667,7 +486,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>Tak! Realizujemy dostawy na terenie całej Polski. Dla zamówień poza Łodzią doliczamy koszt transportu w zależności od odległości. Posiadamy specjalistyczne chłodnie transportowe.</p>
+                        <p>Tak! Realizujemy dostawy na terenie całej Polski. Dla zamówień poza Łodzią doliczamy koszt
+                            transportu w zależności od odległości. Posiadamy specjalistyczne chłodnie transportowe.</p>
                     </div>
                 </div>
 
@@ -677,7 +497,8 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>Oczywiście! Specjalizujemy się w projektach na zamówienie. Wystarczy przesłać nam szkic, logo lub opis Twojej wizji, a nasi artyści przygotują projekt do akceptacji.</p>
+                        <p>Oczywiście! Specjalizujemy się w projektach na zamówienie. Wystarczy przesłać nam szkic, logo
+                            lub opis Twojej wizji, a nasi artyści przygotują projekt do akceptacji.</p>
                     </div>
                 </div>
 
@@ -687,7 +508,9 @@
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
-                        <p>Ceny zależą od rozmiaru, złożoności projektu i czasu realizacji. Podstawowa rzeźba (ok. 1m wysokości) zaczyna się od 800 zł. Duże, skomplikowane projekty mogą kosztować 2000-5000 zł.</p>
+                        <p>Ceny zależą od rozmiaru, złożoności projektu i czasu realizacji. Podstawowa rzeźba (ok. 1m
+                            wysokości) zaczyna się od 800 zł. Duże, skomplikowane projekty mogą kosztować 2000-5000 zł.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -741,7 +564,8 @@
 
                         <div class="form-group">
                             <label for="message">Wiadomość *</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Opisz swoje potrzeby..."></textarea>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="Opisz swoje potrzeby..."></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-submit">
@@ -786,65 +610,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <div class="logo-icon">❄</div>
-                        <span>LODOWE</span>
-                    </div>
-                    <p class="footer-description">
-                        Profesjonalne usługi lodowe dla wymagających klientów. Tworzymy spektakularne rzeźby od ponad 10 lat.
-                    </p>
-                </div>
+    <div id="footer-placeholder">
 
-                <div class="footer-col">
-                    <h4>Szybkie Linki</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Start</a></li>
-                        <li><a href="#about">O nas</a></li>
-                        <li><a href="#services">Usługi</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#contact">Kontakt</a></li>
-                    </ul>
-                </div>
+    </div>
 
-                <div class="footer-col">
-                    <h4>Usługi</h4>
-                    <ul class="footer-links">
-                        <li><a href="#services">Rzeźby lodowe</a></li>
-                        <li><a href="#services">Bryły lodowe</a></li>
-                        <li><a href="#services">Kostki lodu</a></li>
-                        <li><a href="#services">Pokazy lodowe</a></li>
-                        <li><a href="#services">Bary lodowe</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Kontakt</h4>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>ul. Żeromskiego 49<br>90-624 Łódź</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+48511110265">+48 511 110 265</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:kontakt@lodowe.com.pl">kontakt@lodowe.com.pl</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Lodowe.com.pl. Wszelkie prawa zastrzeżone.</p>
-            </div>
-        </div>
-    </footer>
 
     <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop">
@@ -853,8 +622,26 @@
 
     <!-- GLightbox JS -->
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-
     <script src="js/script-ice-blue.js"></script>
     <script src="js/components-loader.js"></script>
+    <script>
+        window.addEventListener('portfolioLoaded', function () {
+            // Reinicjalizuj GLightbox po dynamicznym wczytaniu HTML
+            if (window.lightboxInstance) {
+                window.lightboxInstance.destroy(); // jeśli istniał wcześniej
+            }
+
+            window.lightboxInstance = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                openEffect: 'zoom',
+                closeEffect: 'fade'
+            });
+
+            console.log('✅ GLightbox zainicjalizowany po portfolioLoaded');
+        });
+    </script>
 </body>
+
 </html>
