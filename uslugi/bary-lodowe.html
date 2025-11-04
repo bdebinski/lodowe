@@ -15,7 +15,10 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
+    <!-- GLightbox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
     <link rel="stylesheet" href="../css/style-ice-blue.css">
     <link rel="stylesheet" href="../css/service-page.css">
 </head>
@@ -179,49 +182,45 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <a href="../static/images/bary/galeria-bary-2.webp" class="glightbox gallery-item" data-gallery="bars" data-glightbox="title: Bar Lodowy; description: Wesele">
                     <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <p>Bar weselny<br>Pałac w Łodzi</p>
+                        <img src="../static/images/bary/galeria-bary-2.webp" alt="Bar Lodowy Weselny" loading="lazy">
                     </div>
                     <div class="gallery-caption">
                         <h4>Bar Weselny</h4>
                         <p>Wesele - 120 gości</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="gallery-item">
+                <a href="../static/images/bary/galeria-bary-61-scaled.webp" class="glightbox gallery-item" data-gallery="bars" data-glightbox="title: Bar Lodowy; description: Event firmowy">
                     <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <p>Bar firmowy<br>Event korporacyjny</p>
+                        <img src="../static/images/bary/galeria-bary-61-scaled.webp" alt="Bar Firmowy z Logo" loading="lazy">
                     </div>
                     <div class="gallery-caption">
                         <h4>Bar Firmowy z Logo</h4>
                         <p>Event B2B - Warszawa</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="gallery-item">
+                <a href="../static/images/bary/galeria-bary-69.webp" class="glightbox gallery-item" data-gallery="bars" data-glightbox="title: Dekoracja Lodowa; description: Gala">
                     <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <p>Drink luge<br>Gala</p>
+                        <img src="../static/images/bary/galeria-bary-69.webp" alt="Drink Luge LED" loading="lazy">
                     </div>
                     <div class="gallery-caption">
                         <h4>Drink Luge LED</h4>
                         <p>Gala charytatywna</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="gallery-item">
+                <a href="../static/images/bryly/galeria-bryly-140.webp" class="glightbox gallery-item" data-gallery="bars" data-glightbox="title: Live Carving Show; description: Event zimowy">
                     <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <p>Bar zimowy<br>Event tematyczny</p>
+                        <img src="../static/images/bryly/galeria-bryly-140.webp" alt="Bar Zimowy" loading="lazy">
                     </div>
                     <div class="gallery-caption">
                         <h4>Bar Zimowy</h4>
                         <p>Event zimowy - Zakopane</p>
                     </div>
-                </div>
+                </a>
             </div>
 
             <div class="gallery-cta">
@@ -429,6 +428,9 @@
     <button class="scroll-top" id="scrollTop">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 
     <script src="../js/script-ice-blue.js"></script>
     <script src="../js/components-loader.js"></script>
