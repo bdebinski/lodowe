@@ -381,7 +381,7 @@
                             // Filtruj elementy
                             portfolioItemsAll.forEach(item => {
                                 const category = item.getAttribute('data-category');
-                                if (filter === 'bars' || category === filter) {
+                                if (filter === 'all' || category === filter) {
                                     item.style.display = 'block';
                                     item.classList.add('visible');
                                 } else {
@@ -389,6 +389,8 @@
                                     item.classList.remove('visible');
                                 }
                             });
+
+                            console.log(`✅ Filtr zmieniony na: ${filter}`);
                         });
                     });
 
