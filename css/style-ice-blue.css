@@ -1326,6 +1326,8 @@ section {
     .hero {
         background: linear-gradient(135deg, #0891B2 0%, #0369A1 100%);
         position: relative;
+        min-height: auto;
+        padding: var(--spacing-2xl) 0 var(--spacing-xl);
     }
 
     .hero::before,
@@ -1336,6 +1338,21 @@ section {
     /* Ensure text is visible on mobile */
     .hero-content {
         color: var(--white) !important;
+    }
+
+    .hero-content p {
+        margin-bottom: var(--spacing-lg);
+        font-size: 1rem;
+    }
+
+    .hero-title {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .hero-stats {
+        margin-bottom: var(--spacing-lg);
+        padding: var(--spacing-md) 0;
+        gap: var(--spacing-md);
     }
 
     .stat-item {
@@ -1353,6 +1370,7 @@ section {
     .stat-item i {
         color: var(--white) !important;
         -webkit-text-fill-color: white !important;
+        font-size: 2rem;
     }
 
     /* Mobile navigation dropdown fixes */
