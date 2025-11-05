@@ -210,7 +210,12 @@ button {
     position: relative;
 }
 
-.nav-dropdown .nav-link i {
+.dropdown-mobile-button {
+    display: none;
+}
+
+.nav-dropdown .nav-link i,
+.nav-dropdown .dropdown-mobile-button i {
     margin-left: 4px;
     font-size: 0.75rem;
     transition: var(--transition-base);
@@ -1360,16 +1365,35 @@ section {
         display: inline-block;
     }
 
-    .nav-dropdown .nav-link {
-        display: inline-block;
+    .nav-dropdown .dropdown-desktop-link {
+        display: none;
     }
 
-    .nav-dropdown .nav-link i {
+    .nav-dropdown .dropdown-mobile-button {
+        display: inline-block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+    }
+
+    .nav-dropdown .dropdown-mobile-button:focus {
+        outline: none;
+    }
+
+    .nav-dropdown .dropdown-mobile-button::after {
+        display: none;
+    }
+
+    .nav-dropdown .dropdown-mobile-button i {
         transition: transform var(--transition-base);
         margin-left: var(--spacing-xs);
     }
 
-    .nav-dropdown.active .nav-link i {
+    .nav-dropdown.active .dropdown-mobile-button i {
         transform: rotate(180deg);
     }
 
