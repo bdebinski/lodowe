@@ -76,8 +76,9 @@ function initNavigation() {
     // Close mobile menu when clicking on a link (but not dropdown parent)
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // Skip if this is the desktop dropdown link
-            if (this.classList.contains('dropdown-desktop-link')) {
+            // Skip if this is the desktop dropdown link or mobile dropdown button
+            if (this.classList.contains('dropdown-desktop-link') ||
+                this.classList.contains('dropdown-mobile-button')) {
                 return;
             }
 
