@@ -1351,20 +1351,19 @@ section {
     }
 
     /* Mobile navigation dropdown fixes */
-    .nav-dropdown {
-        display: block;
+    .nav-menu > li {
+        width: 100%;
     }
 
     .nav-dropdown .nav-link {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: var(--spacing-xs) 0;
+        display: block;
+        width: 100%;
     }
 
     .nav-dropdown .nav-link i {
         transition: transform var(--transition-base);
         margin-left: var(--spacing-xs);
+        float: right;
     }
 
     .nav-dropdown.active .nav-link i {
