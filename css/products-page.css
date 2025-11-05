@@ -26,6 +26,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-card:hover {
@@ -120,6 +121,7 @@
     padding: 30px;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .product-content h3 {
