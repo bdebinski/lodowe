@@ -83,26 +83,31 @@ function initNavigation() {
         });
     });
 
-    // Active nav link on scroll
-    window.addEventListener('scroll', throttle(function() {
-        let current = '';
-        const sections = document.querySelectorAll('section[id]');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
-            }
-        });
+    // Active nav link on scroll - tylko na stronie głównej
+    // Check if we're on the homepage by looking for sections with relevant IDs
+    const isHomepage = document.querySelector('#home, #about, #services, #portfolio');
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    }, 100));
+    if (isHomepage) {
+        window.addEventListener('scroll', throttle(function() {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        }, 100));
+    }
 }
 
 // ===================================

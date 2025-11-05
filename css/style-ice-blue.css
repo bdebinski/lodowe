@@ -1351,20 +1351,22 @@ section {
     }
 
     /* Mobile navigation dropdown fixes */
-    .nav-dropdown {
-        display: block;
+    .nav-menu > li {
         width: 100%;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: inline-block;
     }
 
     .nav-dropdown .nav-link {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
+        display: inline-block;
     }
 
     .nav-dropdown .nav-link i {
         transition: transform var(--transition-base);
+        margin-left: var(--spacing-xs);
     }
 
     .nav-dropdown.active .nav-link i {
@@ -1377,7 +1379,7 @@ section {
         visibility: visible;
         transform: none;
         box-shadow: none;
-        background: var(--gray-50);
+        background: transparent;
         margin: 0;
         padding: 0;
         max-height: 0;
@@ -1391,35 +1393,37 @@ section {
         max-height: 400px;
         padding: var(--spacing-xs) 0;
         margin-top: var(--spacing-xs);
+        background: var(--white);
+        border-radius: var(--radius-sm);
     }
 
     .dropdown-menu li {
         width: 100%;
+        text-align: center;
     }
 
     .dropdown-menu a {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: var(--spacing-sm);
         padding: var(--spacing-md) var(--spacing-lg);
         color: var(--text-primary);
         font-weight: 500;
-        width: 100%;
-        background: transparent;
-        border-left: 3px solid transparent;
+        background: var(--white);
         transition: all var(--transition-base);
+        border-radius: var(--radius-sm);
     }
 
     .dropdown-menu a:hover,
     .dropdown-menu a:active {
-        background: var(--white);
-        border-left-color: var(--primary-color);
-        padding-left: calc(var(--spacing-lg) + 5px);
+        background: var(--gray-50);
+        color: var(--primary-color);
     }
 
     .dropdown-menu a i {
         color: var(--primary-color);
         font-size: 1.1rem;
+        min-width: 20px;
     }
 }
 
