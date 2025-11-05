@@ -1333,12 +1333,6 @@ section {
         color: var(--white) !important;
     }
 
-    .hero-content h1,
-    .hero-content p {
-        color: var(--white) !important;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-
     .stat-item {
         color: var(--white) !important;
     }
