@@ -59,6 +59,16 @@ function initNavigation() {
             const parent = this.parentElement;
             if (parent.classList.contains('nav-dropdown') && window.innerWidth <= 768) {
                 e.preventDefault();
+                e.stopPropagation();
+
+                // Close other dropdowns
+                document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                    if (dropdown !== parent) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+
+                // Toggle current dropdown
                 parent.classList.toggle('active');
                 return;
             }
