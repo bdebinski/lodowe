@@ -1353,17 +1353,20 @@ section {
     /* Mobile navigation dropdown fixes */
     .nav-menu > li {
         width: 100%;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: inline-block;
     }
 
     .nav-dropdown .nav-link {
-        display: block;
-        width: 100%;
+        display: inline-block;
     }
 
     .nav-dropdown .nav-link i {
         transition: transform var(--transition-base);
         margin-left: var(--spacing-xs);
-        float: right;
     }
 
     .nav-dropdown.active .nav-link i {
@@ -1396,25 +1399,24 @@ section {
 
     .dropdown-menu li {
         width: 100%;
+        text-align: center;
     }
 
     .dropdown-menu a {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: var(--spacing-sm);
         padding: var(--spacing-md) var(--spacing-lg);
         color: var(--text-primary);
         font-weight: 500;
-        width: 100%;
         background: var(--white);
-        border-left: 3px solid transparent;
         transition: all var(--transition-base);
+        border-radius: var(--radius-sm);
     }
 
     .dropdown-menu a:hover,
     .dropdown-menu a:active {
         background: var(--gray-50);
-        border-left-color: var(--primary-color);
         color: var(--primary-color);
     }
 
