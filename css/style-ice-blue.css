@@ -1353,18 +1353,18 @@ section {
     /* Mobile navigation dropdown fixes */
     .nav-dropdown {
         display: block;
-        width: 100%;
     }
 
     .nav-dropdown .nav-link {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
+        padding: var(--spacing-xs) 0;
     }
 
     .nav-dropdown .nav-link i {
         transition: transform var(--transition-base);
+        margin-left: var(--spacing-xs);
     }
 
     .nav-dropdown.active .nav-link i {
@@ -1391,7 +1391,7 @@ section {
         max-height: 400px;
         padding: var(--spacing-xs) 0;
         margin-top: var(--spacing-xs);
-        background: rgba(8, 145, 178, 0.05);
+        background: var(--white);
         border-radius: var(--radius-sm);
     }
 
@@ -1407,16 +1407,15 @@ section {
         color: var(--text-primary);
         font-weight: 500;
         width: 100%;
-        background: transparent;
+        background: var(--white);
         border-left: 3px solid transparent;
         transition: all var(--transition-base);
     }
 
     .dropdown-menu a:hover,
     .dropdown-menu a:active {
-        background: rgba(8, 145, 178, 0.1);
+        background: var(--gray-50);
         border-left-color: var(--primary-color);
-        padding-left: calc(var(--spacing-lg) + 5px);
         color: var(--primary-color);
     }
 
