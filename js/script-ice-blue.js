@@ -52,14 +52,33 @@ function initNavigation() {
         });
     }
 
-    // Close mobile menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            // Check if this is a dropdown parent on mobile
+    // Handle dropdown mobile button click
+    const dropdownMobileButton = document.querySelector('.dropdown-mobile-button');
+    if (dropdownMobileButton) {
+        dropdownMobileButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
             const parent = this.parentElement;
-            if (parent.classList.contains('nav-dropdown') && window.innerWidth <= 768) {
-                e.preventDefault();
-                parent.classList.toggle('active');
+
+            // Close other dropdowns
+            document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                if (dropdown !== parent) {
+                    dropdown.classList.remove('active');
+                }
+            });
+
+            // Toggle current dropdown
+            parent.classList.toggle('active');
+        });
+    }
+
+    // Close mobile menu when clicking on a link (but not dropdown parent)
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Skip if this is the desktop dropdown link or mobile dropdown button
+            if (this.classList.contains('dropdown-desktop-link') ||
+                this.classList.contains('dropdown-mobile-button')) {
                 return;
             }
 
