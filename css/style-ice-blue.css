@@ -1505,6 +1505,7 @@ section {
     .hero-stats {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
+        display: none;
     }
 
     .hero-title {
