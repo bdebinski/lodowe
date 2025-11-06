@@ -1327,7 +1327,7 @@ section {
         background: linear-gradient(135deg, #0891B2 0%, #0369A1 100%);
         position: relative;
         min-height: auto;
-        padding: 120px var(--spacing-md) var(--spacing-lg);
+        padding: 100px var(--spacing-md) var(--spacing-md);
     }
 
     .hero::before,
