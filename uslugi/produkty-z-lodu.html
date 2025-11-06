@@ -602,7 +602,7 @@
                 </div>
 
                 <div class="order-form-wrapper">
-                    <form class="order-form" id="orderForm">
+                    <form class="order-form" id="orderForm" action="../order-products.php" method="POST">
                         <h3>Formularz Zamówienia</h3>
 
                         <div class="form-group">
@@ -622,26 +622,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="order-product">Wybierz Produkt *</label>
-                            <select id="order-product" name="product" required>
-                                <option value="">-- Wybierz produkt --</option>
-                                <option value="Lód w kostkach">Lód w kostkach</option>
-                                <option value="Lód kruszony">Lód kruszony</option>
-                                <option value="Spiry lodowe">Spiry lodowe z wzorami</option>
-                                <option value="Kostki XXL">Kostki XXL z wzorami</option>
-                                <option value="Naczynia lodowe">Naczynia lodowe (szklanki/kieliszki)</option>
-                                <option value="Diamenty lodowe">Diamenty lodowe</option>
-                                <option value="Japońskie kule">Japońskie kule lodowe</option>
-                                <option value="Suchy lód">Suchy lód</option>
-                                <option value="Blok lodowy">Wielki blok lodowy</option>
-                                <option value="Zamrażarki">Zamrażarki na lód</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="order-quantity">Ilość *</label>
-                            <input type="text" id="order-quantity" name="quantity" placeholder="np. 20 kg, 50 szt."
-                                required>
+                            <label>Produkty *</label>
+                            <div id="products-container">
+                                <!-- Produkty będą dodawane dynamicznie przez JavaScript -->
+                            </div>
+                            <button type="button" class="btn btn-secondary" id="add-product-btn" style="margin-top: 10px; padding: 10px 16px; font-size: 14px;">
+                                <i class="fas fa-plus"></i> Dodaj Produkt
+                            </button>
                         </div>
 
                         <div class="form-group">

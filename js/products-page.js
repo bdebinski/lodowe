@@ -3,24 +3,130 @@
 (function() {
     'use strict';
 
+    let productCounter = 0;
+
+    // Lista produktów
+    const productsList = [
+        'Lód w kostkach',
+        'Lód kruszony',
+        'Spiry lodowe z wzorami',
+        'Kostki XXL z wzorami',
+        'Naczynia lodowe (szklanki/kieliszki)',
+        'Diamenty lodowe',
+        'Japońskie kule lodowe',
+        'Suchy lód',
+        'Wielki blok lodowy',
+        'Zamrażarki na lód',
+        'Boxy termiczne',
+        'Pokazy i warsztaty'
+    ];
+
+    // Dodaj nowy wiersz produktu
+    function addProductRow(preselectedProduct = '') {
+        const container = document.getElementById('products-container');
+        const rowId = `product-row-${productCounter}`;
+        const isFirstProduct = container.children.length === 0;
+
+        const row = document.createElement('div');
+        row.className = 'product-row';
+        row.id = rowId;
+        row.style.cssText = 'display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start;';
+
+        const selectWrapper = document.createElement('div');
+        selectWrapper.style.cssText = 'flex: 2;';
+
+        const select = document.createElement('select');
+        select.name = `products[${productCounter}][name]`;
+        select.className = 'product-select';
+        select.required = true;
+        select.style.cssText = 'width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;';
+
+        // Dodaj opcje
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = '-- Wybierz produkt --';
+        select.appendChild(defaultOption);
+
+        productsList.forEach(product => {
+            const option = document.createElement('option');
+            option.value = product;
+            option.textContent = product;
+            if (product === preselectedProduct) {
+                option.selected = true;
+            }
+            select.appendChild(option);
+        });
+
+        selectWrapper.appendChild(select);
+
+        // Pole ilości
+        const quantityWrapper = document.createElement('div');
+        quantityWrapper.style.cssText = 'flex: 1;';
+
+        const quantityInput = document.createElement('input');
+        quantityInput.type = 'text';
+        quantityInput.name = `products[${productCounter}][quantity]`;
+        quantityInput.placeholder = 'np. 20 kg';
+        quantityInput.required = true;
+        quantityInput.style.cssText = 'width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px;';
+
+        quantityWrapper.appendChild(quantityInput);
+
+        row.appendChild(selectWrapper);
+        row.appendChild(quantityWrapper);
+
+        // Dodaj przycisk usuwania tylko jeśli to nie pierwszy produkt
+        if (!isFirstProduct) {
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'btn-remove-product';
+            removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
+            removeBtn.style.cssText = 'padding: 12px 16px; background: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s;';
+
+            removeBtn.addEventListener('mouseenter', function() {
+                this.style.background = '#dc2626';
+            });
+
+            removeBtn.addEventListener('mouseleave', function() {
+                this.style.background = '#ef4444';
+            });
+
+            removeBtn.addEventListener('click', function() {
+                row.remove();
+            });
+
+            row.appendChild(removeBtn);
+        } else {
+            // Dodaj spacer dla pierwszego produktu, żeby układ się zgadzał
+            const spacer = document.createElement('div');
+            spacer.style.cssText = 'width: 48px;'; // szerokość przycisku usuwania
+            row.appendChild(spacer);
+        }
+
+        container.appendChild(row);
+        productCounter++;
+
+        return row;
+    }
+
     // Handle "Zamów Teraz" buttons
     function initOrderButtons() {
         const orderButtons = document.querySelectorAll('.btn-order');
         const orderForm = document.getElementById('orderForm');
-        const productSelect = document.getElementById('order-product');
 
         orderButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const productName = this.getAttribute('data-product');
-                
-                // Set selected product in form
-                if (productSelect && productName) {
-                    productSelect.value = productName;
-                }
+
+                // Wyczyść istniejące produkty i dodaj wybrany
+                const container = document.getElementById('products-container');
+                container.innerHTML = '';
+                productCounter = 0;
+                addProductRow(productName);
 
                 // Scroll to order form
                 if (orderForm) {
-                    orderForm.scrollIntoView({ 
+                    orderForm.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
@@ -33,6 +139,16 @@
                 }
             });
         });
+    }
+
+    // Obsługa przycisku "Dodaj Produkt"
+    function initAddProductButton() {
+        const addBtn = document.getElementById('add-product-btn');
+        if (addBtn) {
+            addBtn.addEventListener('click', function() {
+                addProductRow();
+            });
+        }
     }
 
     // Add highlight animation
@@ -52,50 +168,61 @@
     // Handle order form submission
     function initOrderForm() {
         const form = document.getElementById('orderForm');
-        
+
         if (form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                // Get form data
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData);
-
-                // Validation
+                // Walidacja
                 let isValid = true;
                 let errors = [];
 
-                if (!data.name || data.name.trim() === '') {
+                const name = document.getElementById('order-name').value.trim();
+                const email = document.getElementById('order-email').value.trim();
+                const phone = document.getElementById('order-phone').value.trim();
+                const date = document.getElementById('order-date').value;
+                const address = document.getElementById('order-address').value.trim();
+
+                if (!name) {
                     errors.push('Proszę podać imię i nazwisko lub nazwę firmy');
                     isValid = false;
                 }
 
-                if (!data.email || !isValidEmail(data.email)) {
+                if (!email || !isValidEmail(email)) {
                     errors.push('Proszę podać poprawny adres email');
                     isValid = false;
                 }
 
-                if (!data.phone || !isValidPhone(data.phone)) {
+                if (!phone || !isValidPhone(phone)) {
                     errors.push('Proszę podać poprawny numer telefonu');
                     isValid = false;
                 }
 
-                if (!data.product || data.product === '') {
-                    errors.push('Proszę wybrać produkt');
+                // Sprawdź czy jest co najmniej jeden produkt
+                const productSelects = document.querySelectorAll('.product-select');
+                if (productSelects.length === 0) {
+                    errors.push('Proszę dodać przynajmniej jeden produkt');
                     isValid = false;
+                } else {
+                    // Sprawdź czy wszystkie produkty są wybrane
+                    let hasEmptyProduct = false;
+                    productSelects.forEach(select => {
+                        if (!select.value) {
+                            hasEmptyProduct = true;
+                        }
+                    });
+                    if (hasEmptyProduct) {
+                        errors.push('Proszę wybrać wszystkie produkty lub usunąć puste wiersze');
+                        isValid = false;
+                    }
                 }
 
-                if (!data.quantity || data.quantity.trim() === '') {
-                    errors.push('Proszę podać ilość');
-                    isValid = false;
-                }
-
-                if (!data.date || data.date === '') {
+                if (!date) {
                     errors.push('Proszę wybrać datę dostawy');
                     isValid = false;
                 }
 
-                if (!data.address || data.address.trim() === '') {
+                if (!address) {
                     errors.push('Proszę podać adres dostawy');
                     isValid = false;
                 }
@@ -107,7 +234,7 @@
                 }
 
                 // Check if date is not in the past
-                const selectedDate = new Date(data.date);
+                const selectedDate = new Date(date);
                 const today = new Date();
                 today.setHours(0, 0, 0, 0);
 
@@ -116,25 +243,8 @@
                     return;
                 }
 
-                // Success notification
-                showNotification(
-                    'Zamówienie Wysłane!',
-                    'Dziękujemy za zamówienie. Skontaktujemy się w ciągu 2 godzin roboczych.',
-                    'success'
-                );
-
-                // Log data (in production, send to server)
-                console.log('Zamówienie:', data);
-
-                // Reset form
-                form.reset();
-
-                // In production, send to server via AJAX
-                // fetch('/api/orders', {
-                //     method: 'POST',
-                //     body: JSON.stringify(data),
-                //     headers: { 'Content-Type': 'application/json' }
-                // });
+                // Wyślij formularz
+                form.submit();
             });
         }
     }
@@ -263,15 +373,21 @@
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
             initOrderButtons();
+            initAddProductButton();
             initOrderForm();
             initDatePicker();
             initProductCards();
+            // Dodaj pierwszy pusty wiersz produktu
+            addProductRow();
         });
     } else {
         initOrderButtons();
+        initAddProductButton();
         initOrderForm();
         initDatePicker();
         initProductCards();
+        // Dodaj pierwszy pusty wiersz produktu
+        addProductRow();
     }
 
 })();
