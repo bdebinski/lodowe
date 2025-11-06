@@ -2,7 +2,7 @@
 // INITIALIZATION
 // ===================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initScrollEffects();
     initFAQ();
     initPortfolioFilters();
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Listen for navigation loaded event from components-loader
-window.addEventListener('navigationLoaded', function() {
+window.addEventListener('navigationLoaded', function () {
     initNavigation();
     console.log('%c✓ Navigation initialized after component load',
         'font-size: 14px; color: #10B981; font-weight: bold;'
@@ -35,7 +35,7 @@ function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
 
     // Sticky navbar on scroll
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (window.scrollY > 100) {
             navbar.classList.add('scrolled');
         } else {
@@ -45,7 +45,7 @@ function initNavigation() {
 
     // Mobile menu toggle
     if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
+        hamburger.addEventListener('click', function () {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
             document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
@@ -93,7 +93,7 @@ function initNavigation() {
     // Handle dropdown menu clicks on mobile
     const dropdownItems = document.querySelectorAll('.dropdown-menu a');
     dropdownItems.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             if (hamburger && navMenu && window.innerWidth <= 768) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
@@ -107,7 +107,7 @@ function initNavigation() {
     const isHomepage = document.querySelector('#home, #about, #services, #portfolio');
 
     if (isHomepage) {
-        window.addEventListener('scroll', throttle(function() {
+        window.addEventListener('scroll', throttle(function () {
             let current = '';
             const sections = document.querySelectorAll('section[id]');
 
@@ -136,9 +136,9 @@ function initNavigation() {
 function initScrollEffects() {
     // Parallax effect for hero (subtle)
     const hero = document.querySelector('.hero');
-    
+
     if (hero) {
-        window.addEventListener('scroll', throttle(function() {
+        window.addEventListener('scroll', throttle(function () {
             const scrolled = window.pageYOffset;
             const parallax = scrolled * 0.3;
             if (scrolled < window.innerHeight) {
@@ -153,7 +153,7 @@ function initScrollEffects() {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
@@ -181,16 +181,16 @@ function initFAQ() {
 
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-        
+
         if (question) {
-            question.addEventListener('click', function() {
+            question.addEventListener('click', function () {
                 // Close other items
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('active')) {
                         otherItem.classList.remove('active');
                     }
                 });
-                
+
                 // Toggle current item
                 item.classList.toggle('active');
             });
@@ -207,16 +207,16 @@ function initPortfolioFilters() {
     const portfolioItems = document.querySelectorAll('.portfolio-item');
 
     filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             // Remove active class from all buttons
             filterBtns.forEach(b => b.classList.remove('active'));
-            
+
             // Add active class to clicked button
             this.classList.add('active');
-            
+
             // Get filter value
             const filterValue = this.getAttribute('data-filter');
-            
+
             // Filter portfolio items with animation
             portfolioItems.forEach((item, index) => {
                 const category = item.getAttribute('data-category');
@@ -252,16 +252,16 @@ function initContactForm() {
     
     if (form) {
         form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
+            e.preventDefault(); // blokujemy klasyczne wysyłanie
+
+            // Pobierz wartości z pól
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value.trim();
             
-            // Validation
+            // Walidacja
             let isValid = true;
             let errors = [];
             
@@ -290,32 +290,40 @@ function initContactForm() {
                 isValid = false;
             }
             
+            // Jeśli walidacja nie przeszła
             if (!isValid) {
                 showNotification('Błąd walidacji', errors.join('<br>'), 'error');
                 return;
             }
-            
-            // If validation passes
-            showNotification(
-                'Dziękujemy!', 
-                'Twoja wiadomość została wysłana. Skontaktujemy się wkrótce!', 
-                'success'
-            );
-            
-            // Reset form
-            form.reset();
-            
-            // In production, send data to server
-            console.log('Form submitted:', {
-                name,
-                email,
-                phone,
-                service,
-                message
+
+            // Wysyłka danych AJAX-em do PHP
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Błąd serwera');
+                return response.text();
+            })
+            .then(data => {
+                console.log('Odpowiedź z PHP:', data);
+                showNotification(
+                    'Dziękujemy!',
+                    'Twoja wiadomość została wysłana. Skontaktujemy się wkrótce!',
+                    'success'
+                );
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Błąd wysyłki:', error);
+                showNotification('Błąd!', 'Nie udało się wysłać wiadomości.', 'error');
             });
         });
     }
 }
+
 
 // Email validation
 function isValidEmail(email) {
@@ -334,16 +342,16 @@ function showNotification(title, message, type) {
     // Remove existing notifications
     const existing = document.querySelectorAll('.notification');
     existing.forEach(n => n.remove());
-    
+
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
-    
+
     const bgColors = {
         success: '#10B981',
         error: '#EF4444',
         info: '#06B6D4'
     };
-    
+
     notification.innerHTML = `
         <div class="notification-content">
             <h4>${title}</h4>
@@ -351,7 +359,7 @@ function showNotification(title, message, type) {
         </div>
         <button class="notification-close">&times;</button>
     `;
-    
+
     notification.style.cssText = `
         position: fixed;
         top: 100px;
@@ -365,9 +373,9 @@ function showNotification(title, message, type) {
         max-width: 400px;
         animation: slideInRight 0.5s ease;
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     // Close button
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.style.cssText = `
@@ -388,15 +396,15 @@ function showNotification(title, message, type) {
         opacity: 0.7;
         transition: opacity 0.3s;
     `;
-    
+
     closeBtn.addEventListener('mouseenter', () => closeBtn.style.opacity = '1');
     closeBtn.addEventListener('mouseleave', () => closeBtn.style.opacity = '0.7');
-    
-    closeBtn.addEventListener('click', function() {
+
+    closeBtn.addEventListener('click', function () {
         notification.style.animation = 'slideOutRight 0.5s ease';
         setTimeout(() => notification.remove(), 500);
     });
-    
+
     // Auto remove after 5 seconds
     setTimeout(() => {
         if (notification.parentElement) {
@@ -412,19 +420,19 @@ function showNotification(title, message, type) {
 
 function initScrollToTop() {
     const scrollTopBtn = document.getElementById('scrollTop');
-    
+
     if (scrollTopBtn) {
         // Show/hide button on scroll
-        window.addEventListener('scroll', throttle(function() {
+        window.addEventListener('scroll', throttle(function () {
             if (window.scrollY > 300) {
                 scrollTopBtn.classList.add('visible');
             } else {
                 scrollTopBtn.classList.remove('visible');
             }
         }, 100));
-        
+
         // Scroll to top on click
-        scrollTopBtn.addEventListener('click', function() {
+        scrollTopBtn.addEventListener('click', function () {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -439,18 +447,18 @@ function initScrollToTop() {
 
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            
+
             // Skip if it's just '#'
             if (href === '#') return;
-            
+
             e.preventDefault();
             const target = document.querySelector(href);
-            
+
             if (target) {
                 const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-                
+
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -490,7 +498,7 @@ function initLightbox() {
 // Throttle function for performance
 function throttle(func, limit) {
     let inThrottle;
-    return function() {
+    return function () {
         const args = arguments;
         const context = this;
         if (!inThrottle) {
@@ -569,15 +577,15 @@ const konamiSequence = [
     'b', 'a'
 ];
 
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     konamiCode.push(e.key);
     konamiCode = konamiCode.slice(-10);
-    
+
     if (konamiCode.join(',') === konamiSequence.join(',')) {
         activateSnowEffect();
         showNotification(
-            '❄️ Śnieżny Easter Egg!', 
-            'Gratulacje! Odkryłeś sekretny kod!', 
+            '❄️ Śnieżny Easter Egg!',
+            'Gratulacje! Odkryłeś sekretny kod!',
             'info'
         );
         konamiCode = [];
@@ -605,9 +613,9 @@ function createSnowflake() {
         z-index: 9999;
         animation: fall ${Math.random() * 3 + 2}s linear forwards;
     `;
-    
+
     document.body.appendChild(snowflake);
-    
+
     setTimeout(() => snowflake.remove(), 5000);
 }
 
