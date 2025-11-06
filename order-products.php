@@ -4,10 +4,22 @@ error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 
+// Ustaw nagłówek JSON
+header('Content-Type: application/json; charset=UTF-8');
+
+// Funkcja do zwracania odpowiedzi JSON
+function sendJsonResponse($success, $message, $httpCode = 200) {
+    http_response_code($httpCode);
+    echo json_encode([
+        'success' => $success,
+        'message' => $message
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
 // Sprawdź czy to żądanie POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    die('Method Not Allowed');
+    sendJsonResponse(false, 'Method Not Allowed', 405);
 }
 
 // Funkcje pomocnicze
@@ -34,8 +46,7 @@ $current_time = time();
 if (isset($_SESSION['last_order_submit_time'])) {
     $time_diff = $current_time - $_SESSION['last_order_submit_time'];
     if ($time_diff < 60) { // Minimum 60 sekund między wysyłkami
-        http_response_code(429);
-        die('Proszę poczekać przed wysłaniem kolejnego zamówienia.');
+        sendJsonResponse(false, 'Proszę poczekać przed wysłaniem kolejnego zamówienia.', 429);
     }
 }
 
@@ -49,49 +60,42 @@ $notes   = sanitize_input($_POST['notes']   ?? '');
 
 // Walidacja wymaganych pól
 if (empty($name) || empty($email) || empty($phone) || empty($date) || empty($address)) {
-    http_response_code(400);
-    die('Błąd: Wszystkie wymagane pola muszą być wypełnione.');
+    sendJsonResponse(false, 'Wszystkie wymagane pola muszą być wypełnione.', 400);
 }
 
 // Walidacja formatu email
 if (!validate_email($email)) {
-    http_response_code(400);
-    die('Błąd: Nieprawidłowy adres email.');
+    sendJsonResponse(false, 'Nieprawidłowy adres email.', 400);
 }
 
 // Walidacja telefonu
 if (!validate_phone($phone)) {
-    http_response_code(400);
-    die('Błąd: Nieprawidłowy numer telefonu.');
+    sendJsonResponse(false, 'Nieprawidłowy numer telefonu.', 400);
 }
 
 // Sprawdź długość pól (ochrona przed atakami)
 if (strlen($name) > 100 || strlen($email) > 100 || strlen($phone) > 20 ||
     strlen($address) > 500 || strlen($notes) > 5000) {
-    http_response_code(400);
-    die('Błąd: Dane przekraczają dozwoloną długość.');
+    sendJsonResponse(false, 'Dane przekraczają dozwoloną długość.', 400);
 }
 
 // Ochrona przed email injection
 if (preg_match("/[\r\n]/", $email)) {
-    http_response_code(400);
-    die('Błąd: Nieprawidłowy format email.');
+    sendJsonResponse(false, 'Nieprawidłowy format email.', 400);
 }
 
 // Walidacja daty (sprawdź czy nie jest w przeszłości)
 $selected_date = strtotime($date);
 $today = strtotime(date('Y-m-d'));
 if ($selected_date < $today) {
-    http_response_code(400);
-    die('Błąd: Data dostawy nie może być w przeszłości.');
+    sendJsonResponse(false, 'Data dostawy nie może być w przeszłości.', 400);
 }
 
 // Odbiór i walidacja produktów
 $products = $_POST['products'] ?? [];
 
 if (empty($products) || !is_array($products)) {
-    http_response_code(400);
-    die('Błąd: Proszę dodać przynajmniej jeden produkt.');
+    sendJsonResponse(false, 'Proszę dodać przynajmniej jeden produkt.', 400);
 }
 
 // Walidacja produktów
@@ -99,28 +103,24 @@ $valid_products = [];
 $max_products = 20; // Maksymalnie 20 produktów w jednym zamówieniu
 
 if (count($products) > $max_products) {
-    http_response_code(400);
-    die('Błąd: Zbyt wiele produktów w zamówieniu (max ' . $max_products . ').');
+    sendJsonResponse(false, 'Zbyt wiele produktów w zamówieniu (max ' . $max_products . ').', 400);
 }
 
 foreach ($products as $product) {
     if (!isset($product['name']) || !isset($product['quantity'])) {
-        http_response_code(400);
-        die('Błąd: Nieprawidłowe dane produktu.');
+        sendJsonResponse(false, 'Nieprawidłowe dane produktu.', 400);
     }
 
     $product_name = sanitize_input($product['name']);
     $product_quantity = sanitize_input($product['quantity']);
 
     if (empty($product_name) || empty($product_quantity)) {
-        http_response_code(400);
-        die('Błąd: Wszystkie produkty muszą mieć nazwę i ilość.');
+        sendJsonResponse(false, 'Wszystkie produkty muszą mieć nazwę i ilość.', 400);
     }
 
     // Sprawdź długość
     if (strlen($product_name) > 200 || strlen($product_quantity) > 50) {
-        http_response_code(400);
-        die('Błąd: Dane produktu przekraczają dozwoloną długość.');
+        sendJsonResponse(false, 'Dane produktu przekraczają dozwoloną długość.', 400);
     }
 
     $valid_products[] = [
@@ -167,13 +167,9 @@ $headers .= "X-Mailer: PHP/" . phpversion();
 // Wyślij maila
 if (mail($to, $subject, $body, $headers)) {
     $_SESSION['last_order_submit_time'] = $current_time;
-
-    // Przekieruj z komunikatem sukcesu
-    header('Location: uslugi/produkty-z-lodu.html?success=1');
-    exit;
+    sendJsonResponse(true, 'Dziękujemy! Twoje zamówienie zostało wysłane. Skontaktujemy się wkrótce!', 200);
 } else {
-    http_response_code(500);
     error_log("Błąd wysyłki email z formularza zamówień produktów");
-    die('Błąd: Nie udało się wysłać zamówienia. Spróbuj ponownie później lub skontaktuj się telefonicznie: 511 110 265');
+    sendJsonResponse(false, 'Nie udało się wysłać zamówienia. Spróbuj ponownie później lub skontaktuj się telefonicznie: 511 110 265', 500);
 }
 ?>
