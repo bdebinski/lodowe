@@ -25,6 +25,7 @@
     function addProductRow(preselectedProduct = '') {
         const container = document.getElementById('products-container');
         const rowId = `product-row-${productCounter}`;
+        const isFirstProduct = container.children.length === 0;
 
         const row = document.createElement('div');
         row.className = 'product-row';
@@ -71,32 +72,36 @@
 
         quantityWrapper.appendChild(quantityInput);
 
-        // Przycisk usuwania
-        const removeBtn = document.createElement('button');
-        removeBtn.type = 'button';
-        removeBtn.className = 'btn-remove-product';
-        removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
-        removeBtn.style.cssText = 'padding: 12px 16px; background: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s;';
-
-        removeBtn.addEventListener('mouseenter', function() {
-            this.style.background = '#dc2626';
-        });
-
-        removeBtn.addEventListener('mouseleave', function() {
-            this.style.background = '#ef4444';
-        });
-
-        removeBtn.addEventListener('click', function() {
-            row.remove();
-            // Jeśli nie ma żadnych produktów, dodaj jeden pusty wiersz
-            if (container.children.length === 0) {
-                addProductRow();
-            }
-        });
-
         row.appendChild(selectWrapper);
         row.appendChild(quantityWrapper);
-        row.appendChild(removeBtn);
+
+        // Dodaj przycisk usuwania tylko jeśli to nie pierwszy produkt
+        if (!isFirstProduct) {
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'btn-remove-product';
+            removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
+            removeBtn.style.cssText = 'padding: 12px 16px; background: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s;';
+
+            removeBtn.addEventListener('mouseenter', function() {
+                this.style.background = '#dc2626';
+            });
+
+            removeBtn.addEventListener('mouseleave', function() {
+                this.style.background = '#ef4444';
+            });
+
+            removeBtn.addEventListener('click', function() {
+                row.remove();
+            });
+
+            row.appendChild(removeBtn);
+        } else {
+            // Dodaj spacer dla pierwszego produktu, żeby układ się zgadzał
+            const spacer = document.createElement('div');
+            spacer.style.cssText = 'width: 48px;'; // szerokość przycisku usuwania
+            row.appendChild(spacer);
+        }
 
         container.appendChild(row);
         productCounter++;
