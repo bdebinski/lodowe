@@ -243,8 +243,46 @@
                     return;
                 }
 
-                // Wyślij formularz
-                form.submit();
+                // Wyślij formularz przez AJAX
+                const formData = new FormData(form);
+                const submitButton = form.querySelector('button[type="submit"]');
+
+                // Zablokuj przycisk podczas wysyłania
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Wysyłanie...';
+                }
+
+                fetch('../order-products.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Sukces!', data.message, 'success');
+                        // Wyczyść formularz po sukcesie
+                        form.reset();
+                        // Wyczyść produkty i dodaj jeden pusty wiersz
+                        const container = document.getElementById('products-container');
+                        container.innerHTML = '';
+                        productCounter = 0;
+                        addProductRow();
+                    } else {
+                        showNotification('Błąd', data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Błąd', 'Nie udało się wysłać zamówienia. Spróbuj ponownie.', 'error');
+                })
+                .finally(() => {
+                    // Odblokuj przycisk
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Wyślij Zamówienie';
+                    }
+                });
             });
         }
     }
