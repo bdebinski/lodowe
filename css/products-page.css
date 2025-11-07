@@ -173,9 +173,6 @@
 }
 
 .product-pricing {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 15px 0;
     border-top: 1px solid #E2E8F0;
     border-bottom: 1px solid #E2E8F0;
@@ -185,11 +182,38 @@
 .price-label {
     font-size: 0.9rem;
     color: #64748B;
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .price-value {
     font-size: 1.2rem;
     font-weight: 700;
+    color: #0891B2;
+}
+
+.price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.price-list li {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #0891B2;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+}
+
+.price-list li::before {
+    content: '❄';
+    margin-right: 8px;
+    font-size: 0.9rem;
     color: #0891B2;
 }
 
