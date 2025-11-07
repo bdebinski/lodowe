@@ -212,6 +212,6 @@ if (mail($to, $subject, $body, $headers)) {
     sendJsonResponse(true, 'Dziękujemy! Twoje zamówienie zostało wysłane. Skontaktujemy się wkrótce!', 200);
 } else {
     error_log("Błąd wysyłki email z formularza zamówień produktów");
-    sendJsonResponse(false, 'Nie udało się wysłać zamówienia. Spróbuj ponownie później lub skontaktuj się telefonicznie: 511 110 265', 500);
+    sendJsonResponse(false, 'Nie udało się wysłać zamówienia. Spróbuj ponownie później lub skontaktuj się telefonicznie: 511 110 265, 501 494 787, 608 401 730', 500);
 }
 ?>
