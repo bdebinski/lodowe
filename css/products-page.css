@@ -182,14 +182,17 @@
 .price-label {
     font-size: 0.9rem;
     color: #64748B;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-weight: 600;
+    display: block;
 }
 
 .price-value {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.05rem;
+    font-weight: 600;
     color: #0891B2;
+    display: block;
+    padding: 6px 0;
 }
 
 .price-list {
