@@ -23,17 +23,16 @@ function validate_email($email) {
 }
 
 function validate_phone($phone) {
-    // Usuń znaki specjalne i sprawdź czy zostało 9-15 cyfr
     $digits = preg_replace('/\D/', '', $phone);
     return strlen($digits) >= 9 && strlen($digits) <= 15;
 }
 
-// Prosta ochrona przed spamem - rate limiting (opcjonalne)
+// Prosta ochrona przed spamem
 session_start();
 $current_time = time();
 if (isset($_SESSION['last_submit_time'])) {
     $time_diff = $current_time - $_SESSION['last_submit_time'];
-    if ($time_diff < 60) { // Minimum 60 sekund między wysyłkami
+    if ($time_diff < 60) {
         http_response_code(429);
         die('Proszę poczekać przed wysłaniem kolejnego formularza.');
     }
@@ -46,55 +45,47 @@ $phone   = sanitize_input($_POST['phone']   ?? '');
 $service = sanitize_input($_POST['service'] ?? '');
 $message = sanitize_input($_POST['message'] ?? '');
 
-// Walidacja wymaganych pól
+// Walidacja pól
 if (empty($name) || empty($email) || empty($phone) || empty($service) || empty($message)) {
     http_response_code(400);
     die('Błąd: Wszystkie pola są wymagane.');
 }
-
-// Walidacja formatu email
 if (!validate_email($email)) {
     http_response_code(400);
     die('Błąd: Nieprawidłowy adres email.');
 }
-
-// Walidacja telefonu
 if (!validate_phone($phone)) {
     http_response_code(400);
     die('Błąd: Nieprawidłowy numer telefonu.');
 }
-
-// Sprawdź długość pól (ochrona przed atakami)
 if (strlen($name) > 100 || strlen($email) > 100 || strlen($phone) > 20 || strlen($message) > 5000) {
     http_response_code(400);
     die('Błąd: Dane przekraczają dozwoloną długość.');
 }
-
-// Ochrona przed email injection - sprawdź czy email nie zawiera niebezpiecznych znaków
 if (preg_match("/[\r\n]/", $email)) {
     http_response_code(400);
     die('Błąd: Nieprawidłowy format email.');
 }
 
-// Adres docelowy (ZMIEŃ NA SWÓJ!)
-$to = "kontakt@lodowe.com.pl";  // ZMIEŃ NA WŁAŚCIWY ADRES EMAIL!
-$subject = "Nowe zapytanie z formularza Lodowe.com.pl";
+// ✅ Twój prawidłowy adres docelowy
+$to = "bartekd1998@gmail.com";
+$subject = "Nowe zapytanie z formularza na stronie Long-Table.com.pl";
 
-// Treść wiadomości - używamy własnych etykiet zamiast zmiennych użytkownika
+// Treść wiadomości
 $body = "Nowe zapytanie z formularza kontaktowego:\n\n";
-$body .= "Imię i nazwisko: " . $name . "\n";
-$body .= "Email: " . $email . "\n";
-$body .= "Telefon: " . $phone . "\n";
-$body .= "Rodzaj usługi: " . $service . "\n\n";
-$body .= "Wiadomość:\n" . $message . "\n";
+$body .= "Imię i nazwisko: $name\n";
+$body .= "Email: $email\n";
+$body .= "Telefon: $phone\n";
+$body .= "Rodzaj usługi: $service\n\n";
+$body .= "Wiadomość:\n$message\n";
 
-// Bezpieczne nagłówki - używamy stałego adresu Reply-To z walidacją
-$headers  = "From: Formularz Kontaktowy <noreply@lodowe.com.pl>\r\n";
-$headers .= "Reply-To: " . $email . "\r\n";  // Bezpieczne po walidacji
+// ✅ Poprawione nagłówki zgodne z CyberFolks
+$headers  = "From: Formularz lodowe.com.pl <noreply@lodowe.com.pl>\r\n";
+$headers .= "Reply-To: $email\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
-// Wyślij maila
+// Wysyłka
 if (mail($to, $subject, $body, $headers)) {
     $_SESSION['last_submit_time'] = $current_time;
     http_response_code(200);
