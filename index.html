@@ -29,6 +29,9 @@
     <!-- GLightbox -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY"></script>
+
     <link rel="stylesheet" href="css/style-ice-blue.css">
 </head>
 <style>
@@ -579,6 +582,9 @@
                                 placeholder="Opisz swoje potrzeby..."></textarea>
                         </div>
 
+                        <!-- reCAPTCHA v3 token (hidden) -->
+                        <input type="hidden" id="recaptcha_token" name="recaptcha_token">
+
                         <button type="submit" class="btn btn-primary btn-submit">
                             <i class="fas fa-paper-plane"></i> Wyślij zapytanie
                         </button>
@@ -651,6 +657,23 @@
             });
 
             console.log('✅ GLightbox zainicjalizowany po portfolioLoaded');
+        });
+    </script>
+
+    <!-- reCAPTCHA v3 Script -->
+    <script>
+        // Obsługa formularza kontaktowego z reCAPTCHA v3
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute('YOUR_RECAPTCHA_SITE_KEY', {action: 'contact_form'}).then(function(token) {
+                    // Wstaw token do ukrytego pola
+                    document.getElementById('recaptcha_token').value = token;
+                    // Wyślij formularz
+                    document.getElementById('contactForm').submit();
+                });
+            });
         });
     </script>
 </body>
