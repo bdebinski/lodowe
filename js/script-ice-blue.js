@@ -24,6 +24,32 @@ window.addEventListener('navigationLoaded', function () {
     );
 });
 
+// Listen for portfolio loaded event and re-scroll to hash if present
+window.addEventListener('portfolioLoaded', function () {
+    console.log('%c✓ Portfolio loaded, checking for hash',
+        'font-size: 14px; color: #10B981; font-weight: bold;'
+    );
+
+    // If there's a hash in URL, scroll to it after portfolio loads
+    if (window.location.hash) {
+        const hash = window.location.hash;
+        const target = document.querySelector(hash);
+
+        if (target) {
+            setTimeout(() => {
+                const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                console.log(`%c✓ Re-scrolled to ${hash} after portfolio load`,
+                    'font-size: 14px; color: #10B981; font-weight: bold;'
+                );
+            }, 150); // Small delay to ensure DOM is fully updated
+        }
+    }
+});
+
 // ===================================
 // NAVIGATION
 // ===================================
