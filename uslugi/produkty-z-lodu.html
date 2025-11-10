@@ -20,6 +20,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY"></script>
+
     <link rel="stylesheet" href="../css/style-ice-blue.css">
     <link rel="stylesheet" href="../css/service-page.css">
     <link rel="stylesheet" href="../css/products-page.css">
@@ -41,7 +44,7 @@
                 </p>
                 <div class="hero-stats-row">
                     <div class="stat-badge">
-                        <strong>11</strong> produktów
+                        <strong>14</strong> produktów
                     </div>
                     <div class="stat-badge">
                         <strong>Certyfikowana</strong> woda
@@ -92,8 +95,13 @@
                             <span class="feature-tag"><i class="fas fa-check"></i> Pakowanie 1kg, 2kg, 10kg</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Minimum zamówienia:</span>
-                            <span class="price-value">5 kg</span>
+                            <div class="price-label">Ceny brutto:</div>
+                            <ul class="price-list">
+                                <li>5kg - 20zł</li>
+                                <li>6x2kg - 50zł</li>
+                                <li>12x1kg - 50zł</li>
+                                <li>10kg - 40zł</li>
+                            </ul>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Lód w kostkach">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -121,8 +129,11 @@
                             <span class="feature-tag"><i class="fas fa-check"></i> Pakowanie 10kg (worek)</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Minimum zamówienia:</span>
-                            <span class="price-value">5 kg</span>
+                            <div class="price-label">Ceny brutto:</div>
+                            <ul class="price-list">
+                                <li>5kg - 20zł</li>
+                                <li>10kg - 40zł</li>
+                            </ul>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Lód kruszony">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -150,10 +161,11 @@
                             <span class="feature-tag"><i class="fas fa-star"></i> Różne wzory</span>
                             <span class="feature-tag"><i class="fas fa-check"></i> Premium look</span>
                             <span class="feature-tag"><i class="fas fa-check"></i> Długie chłodzenie</span>
+                            <span class="feature-tag"><i class="fas fa-plus"></i> Z zamrożonymi dodatkami: 100szt - 400zł</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Minimum zamówienia:</span>
-                            <span class="price-value">10 szt.</span>
+                            <div class="price-label">Cena:</div>
+                            <div class="price-value">10 szt. - 35zł</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Spiry lodowe">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -179,10 +191,11 @@
                             <span class="feature-tag"><i class="fas fa-check"></i> Duży rozmiar (5x5cm)</span>
                             <span class="feature-tag"><i class="fas fa-check"></i> Wolne topnienie</span>
                             <span class="feature-tag"><i class="fas fa-check"></i> Pakowanie 20 szt.</span>
+                            <span class="feature-tag"><i class="fas fa-plus"></i> Z zamrożonymi dodatkami: 100szt - 400zł</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Minimum zamówienia:</span>
-                            <span class="price-value">20 szt.</span>
+                            <div class="price-label">Cena:</div>
+                            <div class="price-value">20 szt. - 70zł</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Kostki XXL">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -207,13 +220,46 @@
                         <div class="product-features">
                             <span class="feature-tag"><i class="fas fa-check"></i> 100% lód</span>
                             <span class="feature-tag"><i class="fas fa-check"></i> Różne kształty</span>
-                            <span class="feature-tag"><i class="fas fa-check"></i> Pakowanie 20 szt.</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Kieliszki 20 szt. - 70zł</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Szklanki 10 szt. - 50zł</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Minimum zamówienia:</span>
-                            <span class="price-value">20 szt.</span>
+                            <div class="price-label">Ceny:</div>
+                            <ul class="price-list">
+                                <li>Kieliszki 20szt - 70zł</li>
+                                <li>Szklanki 10szt - 50zł</li>
+                            </ul>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Naczynia lodowe">
+                            <i class="fas fa-shopping-cart"></i> Zamów Teraz
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5a: Kubek i butelka lodowa -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-glass-whiskey"></i>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3>Kubek i Butelka Lodowa</h3>
+                        <p class="product-tagline">Praktyczne i efektowne...</p>
+                        <p class="product-description">
+                            Kubki i butelki wykonane w całości z lodu. Idealne do serwowania napojów na eventach
+                            i imprezach. Zapewniają niepowtarzalny wygląd i utrzymują niską temperaturę.
+                        </p>
+                        <div class="product-features">
+                            <span class="feature-tag"><i class="fas fa-check"></i> 100% lód</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Kubek lodowy</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Butelka lodowa</span>
+                        </div>
+                        <div class="product-pricing">
+                            <div class="price-label">Cena brutto:</div>
+                            <div class="price-value">3,50zł / sztuka</div>
+                        </div>
+                        <button class="btn btn-primary btn-order" data-product="Kubek i butelka lodowa">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
                         </button>
                     </div>
@@ -239,8 +285,8 @@
                             <span class="feature-tag"><i class="fas fa-check"></i> Pakowanie 10 szt.</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Minimum zamówienia:</span>
-                            <span class="price-value">10 szt.</span>
+                            <div class="price-label">Minimum zamówienia:</div>
+                            <div class="price-value">10 szt.</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Diamenty lodowe">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -266,10 +312,11 @@
                             <span class="feature-tag"><i class="fas fa-check"></i> Średnica 6cm</span>
                             <span class="feature-tag"><i class="fas fa-check"></i> Najwolniejsze topnienie</span>
                             <span class="feature-tag"><i class="fas fa-check"></i> Pakowanie 10 szt.</span>
+                            <span class="feature-tag"><i class="fas fa-plus"></i> Z zamrożonymi dodatkami: 100szt - 400zł</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Minimum zamówienia:</span>
-                            <span class="price-value">10 szt.</span>
+                            <div class="price-label">Cena:</div>
+                            <div class="price-value">10 szt. - 35zł</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Japońskie kule">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -297,8 +344,11 @@
                             <span class="feature-tag"><i class="fas fa-check"></i> Pakowanie worki</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Minimum zamówienia:</span>
-                            <span class="price-value">5 kg</span>
+                            <div class="price-label">Ceny:</div>
+                            <ul class="price-list">
+                                <li>5kg - 70zł</li>
+                                <li>5kg + box termiczny - 100zł</li>
+                            </ul>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Suchy lód">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -327,8 +377,8 @@
                             <span class="feature-tag"><i class="fas fa-check"></i> Do rzeźbienia</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Wycena:</span>
-                            <span class="price-value">Indywidualna</span>
+                            <div class="price-label">Wycena:</div>
+                            <div class="price-value">Indywidualna</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Blok lodowy">
                             <i class="fas fa-phone"></i> Zapytaj o Wycenę
@@ -356,8 +406,8 @@
                             <span class="feature-tag"><i class="fas fa-check"></i> Wynajem lub sprzedaż</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Dostępność:</span>
-                            <span class="price-value">Na zapytanie</span>
+                            <div class="price-label">Wynajem:</div>
+                            <div class="price-value">Od 350zł za dobę (netto)</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Zamrażarki">
                             <i class="fas fa-phone"></i> Zapytaj o Ofertę
@@ -383,14 +433,14 @@
                         </p>
                         <div class="product-features">
                             <span class="feature-tag"><i class="fas fa-check"></i> Różne pojemności</span>
-                            <span class="feature-tag"><i class="fas fa-check"></i> Energooszczędne</span>
-                            <span class="feature-tag"><i class="fas fa-check"></i> Wynajem lub sprzedaż</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Długie utrzymanie temperatury</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Wynajem</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Dostępność:</span>
-                            <span class="price-value">Na zapytanie</span>
+                            <div class="price-label">Wynajem:</div>
+                            <div class="price-value">35zł za dobę (netto)</div>
                         </div>
-                        <button class="btn btn-primary btn-order" data-product="Zamrażarki">
+                        <button class="btn btn-primary btn-order" data-product="Boxy termiczne">
                             <i class="fas fa-phone"></i> Zapytaj o Ofertę
                         </button>
                     </div>
@@ -414,10 +464,41 @@
                             <span class="feature-tag"><i class="fas fa-check"></i>Integracje firmowe</span>
                         </div>
                         <div class="product-pricing">
-                            <span class="price-label">Dostępność:</span>
-                            <span class="price-value">Na zapytanie</span>
+                            <div class="price-label">Dostępność:</div>
+                            <div class="price-value">Na zapytanie</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Zamrażarki">
+                            <i class="fas fa-phone"></i> Zapytaj o Ofertę
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 13: Przewóz i wynajem samochodu -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3>Przewóz mroźniczo-chłodniczy</h3>
+                        <p class="product-tagline">Transport w kontrolowanych warunkach...</p>
+                        <p class="product-description">
+                            Profesjonalny przewóz mroźniczo-chłodniczy oraz wynajem samochodu jako mobilna mroźnia.
+                            Dysponujemy samochodami typu <strong>Fiat Ducato, Fiat Doblo i Fiat Scudo</strong>
+                            zapewniającymi optymalne warunki przechowywania i transportu produktów lodowych.
+                        </p>
+                        <div class="product-features">
+                            <span class="feature-tag"><i class="fas fa-check"></i>Fiat Ducato</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Fiat Doblo</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Fiat Scudo</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Kontrolowana temperatura</span>
+                        </div>
+                        <div class="product-pricing">
+                            <div class="price-label">Wynajem:</div>
+                            <div class="price-value">350-500zł (netto)</div>
+                        </div>
+                        <button class="btn btn-primary btn-order" data-product="Przewóz mroźniczo-chłodniczy">
                             <i class="fas fa-phone"></i> Zapytaj o Ofertę
                         </button>
                     </div>
@@ -536,12 +617,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="quality-visual">
-                    <div class="image-placeholder large">
-                        <i class="fas fa-award"></i>
-                        <p>Certyfikat jakości<br>ISO 9001</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -558,15 +633,19 @@
                 <div class="order-info">
                     <h3>Dział Zamówień</h3>
                     <div class="contact-methods">
-                        <a href="tel:+48511110265" class="contact-method">
+                        <div class="contact-method">
                             <div class="method-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="method-details">
-                                <span class="method-label">Telefon</span>
-                                <span class="method-value">511 110 265</span>
+                                <span class="method-label">Telefony</span>
+                                <span class="method-value">
+                                    <a href="tel:+48511110265">511 110 265</a><br>
+                                    <a href="tel:+48501494787">501 494 787</a><br>
+                                    <a href="tel:+48608401730">608 401 730</a>
+                                </span>
                             </div>
-                        </a>
+                        </div>
 
                         <a href="mailto:office@long-table.com.pl" class="contact-method">
                             <div class="method-icon">
@@ -577,16 +656,6 @@
                                 <span class="method-value">office@long-table.com.pl</span>
                             </div>
                         </a>
-
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="method-details">
-                                <span class="method-label">Godziny pracy</span>
-                                <span class="method-value">Pn-Pt: 8:00-18:00<br>Sob: 9:00-14:00</span>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="order-benefits">
@@ -647,6 +716,9 @@
                                 placeholder="Opcjonalnie: szczególne wymagania, pytania..."></textarea>
                         </div>
 
+                        <!-- reCAPTCHA v3 token (hidden) -->
+                        <input type="hidden" id="recaptcha_token_order" name="recaptcha_token">
+
                         <button type="submit" class="btn btn-primary btn-full">
                             <i class="fas fa-paper-plane"></i> Wyślij Zamówienie
                         </button>
@@ -685,7 +757,7 @@
                     </div>
                     <div class="cta-info-item">
                         <i class="fas fa-handshake"></i>
-                        <span>10+ lat doświadczenia</span>
+                        <span>18+ lat doświadczenia</span>
                     </div>
                 </div>
             </div>
@@ -699,6 +771,23 @@
     <script src="../js/components-loader.js"></script>
     <script src="../js/script-ice-blue.js"></script>
     <script src="../js/products-page.js"></script>
+
+    <!-- reCAPTCHA v3 Script -->
+    <script>
+        // Obsługa formularza zamówień z reCAPTCHA v3
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute('YOUR_RECAPTCHA_SITE_KEY', {action: 'order_form'}).then(function(token) {
+                    // Wstaw token do ukrytego pola
+                    document.getElementById('recaptcha_token_order').value = token;
+                    // Wyślij formularz
+                    document.getElementById('orderForm').submit();
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
