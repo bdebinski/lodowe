@@ -1226,6 +1226,11 @@ section {
     margin-top: 4px;
 }
 
+.footer-contact li span {
+    display: flex;
+    flex-direction: column;
+}
+
 .footer-contact a {
     color: rgba(255, 255, 255, 0.8);
     transition: var(--transition-base);
