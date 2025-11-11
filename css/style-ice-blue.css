@@ -858,23 +858,17 @@ section {
 
 .portfolio-wrapper {
     position: relative;
-    max-height: 600px;
-    overflow: hidden;
-    transition: max-height 0.6s ease;
+    max-height: none;
+    overflow: visible;
 }
 
 .portfolio-wrapper.expanded {
-    max-height: 5000px;
-    /* możesz zmienić w zależności od ilości zdjęć */
+    max-height: none;
 }
 
 .portfolio-fade {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 160px;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+    display: none;
+    /* Ukryte, bo portfolio pokazuje wszystkie obrazy bez limitu */
 }
 
 /* --- Pływający przycisk (tylko gdy portfolio otwarte) --- */
