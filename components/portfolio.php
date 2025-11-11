@@ -71,6 +71,7 @@ foreach ($folderMapping as $category => $config) {
                     data-category="<?php echo htmlspecialchars($item['category']); ?>" data-gallery="portfolio"
                     data-glightbox="title: <?php echo htmlspecialchars($item['title']); ?>; description: <?php echo htmlspecialchars($item['description']); ?>">
                     <div class="portfolio-placeholder">
+                        <div class="placeholder-bg" style="background-image: url('<?php echo htmlspecialchars($item['imagePath']); ?>')"></div>
                         <img src="<?php echo htmlspecialchars($item['imagePath']); ?>" alt="<?php echo htmlspecialchars($item['alt']); ?>" loading="lazy">
                     </div>
                     <div class="portfolio-overlay">
