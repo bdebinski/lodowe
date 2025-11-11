@@ -80,18 +80,11 @@ foreach ($folderMapping as $category => $config) {
                     data-category="<?php echo htmlspecialchars($item['category']); ?>" data-gallery="portfolio"
                     data-glightbox="title: <?php echo htmlspecialchars($item['title']); ?>; description: <?php echo htmlspecialchars($item['description']); ?>">
                     <div class="portfolio-placeholder">
-                        <?php if ($index < 12): ?>
-                            <!-- Pierwsze 12 obrazów ładowane od razu -->
-                            <img src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
-                                 alt="<?php echo htmlspecialchars($item['alt']); ?>"
-                                 class="portfolio-image">
-                        <?php else: ?>
-                            <!-- Pozostałe obrazy z lazy loading -->
-                            <img data-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
-                                 alt="<?php echo htmlspecialchars($item['alt']); ?>"
-                                 class="portfolio-image lazy-load"
-                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e0f2fe'/%3E%3C/svg%3E">
-                        <?php endif; ?>
+                        <!-- Wszystkie obrazy z lazy loading - ładowane tylko gdy widoczne lub po kliknięciu filtra -->
+                        <img data-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
+                             alt="<?php echo htmlspecialchars($item['alt']); ?>"
+                             class="portfolio-image lazy-load"
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e0f2fe'/%3E%3C/svg%3E">
                     </div>
                     <div class="portfolio-overlay">
                         <h3><?php echo htmlspecialchars($item['title']); ?></h3>

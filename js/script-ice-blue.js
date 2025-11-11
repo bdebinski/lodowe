@@ -243,22 +243,26 @@ function initPortfolioFilters() {
             // Get filter value
             const filterValue = this.getAttribute('data-filter');
 
-            // KROK 1: Najpierw natychmiast załaduj wszystkie obrazy z wybranego filtra (bez opóźnienia!)
-            portfolioItems.forEach((item) => {
-                const category = item.getAttribute('data-category');
+            // KROK 1: Natychmiast załaduj obrazy z wybranego filtra
+            // ALE TYLKO jeśli to konkretna kategoria, nie "all"
+            if (filterValue !== 'all') {
+                portfolioItems.forEach((item) => {
+                    const category = item.getAttribute('data-category');
 
-                if (filterValue === 'all' || category === filterValue) {
-                    const lazyImg = item.querySelector('img.lazy-load');
-                    if (lazyImg) {
-                        const src = lazyImg.getAttribute('data-src');
-                        if (src) {
-                            lazyImg.src = src;
-                            lazyImg.classList.remove('lazy-load');
-                            lazyImg.classList.add('lazy-loaded');
+                    if (category === filterValue) {
+                        const lazyImg = item.querySelector('img.lazy-load');
+                        if (lazyImg) {
+                            const src = lazyImg.getAttribute('data-src');
+                            if (src) {
+                                lazyImg.src = src;
+                                lazyImg.classList.remove('lazy-load');
+                                lazyImg.classList.add('lazy-loaded');
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
+            // Dla "all" Intersection Observer zajmie się ładowaniem widocznych obrazów
 
             // KROK 2: Teraz zastosuj animację z opóźnieniem (tylko dla animacji)
             portfolioItems.forEach((item, index) => {
