@@ -38,9 +38,18 @@ foreach ($folderMapping as $category => $config) {
 
     foreach ($images as $image) {
         $imagePath = 'static/images/' . $config['folder'] . '/' . $image;
+
+        // Ścieżka do miniatury (thumbnail)
+        $imageNameWithoutExt = pathinfo($image, PATHINFO_FILENAME);
+        $thumbnailPath = 'static/images/' . $config['folder'] . '/thumbs/' . $imageNameWithoutExt . '.webp';
+
+        // Sprawdź czy miniatura istnieje, jeśli nie użyj oryginalnego obrazu
+        $thumbExists = file_exists(__DIR__ . '/../' . $thumbnailPath);
+
         $portfolioItems[] = [
             'category' => $category,
-            'imagePath' => $imagePath,
+            'imagePath' => $imagePath,  // pełny obraz dla GLightbox
+            'thumbnailPath' => $thumbExists ? $thumbnailPath : $imagePath,  // miniatura dla grid
             'title' => $config['title'],
             'description' => $config['description'],
             'alt' => $config['title']
@@ -66,13 +75,18 @@ foreach ($folderMapping as $category => $config) {
         </div>
         <div class="portfolio-wrapper" id="portfolioWrapper">
             <div class="portfolio-grid">
-                <?php foreach ($portfolioItems as $item): ?>
+                <?php foreach ($portfolioItems as $index => $item): ?>
                 <a href="<?php echo htmlspecialchars($item['imagePath']); ?>" class="glightbox portfolio-item"
                     data-category="<?php echo htmlspecialchars($item['category']); ?>" data-gallery="portfolio"
                     data-glightbox="title: <?php echo htmlspecialchars($item['title']); ?>; description: <?php echo htmlspecialchars($item['description']); ?>">
                     <div class="portfolio-placeholder">
-                        <div class="placeholder-bg" style="background-image: url('<?php echo htmlspecialchars($item['imagePath']); ?>')"></div>
-                        <img src="<?php echo htmlspecialchars($item['imagePath']); ?>" alt="<?php echo htmlspecialchars($item['alt']); ?>" loading="lazy">
+                        <!-- Rozmyte tło z obrazem -->
+                        <div class="placeholder-bg" data-bg-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"></div>
+                        <!-- Wszystkie obrazy z lazy loading - ładowane tylko gdy widoczne lub po kliknięciu filtra -->
+                        <img data-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
+                             alt="<?php echo htmlspecialchars($item['alt']); ?>"
+                             class="portfolio-image lazy-load"
+                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e0f2fe'/%3E%3C/svg%3E">
                     </div>
                     <div class="portfolio-overlay">
                         <h3><?php echo htmlspecialchars($item['title']); ?></h3>
