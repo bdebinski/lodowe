@@ -38,9 +38,18 @@ foreach ($folderMapping as $category => $config) {
 
     foreach ($images as $image) {
         $imagePath = 'static/images/' . $config['folder'] . '/' . $image;
+
+        // Ścieżka do miniatury (thumbnail)
+        $imageNameWithoutExt = pathinfo($image, PATHINFO_FILENAME);
+        $thumbnailPath = 'static/images/' . $config['folder'] . '/thumbs/' . $imageNameWithoutExt . '.webp';
+
+        // Sprawdź czy miniatura istnieje, jeśli nie użyj oryginalnego obrazu
+        $thumbExists = file_exists(__DIR__ . '/../' . $thumbnailPath);
+
         $portfolioItems[] = [
             'category' => $category,
-            'imagePath' => $imagePath,
+            'imagePath' => $imagePath,  // pełny obraz dla GLightbox
+            'thumbnailPath' => $thumbExists ? $thumbnailPath : $imagePath,  // miniatura dla grid
             'title' => $config['title'],
             'description' => $config['description'],
             'alt' => $config['title']
@@ -71,8 +80,8 @@ foreach ($folderMapping as $category => $config) {
                     data-category="<?php echo htmlspecialchars($item['category']); ?>" data-gallery="portfolio"
                     data-glightbox="title: <?php echo htmlspecialchars($item['title']); ?>; description: <?php echo htmlspecialchars($item['description']); ?>">
                     <div class="portfolio-placeholder">
-                        <div class="placeholder-bg" style="background-image: url('<?php echo htmlspecialchars($item['imagePath']); ?>')"></div>
-                        <img src="<?php echo htmlspecialchars($item['imagePath']); ?>" alt="<?php echo htmlspecialchars($item['alt']); ?>" loading="lazy">
+                        <div class="placeholder-bg" style="background-image: url('<?php echo htmlspecialchars($item['thumbnailPath']); ?>')"></div>
+                        <img src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>" alt="<?php echo htmlspecialchars($item['alt']); ?>" loading="lazy">
                     </div>
                     <div class="portfolio-overlay">
                         <h3><?php echo htmlspecialchars($item['title']); ?></h3>
