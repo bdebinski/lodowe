@@ -864,8 +864,8 @@ section {
 }
 
 .portfolio-wrapper.expanded {
-    max-height: 5000px;
-    /* możesz zmienić w zależności od ilości zdjęć */
+    max-height: none;
+    /* Wyświetla wszystkie obrazy bez limitu po rozwinięciu */
 }
 
 .portfolio-fade {

@@ -62,6 +62,7 @@ foreach ($folderMapping as $category => $config) {
             <button class="filter-btn" data-filter="bars">Bary</button>
             <button class="filter-btn" data-filter="shows">Pokazy</button>
             <button class="filter-btn" data-filter="workshops">Warsztaty</button>
+            <button class="filter-btn" data-filter="products">Produkty</button>
         </div>
         <div class="portfolio-wrapper" id="portfolioWrapper">
             <div class="portfolio-grid">
