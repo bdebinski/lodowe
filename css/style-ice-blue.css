@@ -1312,6 +1312,18 @@ section {
     background: rgba(0, 0, 0, 0.95);
 }
 
+.glightbox-container {
+    background: #000 !important;
+}
+
+body.glightbox-open {
+    overflow: hidden;
+}
+
+.goverlay {
+    background: #000 !important;
+}
+
 /* ===================================
    RESPONSIVE
    =================================== */
