@@ -243,7 +243,24 @@ function initPortfolioFilters() {
             // Get filter value
             const filterValue = this.getAttribute('data-filter');
 
-            // Filter portfolio items with animation
+            // KROK 1: Najpierw natychmiast załaduj wszystkie obrazy z wybranego filtra (bez opóźnienia!)
+            portfolioItems.forEach((item) => {
+                const category = item.getAttribute('data-category');
+
+                if (filterValue === 'all' || category === filterValue) {
+                    const lazyImg = item.querySelector('img.lazy-load');
+                    if (lazyImg) {
+                        const src = lazyImg.getAttribute('data-src');
+                        if (src) {
+                            lazyImg.src = src;
+                            lazyImg.classList.remove('lazy-load');
+                            lazyImg.classList.add('lazy-loaded');
+                        }
+                    }
+                }
+            });
+
+            // KROK 2: Teraz zastosuj animację z opóźnieniem (tylko dla animacji)
             portfolioItems.forEach((item, index) => {
                 const category = item.getAttribute('data-category');
 
@@ -258,23 +275,12 @@ function initPortfolioFilters() {
                             item.style.opacity = '1';
                             item.style.transform = 'scale(1)';
                         }, 50);
-
-                        // Natychmiast załaduj obrazy z lazy loadingu dla widocznych elementów
-                        const lazyImg = item.querySelector('img.lazy-load');
-                        if (lazyImg) {
-                            const src = lazyImg.getAttribute('data-src');
-                            if (src) {
-                                lazyImg.src = src;
-                                lazyImg.classList.remove('lazy-load');
-                                lazyImg.classList.add('lazy-loaded');
-                            }
-                        }
                     } else {
                         setTimeout(() => {
                             item.style.display = 'none';
                         }, 300);
                     }
-                }, index * 50);
+                }, index * 30); // Zmniejszono z 50ms do 30ms dla szybszej animacji
             });
         });
     });
