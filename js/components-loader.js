@@ -93,8 +93,8 @@ function fixPortfolioPaths() {
         // Dispatch custom event to signal navigation is loaded
         window.dispatchEvent(new CustomEvent('navigationLoaded'));
 
-        // Load portfolio
-        const portfolioLoaded = await loadComponent('portfolio-placeholder', basePath + 'components/portfolio.html');
+        // Load portfolio (PHP for automatic image loading)
+        const portfolioLoaded = await loadComponent('portfolio-placeholder', basePath + 'components/portfolio.php');
 
         if (portfolioLoaded) {
             initPortfolioControls();
