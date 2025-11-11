@@ -10,8 +10,8 @@ from pathlib import Path
 from PIL import Image
 
 # Konfiguracja
-THUMBNAIL_SIZE = 400  # maksymalna szerokość/wysokość miniatury w px
-THUMBNAIL_QUALITY = 85  # jakość kompresji (1-100, 85 to dobry balans)
+THUMBNAIL_SIZE = 300  # maksymalna szerokość/wysokość miniatury w px
+THUMBNAIL_QUALITY = 80  # jakość kompresji (1-100, 80 to dobry balans dla szybkości)
 THUMBNAIL_FOLDER = 'thumbs'  # nazwa podfolderu dla miniatur
 
 def create_thumbnail(image_path, output_path, size=THUMBNAIL_SIZE):

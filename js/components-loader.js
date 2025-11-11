@@ -1,4 +1,46 @@
 // Component Loader - Load shared nav and footer
+
+// Lazy loading obrazów portfolio z Intersection Observer
+function initLazyLoading() {
+    const lazyImages = document.querySelectorAll('img.lazy-load');
+
+    if (!lazyImages.length) return;
+
+    // Sprawdź czy przeglądarka wspiera Intersection Observer
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+
+                    if (src) {
+                        img.src = src;
+                        img.classList.remove('lazy-load');
+                        img.classList.add('lazy-loaded');
+                        observer.unobserve(img);
+                    }
+                }
+            });
+        }, {
+            // Ładuj obrazy 200px przed wejściem do viewportu
+            rootMargin: '200px 0px',
+            threshold: 0.01
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+        // Fallback dla starszych przeglądarek - ładuj wszystko od razu
+        lazyImages.forEach(img => {
+            const src = img.getAttribute('data-src');
+            if (src) {
+                img.src = src;
+                img.classList.remove('lazy-load');
+            }
+        });
+    }
+}
+
 function initPortfolioControls() {
     const wrapper = document.getElementById("portfolioWrapper");
     const toggleBtn = document.getElementById("portfolioToggleBtn");
@@ -99,6 +141,7 @@ function fixPortfolioPaths() {
         if (portfolioLoaded) {
             initPortfolioControls();
             fixPortfolioPaths();
+            initLazyLoading(); // Inicjalizuj lazy loading
 
             // Czekaj chwilę aż DOM się zaktualizuje, potem inicjalizuj filtry
             setTimeout(() => {

@@ -822,6 +822,16 @@ section {
     max-height: 100%;
 }
 
+/* Lazy loading styles */
+.portfolio-image.lazy-load {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.portfolio-image.lazy-loaded {
+    opacity: 1;
+}
+
 .portfolio-overlay {
     position: absolute;
     top: 0;

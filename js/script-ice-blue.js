@@ -265,6 +265,13 @@ function initPortfolioFilters() {
                     }
                 }, index * 50);
             });
+
+            // Po zmianie filtra uruchom lazy loading dla nowo widocznych obrazów
+            setTimeout(() => {
+                if (typeof initLazyLoading === 'function') {
+                    initLazyLoading();
+                }
+            }, 500);
         });
     });
 }

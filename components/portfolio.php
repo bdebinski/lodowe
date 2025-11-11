@@ -75,13 +75,23 @@ foreach ($folderMapping as $category => $config) {
         </div>
         <div class="portfolio-wrapper" id="portfolioWrapper">
             <div class="portfolio-grid">
-                <?php foreach ($portfolioItems as $item): ?>
+                <?php foreach ($portfolioItems as $index => $item): ?>
                 <a href="<?php echo htmlspecialchars($item['imagePath']); ?>" class="glightbox portfolio-item"
                     data-category="<?php echo htmlspecialchars($item['category']); ?>" data-gallery="portfolio"
                     data-glightbox="title: <?php echo htmlspecialchars($item['title']); ?>; description: <?php echo htmlspecialchars($item['description']); ?>">
                     <div class="portfolio-placeholder">
-                        <div class="placeholder-bg" style="background-image: url('<?php echo htmlspecialchars($item['thumbnailPath']); ?>')"></div>
-                        <img src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>" alt="<?php echo htmlspecialchars($item['alt']); ?>" loading="lazy">
+                        <?php if ($index < 12): ?>
+                            <!-- Pierwsze 12 obrazów ładowane od razu -->
+                            <img src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
+                                 alt="<?php echo htmlspecialchars($item['alt']); ?>"
+                                 class="portfolio-image">
+                        <?php else: ?>
+                            <!-- Pozostałe obrazy z lazy loading -->
+                            <img data-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
+                                 alt="<?php echo htmlspecialchars($item['alt']); ?>"
+                                 class="portfolio-image lazy-load"
+                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e0f2fe'/%3E%3C/svg%3E">
+                        <?php endif; ?>
                     </div>
                     <div class="portfolio-overlay">
                         <h3><?php echo htmlspecialchars($item['title']); ?></h3>
