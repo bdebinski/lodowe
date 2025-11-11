@@ -1324,6 +1324,15 @@ body.glightbox-open {
     background: #000 !important;
 }
 
+/* Ukrycie paska z napisem GLightbox JS */
+.gpowered,
+.gslide-inline .gpowered-by,
+.glightbox-container .gpowered-by {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
 /* ===================================
    RESPONSIVE
    =================================== */
