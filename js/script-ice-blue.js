@@ -511,6 +511,14 @@ function initLightbox() {
             moreLength: 0
         });
 
+        // Usuń pasek GLightbox JS po otwarciu
+        lightbox.on('open', () => {
+            setTimeout(() => {
+                const poweredElements = document.querySelectorAll('.gpowered, .gpowered-by, [class*="gpowered"]');
+                poweredElements.forEach(el => el.remove());
+            }, 100);
+        });
+
         console.log('%c✓ Lightbox initialized',
             'font-size: 14px; color: #10B981; font-weight: bold;'
         );
