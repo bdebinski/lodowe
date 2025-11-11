@@ -243,49 +243,56 @@ function initPortfolioFilters() {
             // Get filter value
             const filterValue = this.getAttribute('data-filter');
 
-            // KROK 1: Natychmiast załaduj obrazy z wybranego filtra
-            // ALE TYLKO jeśli to konkretna kategoria, nie "all"
-            if (filterValue !== 'all') {
-                portfolioItems.forEach((item) => {
-                    const category = item.getAttribute('data-category');
+            // KROK 1: Natychmiast ukryj wszystkie i przygotuj listę widocznych
+            const visibleItems = [];
+            portfolioItems.forEach((item) => {
+                const category = item.getAttribute('data-category');
+                const shouldShow = filterValue === 'all' || category === filterValue;
 
-                    if (category === filterValue) {
-                        const lazyImg = item.querySelector('img.lazy-load');
-                        if (lazyImg) {
-                            const src = lazyImg.getAttribute('data-src');
-                            if (src) {
-                                lazyImg.src = src;
-                                lazyImg.classList.remove('lazy-load');
-                                lazyImg.classList.add('lazy-loaded');
-                            }
+                if (shouldShow) {
+                    visibleItems.push(item);
+                    item.style.display = 'block';
+                } else {
+                    // Natychmiast ukryj niepasujące (bez setTimeout!)
+                    item.style.display = 'none';
+                    item.style.opacity = '0';
+                }
+            });
+
+            // KROK 2: Załaduj obrazy tylko dla widocznych elementów (nie wszystkich!)
+            if (filterValue !== 'all') {
+                visibleItems.forEach((item) => {
+                    const lazyImg = item.querySelector('img.lazy-load');
+                    if (lazyImg) {
+                        const src = lazyImg.getAttribute('data-src');
+                        if (src) {
+                            lazyImg.src = src;
+                            lazyImg.classList.remove('lazy-load');
+                            lazyImg.classList.add('lazy-loaded');
                         }
                     }
                 });
             }
-            // Dla "all" Intersection Observer zajmie się ładowaniem widocznych obrazów
 
-            // KROK 2: Teraz zastosuj animację z opóźnieniem (tylko dla animacji)
-            portfolioItems.forEach((item, index) => {
-                const category = item.getAttribute('data-category');
-
-                // Hide all first
+            // KROK 3: Animuj TYLKO widoczne elementy (nie wszystkie 767!)
+            visibleItems.forEach((item, index) => {
                 item.style.opacity = '0';
                 item.style.transform = 'scale(0.8)';
 
                 setTimeout(() => {
-                    if (filterValue === 'all' || category === filterValue) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                }, index * 30); // Zmniejszono z 50ms do 30ms dla szybszej animacji
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                }, index * 20); // Tylko widoczne elementy, więc może być szybciej
             });
+
+            // KROK 4: Dla "all" uruchom Intersection Observer dla widocznych
+            if (filterValue === 'all') {
+                setTimeout(() => {
+                    if (typeof initLazyLoading === 'function') {
+                        initLazyLoading();
+                    }
+                }, 100);
+            }
         });
     });
 }
