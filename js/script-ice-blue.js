@@ -258,6 +258,17 @@ function initPortfolioFilters() {
                             item.style.opacity = '1';
                             item.style.transform = 'scale(1)';
                         }, 50);
+
+                        // Natychmiast załaduj obrazy z lazy loadingu dla widocznych elementów
+                        const lazyImg = item.querySelector('img.lazy-load');
+                        if (lazyImg) {
+                            const src = lazyImg.getAttribute('data-src');
+                            if (src) {
+                                lazyImg.src = src;
+                                lazyImg.classList.remove('lazy-load');
+                                lazyImg.classList.add('lazy-loaded');
+                            }
+                        }
                     } else {
                         setTimeout(() => {
                             item.style.display = 'none';
@@ -265,13 +276,6 @@ function initPortfolioFilters() {
                     }
                 }, index * 50);
             });
-
-            // Po zmianie filtra uruchom lazy loading dla nowo widocznych obrazów
-            setTimeout(() => {
-                if (typeof initLazyLoading === 'function') {
-                    initLazyLoading();
-                }
-            }, 500);
         });
     });
 }
