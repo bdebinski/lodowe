@@ -80,6 +80,8 @@ foreach ($folderMapping as $category => $config) {
                     data-category="<?php echo htmlspecialchars($item['category']); ?>" data-gallery="portfolio"
                     data-glightbox="title: <?php echo htmlspecialchars($item['title']); ?>; description: <?php echo htmlspecialchars($item['description']); ?>">
                     <div class="portfolio-placeholder">
+                        <!-- Rozmyte tło z obrazem -->
+                        <div class="placeholder-bg" data-bg-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"></div>
                         <!-- Wszystkie obrazy z lazy loading - ładowane tylko gdy widoczne lub po kliknięciu filtra -->
                         <img data-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
                              alt="<?php echo htmlspecialchars($item['alt']); ?>"

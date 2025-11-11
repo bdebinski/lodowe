@@ -259,9 +259,10 @@ function initPortfolioFilters() {
                 }
             });
 
-            // KROK 2: Załaduj obrazy tylko dla widocznych elementów (nie wszystkich!)
+            // KROK 2: Załaduj obrazy i tła tylko dla widocznych elementów (nie wszystkich!)
             if (filterValue !== 'all') {
                 visibleItems.forEach((item) => {
+                    // Załaduj główny obraz
                     const lazyImg = item.querySelector('img.lazy-load');
                     if (lazyImg) {
                         const src = lazyImg.getAttribute('data-src');
@@ -269,6 +270,15 @@ function initPortfolioFilters() {
                             lazyImg.src = src;
                             lazyImg.classList.remove('lazy-load');
                             lazyImg.classList.add('lazy-loaded');
+                        }
+                    }
+
+                    // Załaduj rozmyte tło
+                    const placeholderBg = item.querySelector('.placeholder-bg');
+                    if (placeholderBg) {
+                        const bgSrc = placeholderBg.getAttribute('data-bg-src');
+                        if (bgSrc) {
+                            placeholderBg.style.backgroundImage = `url('${bgSrc}')`;
                         }
                     }
                 });

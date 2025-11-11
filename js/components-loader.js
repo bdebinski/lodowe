@@ -19,6 +19,18 @@ function initLazyLoading() {
                         img.classList.remove('lazy-load');
                         img.classList.add('lazy-loaded');
                         observer.unobserve(img);
+
+                        // Załaduj również rozmyte tło dla tego elementu
+                        const portfolioItem = img.closest('.portfolio-item');
+                        if (portfolioItem) {
+                            const placeholderBg = portfolioItem.querySelector('.placeholder-bg');
+                            if (placeholderBg) {
+                                const bgSrc = placeholderBg.getAttribute('data-bg-src');
+                                if (bgSrc) {
+                                    placeholderBg.style.backgroundImage = `url('${bgSrc}')`;
+                                }
+                            }
+                        }
                     }
                 }
             });
@@ -36,6 +48,18 @@ function initLazyLoading() {
             if (src) {
                 img.src = src;
                 img.classList.remove('lazy-load');
+
+                // Załaduj również tła
+                const portfolioItem = img.closest('.portfolio-item');
+                if (portfolioItem) {
+                    const placeholderBg = portfolioItem.querySelector('.placeholder-bg');
+                    if (placeholderBg) {
+                        const bgSrc = placeholderBg.getAttribute('data-bg-src');
+                        if (bgSrc) {
+                            placeholderBg.style.backgroundImage = `url('${bgSrc}')`;
+                        }
+                    }
+                }
             }
         });
     }
