@@ -368,65 +368,61 @@ function initContactForm() {
                 submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
             }
 
-            // Funkcja do wysyłania formularza
-            function submitForm(recaptchaToken = '') {
-                // Dodaj token do formularza jeśli istnieje
-                if (recaptchaToken) {
-                    document.getElementById('recaptcha_token').value = recaptchaToken;
+            // Check if reCAPTCHA is properly configured
+            if (typeof grecaptcha === 'undefined' || !window.recaptchaSiteKey || window.recaptchaSiteKey === 'YOUR_SITE_KEY_HERE') {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
                 }
+                showNotification('Błąd konfiguracji', 'reCAPTCHA nie została prawidłowo skonfigurowana. Skontaktuj się z administratorem.', 'error');
+                console.error('reCAPTCHA not configured properly');
+                return;
+            }
 
-                // Wyślij formularz przez AJAX
-                const formData = new FormData(form);
+            // Generuj token reCAPTCHA przed wysyłką
+            console.log('Attempting reCAPTCHA verification...');
+            grecaptcha.ready(function() {
+                grecaptcha.execute(window.recaptchaSiteKey, {action: 'contact_form'}).then(function(token) {
+                    console.log('reCAPTCHA token received');
+                    // Dodaj token do formularza
+                    document.getElementById('recaptcha_token').value = token;
 
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        showNotification('Sukces!', data.message, 'success');
-                        form.reset();
-                    } else {
-                        showNotification('Błąd', data.message, 'error');
-                    }
-                })
-                .catch(error => {
-                    console.error('Błąd wysyłki:', error);
-                    showNotification('Błąd', 'Nie udało się wysłać wiadomości. Spróbuj ponownie.', 'error');
-                })
-                .finally(() => {
-                    // Odblokuj przycisk
+                    // Wyślij formularz przez AJAX
+                    const formData = new FormData(form);
+
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showNotification('Sukces!', data.message, 'success');
+                            form.reset();
+                        } else {
+                            showNotification('Błąd', data.message, 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Błąd wysyłki:', error);
+                        showNotification('Błąd', 'Nie udało się wysłać wiadomości. Spróbuj ponownie.', 'error');
+                    })
+                    .finally(() => {
+                        // Odblokuj przycisk
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
+                        }
+                    });
+                }).catch(function(error) {
+                    console.error('reCAPTCHA error:', error);
                     if (submitButton) {
                         submitButton.disabled = false;
                         submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
                     }
+                    showNotification('Błąd', 'Wystąpił problem z weryfikacją reCAPTCHA. Spróbuj ponownie.', 'error');
                 });
-            }
-
-            // Check if reCAPTCHA is properly configured
-            const hasValidRecaptcha = typeof grecaptcha !== 'undefined' &&
-                                     window.recaptchaSiteKey &&
-                                     window.recaptchaSiteKey !== 'YOUR_SITE_KEY_HERE';
-
-            // Generuj token reCAPTCHA przed wysyłką
-            if (hasValidRecaptcha) {
-                console.log('Attempting reCAPTCHA verification...');
-                grecaptcha.ready(function() {
-                    grecaptcha.execute(window.recaptchaSiteKey, {action: 'contact_form'}).then(function(token) {
-                        console.log('reCAPTCHA token received');
-                        submitForm(token);
-                    }).catch(function(error) {
-                        console.error('reCAPTCHA error:', error);
-                        // Send without reCAPTCHA if verification fails
-                        submitForm();
-                    });
-                });
-            } else {
-                // Jeśli reCAPTCHA nie jest załadowana lub nie skonfigurowana, wyślij bez niej
-                console.log('reCAPTCHA not configured, sending without verification');
-                submitForm();
-            }
+            });
         });
     }
 }

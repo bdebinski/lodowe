@@ -264,33 +264,31 @@ function initContactForm() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
 
             // Check if reCAPTCHA is properly configured
-            const hasValidRecaptcha = typeof grecaptcha !== 'undefined' &&
-                                     window.recaptchaSiteKey &&
-                                     window.recaptchaSiteKey !== 'YOUR_SITE_KEY_HERE';
+            if (typeof grecaptcha === 'undefined' || !window.recaptchaSiteKey || window.recaptchaSiteKey === 'YOUR_SITE_KEY_HERE') {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                showNotification('Błąd konfiguracji', 'reCAPTCHA nie została prawidłowo skonfigurowana. Skontaktuj się z administratorem.', 'error');
+                console.error('reCAPTCHA not configured properly');
+                return;
+            }
 
             // Execute reCAPTCHA v3 and send form
-            if (hasValidRecaptcha) {
-                console.log('Attempting reCAPTCHA verification...');
-                grecaptcha.ready(function() {
-                    grecaptcha.execute(window.recaptchaSiteKey, {action: 'submit'}).then(function(token) {
-                        console.log('reCAPTCHA token received');
-                        // Add reCAPTCHA token to form
-                        document.getElementById('recaptcha_token').value = token;
+            console.log('Attempting reCAPTCHA verification...');
+            grecaptcha.ready(function() {
+                grecaptcha.execute(window.recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+                    console.log('reCAPTCHA token received');
+                    // Add reCAPTCHA token to form
+                    document.getElementById('recaptcha_token').value = token;
 
-                        // Send form data via AJAX
-                        sendFormData(form, submitBtn, originalBtnText);
-                    }).catch(function(error) {
-                        console.error('reCAPTCHA error:', error);
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnText;
-                        showNotification('Błąd', 'Wystąpił problem z weryfikacją reCAPTCHA. Spróbuj ponownie.', 'error');
-                    });
+                    // Send form data via AJAX
+                    sendFormData(form, submitBtn, originalBtnText);
+                }).catch(function(error) {
+                    console.error('reCAPTCHA error:', error);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                    showNotification('Błąd', 'Wystąpił problem z weryfikacją reCAPTCHA. Spróbuj ponownie.', 'error');
                 });
-            } else {
-                // If reCAPTCHA is not loaded or not configured, send without it (fallback)
-                console.log('reCAPTCHA not configured, sending without verification');
-                sendFormData(form, submitBtn, originalBtnText);
-            }
+            });
         });
     }
 }
