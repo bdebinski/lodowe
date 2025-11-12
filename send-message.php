@@ -137,7 +137,7 @@ if (empty($recaptcha_token)) {
     sendJsonResponse(false, 'Weryfikacja reCAPTCHA nie powiodła się.', 400);
 }
 
-if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY, 'submit')) {
+if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY, 'contact_form')) {
     error_log("reCAPTCHA verification failed for: $email");
     sendJsonResponse(false, 'Wykryto podejrzaną aktywność. Spróbuj ponownie.', 403);
 }
