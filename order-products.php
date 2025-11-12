@@ -1,7 +1,17 @@
 <?php
+// Załaduj konfigurację
+if (!file_exists(__DIR__ . '/config.php')) {
+    http_response_code(500);
+    die(json_encode([
+        'success' => false,
+        'message' => 'Błąd konfiguracji serwera. Skontaktuj się z administratorem.'
+    ], JSON_UNESCAPED_UNICODE));
+}
+require_once __DIR__ . '/config.php';
+
 // Wyłącz wyświetlanie błędów w produkcji (logi w error_log)
 error_reporting(E_ALL);
-ini_set('display_errors', 0);
+ini_set('display_errors', DISPLAY_ERRORS ? 1 : 0);
 ini_set('log_errors', 1);
 
 // Ustaw nagłówek JSON
@@ -73,8 +83,9 @@ session_start();
 $current_time = time();
 if (isset($_SESSION['last_order_submit_time'])) {
     $time_diff = $current_time - $_SESSION['last_order_submit_time'];
-    if ($time_diff < 60) { // Minimum 60 sekund między wysyłkami
-        sendJsonResponse(false, 'Proszę poczekać przed wysłaniem kolejnego zamówienia.', 429);
+    if ($time_diff < RATE_LIMIT_ORDER) {
+        $wait_time = RATE_LIMIT_ORDER - $time_diff;
+        sendJsonResponse(false, "Proszę poczekać jeszcze {$wait_time} sekund przed wysłaniem kolejnego zamówienia.", 429);
     }
 }
 
@@ -88,14 +99,11 @@ $notes   = sanitize_input($_POST['notes']   ?? '');
 $recaptcha_token = $_POST['recaptcha_token'] ?? '';
 
 // Weryfikacja reCAPTCHA v3
-// UWAGA: Zastąp 'YOUR_RECAPTCHA_SECRET_KEY' swoim prawdziwym kluczem secret
-$recaptcha_secret = 'YOUR_RECAPTCHA_SECRET_KEY';
-
 if (empty($recaptcha_token)) {
     sendJsonResponse(false, 'Weryfikacja reCAPTCHA nie powiodła się.', 400);
 }
 
-if (!verify_recaptcha($recaptcha_token, $recaptcha_secret)) {
+if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY)) {
     error_log("reCAPTCHA verification failed for order from: $email");
     sendJsonResponse(false, 'Wykryto podejrzaną aktywność. Spróbuj ponownie lub skontaktuj się telefonicznie.', 403);
 }
@@ -172,7 +180,7 @@ foreach ($products as $product) {
 }
 
 // Przygotowanie treści wiadomości
-$to = "zamowienia@lodowe.com.pl";  // ZMIEŃ NA WŁAŚCIWY ADRES EMAIL!
+$to = ORDER_EMAIL;
 $subject = "Nowe zamówienie produktów z Lodowe.com.pl";
 
 $body = "Nowe zamówienie produktów:\n\n";
