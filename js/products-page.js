@@ -243,46 +243,64 @@
                     return;
                 }
 
-                // Wyślij formularz przez AJAX
-                const formData = new FormData(form);
                 const submitButton = form.querySelector('button[type="submit"]');
 
                 // Zablokuj przycisk podczas wysyłania
                 if (submitButton) {
                     submitButton.disabled = true;
-                    submitButton.textContent = 'Wysyłanie...';
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
                 }
 
-                fetch('../order-products.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        showNotification('Sukces!', data.message, 'success');
-                        // Wyczyść formularz po sukcesie
-                        form.reset();
-                        // Wyczyść produkty i dodaj jeden pusty wiersz
-                        const container = document.getElementById('products-container');
-                        container.innerHTML = '';
-                        productCounter = 0;
-                        addProductRow();
-                    } else {
-                        showNotification('Błąd', data.message, 'error');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    showNotification('Błąd', 'Nie udało się wysłać zamówienia. Spróbuj ponownie.', 'error');
-                })
-                .finally(() => {
-                    // Odblokuj przycisk
+                // Generuj token reCAPTCHA przed wysyłką (zmień YOUR_SITE_KEY_HERE na swój klucz)
+                if (typeof grecaptcha !== 'undefined') {
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('YOUR_SITE_KEY_HERE', {action: 'order_form'}).then(function(token) {
+                            // Dodaj token do formularza
+                            document.getElementById('recaptcha_token_order').value = token;
+
+                            // Teraz wyślij formularz przez AJAX
+                            const formData = new FormData(form);
+
+                            fetch('../order-products.php', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    showNotification('Sukces!', data.message, 'success');
+                                    // Wyczyść formularz po sukcesie
+                                    form.reset();
+                                    // Wyczyść produkty i dodaj jeden pusty wiersz
+                                    const container = document.getElementById('products-container');
+                                    container.innerHTML = '';
+                                    productCounter = 0;
+                                    addProductRow();
+                                } else {
+                                    showNotification('Błąd', data.message, 'error');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                showNotification('Błąd', 'Nie udało się wysłać zamówienia. Spróbuj ponownie.', 'error');
+                            })
+                            .finally(() => {
+                                // Odblokuj przycisk
+                                if (submitButton) {
+                                    submitButton.disabled = false;
+                                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij Zamówienie';
+                                }
+                            });
+                        });
+                    });
+                } else {
+                    // Jeśli reCAPTCHA nie jest załadowana, pokaż błąd
+                    showNotification('Błąd', 'reCAPTCHA nie została załadowana. Sprawdź konfigurację.', 'error');
                     if (submitButton) {
                         submitButton.disabled = false;
-                        submitButton.textContent = 'Wyślij Zamówienie';
+                        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij Zamówienie';
                     }
-                });
+                }
             });
         }
     }

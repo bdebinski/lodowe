@@ -29,6 +29,9 @@
     <!-- GLightbox -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
+    <!-- Google reCAPTCHA v3 - zmień YOUR_SITE_KEY_HERE na swój klucz z config.php -->
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY_HERE" async defer></script>
+
     <link rel="stylesheet" href="css/style-ice-blue.css">
 </head>
 <style>
@@ -578,6 +581,9 @@
                             <textarea id="message" name="message" rows="5" required
                                 placeholder="Opisz swoje potrzeby..."></textarea>
                         </div>
+
+                        <!-- reCAPTCHA v3 token (hidden) -->
+                        <input type="hidden" id="recaptcha_token" name="recaptcha_token">
 
                         <button type="submit" class="btn btn-primary btn-submit">
                             <i class="fas fa-paper-plane"></i> Wyślij zapytanie
