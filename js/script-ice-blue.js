@@ -368,50 +368,70 @@ function initContactForm() {
                 submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
             }
 
-            // Generuj token reCAPTCHA przed wysyłką
-            if (typeof grecaptcha !== 'undefined' && window.recaptchaSiteKey) {
-                grecaptcha.ready(function() {
-                    grecaptcha.execute(window.recaptchaSiteKey, {action: 'contact_form'}).then(function(token) {
-                        // Dodaj token do formularza
-                        document.getElementById('recaptcha_token').value = token;
-
-                        // Teraz wyślij formularz przez AJAX
-                        const formData = new FormData(form);
-
-                        fetch(form.action, {
-                            method: 'POST',
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                showNotification('Sukces!', data.message, 'success');
-                                form.reset();
-                            } else {
-                                showNotification('Błąd', data.message, 'error');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Błąd wysyłki:', error);
-                            showNotification('Błąd', 'Nie udało się wysłać wiadomości. Spróbuj ponownie.', 'error');
-                        })
-                        .finally(() => {
-                            // Odblokuj przycisk
-                            if (submitButton) {
-                                submitButton.disabled = false;
-                                submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
-                            }
-                        });
-                    });
-                });
-            } else {
-                // Jeśli reCAPTCHA nie jest załadowana, pokaż błąd
-                showNotification('Błąd', 'reCAPTCHA nie została załadowana. Sprawdź konfigurację.', 'error');
+            // Sprawdź konfigurację reCAPTCHA
+            if (!window.recaptchaSiteKey || window.recaptchaSiteKey === 'YOUR_SITE_KEY_HERE') {
+                console.error('reCAPTCHA site key is not configured properly:', window.recaptchaSiteKey);
+                showNotification('Błąd konfiguracji', 'Klucz reCAPTCHA nie został skonfigurowany. Skontaktuj się z administratorem.', 'error');
                 if (submitButton) {
                     submitButton.disabled = false;
                     submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
                 }
+                return;
             }
+
+            // Sprawdź czy grecaptcha jest dostępne
+            if (typeof grecaptcha === 'undefined') {
+                console.error('grecaptcha is not loaded. Check if the reCAPTCHA script is blocked or failed to load.');
+                showNotification('Błąd ładowania', 'Nie można załadować reCAPTCHA. Sprawdź połączenie internetowe lub wyłącz adblocker.', 'error');
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
+                }
+                return;
+            }
+
+            // Generuj token reCAPTCHA przed wysyłką
+            grecaptcha.ready(function() {
+                grecaptcha.execute(window.recaptchaSiteKey, {action: 'contact_form'}).then(function(token) {
+                    // Dodaj token do formularza
+                    document.getElementById('recaptcha_token').value = token;
+
+                    // Teraz wyślij formularz przez AJAX
+                    const formData = new FormData(form);
+
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showNotification('Sukces!', data.message, 'success');
+                            form.reset();
+                        } else {
+                            showNotification('Błąd', data.message, 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Błąd wysyłki:', error);
+                        showNotification('Błąd', 'Nie udało się wysłać wiadomości. Spróbuj ponownie.', 'error');
+                    })
+                    .finally(() => {
+                        // Odblokuj przycisk
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
+                        }
+                    });
+                }).catch(function(error) {
+                    console.error('reCAPTCHA execute error:', error);
+                    showNotification('Błąd', 'Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.', 'error');
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
+                    }
+                });
+            });
         });
     }
 }
