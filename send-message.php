@@ -49,11 +49,16 @@ function validate_phone($phone) {
     return strlen($digits) >= 9 && strlen($digits) <= 15;
 }
 
-function verify_recaptcha($token, $secret_key) {
+function verify_recaptcha($token, $secret_key, $expected_action = 'contact_form') {
     $url = 'https://www.google.com/recaptcha/api/siteverify';
+
+    // Pobierz adres IP użytkownika
+    $user_ip = $_SERVER['REMOTE_ADDR'] ?? '';
+
     $data = array(
         'secret' => $secret_key,
-        'response' => $token
+        'response' => $token,
+        'remoteip' => $user_ip
     );
 
     $options = array(
@@ -68,13 +73,44 @@ function verify_recaptcha($token, $secret_key) {
     $result = file_get_contents($url, false, $context);
 
     if ($result === FALSE) {
+        error_log("reCAPTCHA API request failed");
         return false;
     }
 
     $response = json_decode($result);
 
-    // Sprawdź czy weryfikacja powiodła się i score jest wystarczająco wysoki (>= 0.5)
-    return $response->success && $response->score >= 0.5;
+    // Pełna weryfikacja zgodnie z wymogami Google reCAPTCHA v3:
+    // 1. Sprawdź czy weryfikacja powiodła się
+    if (!$response->success) {
+        error_log("reCAPTCHA verification failed: " . json_encode($response->{'error-codes'} ?? []));
+        return false;
+    }
+
+    // 2. Sprawdź score (>= 0.5 dla standardowej ochrony)
+    if ($response->score < 0.5) {
+        error_log("reCAPTCHA score too low: " . $response->score);
+        return false;
+    }
+
+    // 3. Zweryfikuj action (ważne dla raportowania wyników)
+    if (isset($response->action) && $response->action !== $expected_action) {
+        error_log("reCAPTCHA action mismatch. Expected: $expected_action, Got: " . $response->action);
+        return false;
+    }
+
+    // 4. Zweryfikuj hostname (opcjonalnie)
+    if (isset($response->hostname)) {
+        $allowed_hostnames = ['lodowe.com.pl', 'www.lodowe.com.pl', 'localhost'];
+        if (!in_array($response->hostname, $allowed_hostnames)) {
+            error_log("reCAPTCHA hostname not allowed: " . $response->hostname);
+            return false;
+        }
+    }
+
+    // Zaloguj sukces dla monitoringu (pomaga Google w raportowaniu)
+    error_log("reCAPTCHA verification successful - Score: " . $response->score . ", Action: " . ($response->action ?? 'N/A'));
+
+    return true;
 }
 
 // Prosta ochrona przed spamem
@@ -101,7 +137,7 @@ if (empty($recaptcha_token)) {
     sendJsonResponse(false, 'Weryfikacja reCAPTCHA nie powiodła się.', 400);
 }
 
-if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY)) {
+if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY, 'submit')) {
     error_log("reCAPTCHA verification failed for: $email");
     sendJsonResponse(false, 'Wykryto podejrzaną aktywność. Spróbuj ponownie.', 403);
 }

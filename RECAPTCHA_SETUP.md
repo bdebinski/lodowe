@@ -133,11 +133,27 @@ Po wdrożeniu na serwer:
   - Score użytkowników (0.0 - bot, 1.0 - człowiek)
   - Zablokowane próby
 
+### ✅ Pełna weryfikacja wyników (Assessment API)
+
+**Od wersji 2025-01** implementacja zawiera pełną weryfikację zgodnie z wymogami Google:
+
+1. **Weryfikacja success** - czy token jest ważny
+2. **Weryfikacja score** - ocena od 0.0 (bot) do 1.0 (człowiek)
+3. **Weryfikacja action** - czy akcja zgadza się z oczekiwaną (`submit` lub `order_form`)
+4. **Weryfikacja hostname** - czy żądanie pochodzi z dozwolonej domeny
+5. **Raportowanie IP** - adres IP użytkownika jest wysyłany do Google dla lepszego wykrywania botów
+6. **Szczegółowe logowanie** - wszystkie weryfikacje są logowane dla audytu
+
+Ta rozszerzona weryfikacja spełnia wymagania Google reCAPTCHA v3 dotyczące zgłaszania wyników oceny.
+
 ### Dostosowanie threshold (opcjonalnie):
 
-Aktualnie score threshold ustawiony jest na **0.5** (linie 55 i 68 w plikach PHP):
+Aktualnie score threshold ustawiony jest na **0.5** (linie 90 w send-message.php i order-products.php):
 ```php
-return $response->success && $response->score >= 0.5;
+if ($response->score < 0.5) {
+    error_log("reCAPTCHA score too low: " . $response->score);
+    return false;
+}
 ```
 
 Możesz zmienić na:
