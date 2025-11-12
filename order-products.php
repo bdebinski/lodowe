@@ -172,7 +172,7 @@ foreach ($products as $product) {
 }
 
 // Przygotowanie treści wiadomości
-$to = "zamowienia@lodowe.com.pl";  // ZMIEŃ NA WŁAŚCIWY ADRES EMAIL!
+$to = "office@long-table.com.pl";
 $subject = "Nowe zamówienie produktów z Lodowe.com.pl";
 
 $body = "Nowe zamówienie produktów:\n\n";

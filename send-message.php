@@ -112,7 +112,7 @@ if (preg_match("/[\r\n]/", $email)) {
 }
 
 // ✅ Twój prawidłowy adres docelowy
-$to = "bartekd1998@gmail.com";
+$to = "office@long-table.com.pl";
 $subject = "Nowe zapytanie z formularza na stronie Long-Table.com.pl";
 
 // Treść wiadomości
