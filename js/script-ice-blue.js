@@ -362,27 +362,38 @@ function initContactForm() {
 
             // Wysyłka danych AJAX-em do PHP
             const formData = new FormData(form);
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            // Zablokuj przycisk podczas wysyłania
+            if (submitButton) {
+                submitButton.disabled = true;
+                const originalText = submitButton.innerHTML;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
+            }
 
             fetch(form.action, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => {
-                if (!response.ok) throw new Error('Błąd serwera');
-                return response.text();
-            })
+            .then(response => response.json())
             .then(data => {
-                console.log('Odpowiedź z PHP:', data);
-                showNotification(
-                    'Dziękujemy!',
-                    'Twoja wiadomość została wysłana. Skontaktujemy się wkrótce!',
-                    'success'
-                );
-                form.reset();
+                if (data.success) {
+                    showNotification('Sukces!', data.message, 'success');
+                    form.reset();
+                } else {
+                    showNotification('Błąd', data.message, 'error');
+                }
             })
             .catch(error => {
                 console.error('Błąd wysyłki:', error);
-                showNotification('Błąd!', 'Nie udało się wysłać wiadomości.', 'error');
+                showNotification('Błąd', 'Nie udało się wysłać wiadomości. Spróbuj ponownie.', 'error');
+            })
+            .finally(() => {
+                // Odblokuj przycisk
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
+                }
             });
         });
     }

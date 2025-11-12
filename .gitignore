@@ -1,0 +1,21 @@
+# Pliki konfiguracyjne z wrażliwymi danymi
+config.php
+
+# IDE i edytory
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logi
+*.log
+error_log
+
+# Temporary files
+*.tmp
+*.bak
