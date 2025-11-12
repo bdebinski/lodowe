@@ -254,27 +254,69 @@ function initContactForm() {
                 showNotification('Błąd walidacji', errors.join('<br>'), 'error');
                 return;
             }
-            
-            // If validation passes
-            showNotification(
-                'Dziękujemy!', 
-                'Twoja wiadomość została wysłana. Skontaktujemy się wkrótce!', 
-                'success'
-            );
-            
-            // Reset form
-            form.reset();
-            
-            // In production, send data to server
-            console.log('Form submitted:', {
-                name,
-                email,
-                phone,
-                service,
-                message
-            });
+
+            // Get submit button
+            const submitBtn = form.querySelector('.btn-submit');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
+
+            // Execute reCAPTCHA v3 and send form
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.ready(function() {
+                    grecaptcha.execute(window.recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+                        // Add reCAPTCHA token to form
+                        document.getElementById('recaptcha_token').value = token;
+
+                        // Send form data via AJAX
+                        sendFormData(form, submitBtn, originalBtnText);
+                    }).catch(function(error) {
+                        console.error('reCAPTCHA error:', error);
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                        showNotification('Błąd', 'Wystąpił problem z weryfikacją reCAPTCHA. Spróbuj ponownie.', 'error');
+                    });
+                });
+            } else {
+                // If reCAPTCHA is not loaded, send without it (fallback)
+                sendFormData(form, submitBtn, originalBtnText);
+            }
         });
     }
+}
+
+// Send form data via AJAX
+function sendFormData(form, submitBtn, originalBtnText) {
+    const formData = new FormData(form);
+
+    fetch('send-message.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+
+        if (data.success) {
+            showNotification('Dziękujemy!', data.message, 'success');
+            form.reset();
+        } else {
+            showNotification('Błąd', data.message, 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        showNotification(
+            'Błąd',
+            'Nie udało się wysłać wiadomości. Spróbuj ponownie później lub skontaktuj się telefonicznie: 511 110 265, 501 494 787, 608 401 730',
+            'error'
+        );
+    });
 }
 
 // Email validation
