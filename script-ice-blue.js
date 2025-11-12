@@ -266,9 +266,16 @@ function initContactForm() {
             // Execute reCAPTCHA v3 and send form
             if (typeof grecaptcha !== 'undefined') {
                 grecaptcha.ready(function() {
-                    grecaptcha.execute(window.recaptchaSiteKey, {action: 'submit'}).then(function(token) {
-                        // Add reCAPTCHA token to form
-                        document.getElementById('recaptcha_token').value = token;
+                    grecaptcha.execute(window.recaptchaSiteKey, {action: 'contact_form'}).then(function(token) {
+                        // Przygotuj pełny obiekt event dla Google reCAPTCHA Assessment API
+                        const recaptchaEvent = {
+                            token: token,
+                            expectedAction: 'contact_form',
+                            siteKey: window.recaptchaSiteKey
+                        };
+
+                        // Add reCAPTCHA event object to form as JSON
+                        document.getElementById('recaptcha_token').value = JSON.stringify(recaptchaEvent);
 
                         // Send form data via AJAX
                         sendFormData(form, submitBtn, originalBtnText);

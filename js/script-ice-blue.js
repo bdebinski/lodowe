@@ -372,8 +372,15 @@ function initContactForm() {
             if (typeof grecaptcha !== 'undefined' && window.recaptchaSiteKey) {
                 grecaptcha.ready(function() {
                     grecaptcha.execute(window.recaptchaSiteKey, {action: 'contact_form'}).then(function(token) {
-                        // Dodaj token do formularza
-                        document.getElementById('recaptcha_token').value = token;
+                        // Przygotuj pełny obiekt event dla Google reCAPTCHA Assessment API
+                        const recaptchaEvent = {
+                            token: token,
+                            expectedAction: 'contact_form',
+                            siteKey: window.recaptchaSiteKey
+                        };
+
+                        // Dodaj obiekt event do formularza jako JSON
+                        document.getElementById('recaptcha_token').value = JSON.stringify(recaptchaEvent);
 
                         // Teraz wyślij formularz przez AJAX
                         const formData = new FormData(form);

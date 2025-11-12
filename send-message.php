@@ -130,14 +130,31 @@ $email   = sanitize_input($_POST['email']   ?? '');
 $phone   = sanitize_input($_POST['phone']   ?? '');
 $service = sanitize_input($_POST['service'] ?? '');
 $message = sanitize_input($_POST['message'] ?? '');
-$recaptcha_token = $_POST['recaptcha_token'] ?? '';
+$recaptcha_event_json = $_POST['recaptcha_token'] ?? '';
 
-// Weryfikacja reCAPTCHA v3
-if (empty($recaptcha_token)) {
+// Weryfikacja reCAPTCHA v3 - odbierz obiekt event
+if (empty($recaptcha_event_json)) {
     sendJsonResponse(false, 'Weryfikacja reCAPTCHA nie powiodła się.', 400);
 }
 
-if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY, 'contact_form')) {
+// Zdekoduj obiekt event z JSON
+$recaptcha_event = json_decode($recaptcha_event_json, true);
+if (!$recaptcha_event || !isset($recaptcha_event['token']) || !isset($recaptcha_event['expectedAction'])) {
+    error_log("Invalid reCAPTCHA event structure: " . $recaptcha_event_json);
+    sendJsonResponse(false, 'Nieprawidłowa struktura danych reCAPTCHA.', 400);
+}
+
+// Wyodrębnij token z obiektu event
+$recaptcha_token = $recaptcha_event['token'];
+$expected_action = $recaptcha_event['expectedAction'];
+
+// Zweryfikuj czy expectedAction zgadza się z oczekiwanym
+if ($expected_action !== 'contact_form') {
+    error_log("reCAPTCHA action mismatch in request. Expected: contact_form, Got: " . $expected_action);
+    sendJsonResponse(false, 'Nieprawidłowa akcja reCAPTCHA.', 400);
+}
+
+if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY, $expected_action)) {
     error_log("reCAPTCHA verification failed for: $email");
     sendJsonResponse(false, 'Wykryto podejrzaną aktywność. Spróbuj ponownie.', 403);
 }
