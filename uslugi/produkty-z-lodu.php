@@ -1,3 +1,11 @@
+<?php
+// Load configuration if available
+$recaptcha_site_key = 'YOUR_SITE_KEY_HERE';
+if (file_exists(__DIR__ . '/../config.php')) {
+    require_once __DIR__ . '/../config.php';
+    $recaptcha_site_key = defined('RECAPTCHA_SITE_KEY') ? RECAPTCHA_SITE_KEY : 'YOUR_SITE_KEY_HERE';
+}
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -20,8 +28,12 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Google reCAPTCHA v3 - zmień YOUR_SITE_KEY_HERE na swój klucz z config.php -->
-    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY_HERE" async defer></script>
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=<?php echo htmlspecialchars($recaptcha_site_key); ?>" async defer></script>
+    <script>
+        // Make reCAPTCHA site key available to JavaScript
+        window.recaptchaSiteKey = '<?php echo htmlspecialchars($recaptcha_site_key); ?>';
+    </script>
 
     <link rel="stylesheet" href="../css/style-ice-blue.css">
     <link rel="stylesheet" href="../css/service-page.css">

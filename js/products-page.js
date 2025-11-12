@@ -251,10 +251,10 @@
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
                 }
 
-                // Generuj token reCAPTCHA przed wysyłką (zmień YOUR_SITE_KEY_HERE na swój klucz)
-                if (typeof grecaptcha !== 'undefined') {
+                // Generuj token reCAPTCHA przed wysyłką
+                if (typeof grecaptcha !== 'undefined' && window.recaptchaSiteKey) {
                     grecaptcha.ready(function() {
-                        grecaptcha.execute('YOUR_SITE_KEY_HERE', {action: 'order_form'}).then(function(token) {
+                        grecaptcha.execute(window.recaptchaSiteKey, {action: 'order_form'}).then(function(token) {
                             // Dodaj token do formularza
                             document.getElementById('recaptcha_token_order').value = token;
 
