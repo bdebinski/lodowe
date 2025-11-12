@@ -49,34 +49,6 @@ function validate_phone($phone) {
     return strlen($digits) >= 9 && strlen($digits) <= 15;
 }
 
-function verify_recaptcha($token, $secret_key) {
-    $url = 'https://www.google.com/recaptcha/api/siteverify';
-    $data = array(
-        'secret' => $secret_key,
-        'response' => $token
-    );
-
-    $options = array(
-        'http' => array(
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data)
-        )
-    );
-
-    $context  = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-
-    if ($result === FALSE) {
-        return false;
-    }
-
-    $response = json_decode($result);
-
-    // Sprawdź czy weryfikacja powiodła się i score jest wystarczająco wysoki (>= 0.5)
-    return $response->success && $response->score >= 0.5;
-}
-
 // Prosta ochrona przed spamem
 session_start();
 $current_time = time();
@@ -94,17 +66,8 @@ $email   = sanitize_input($_POST['email']   ?? '');
 $phone   = sanitize_input($_POST['phone']   ?? '');
 $service = sanitize_input($_POST['service'] ?? '');
 $message = sanitize_input($_POST['message'] ?? '');
-$recaptcha_token = $_POST['recaptcha_token'] ?? '';
 
-// Weryfikacja reCAPTCHA v3
-if (empty($recaptcha_token)) {
-    sendJsonResponse(false, 'Weryfikacja reCAPTCHA nie powiodła się.', 400);
-}
-
-if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY)) {
-    error_log("reCAPTCHA verification failed for: $email");
-    sendJsonResponse(false, 'Wykryto podejrzaną aktywność. Spróbuj ponownie.', 403);
-}
+// reCAPTCHA verification removed - can be added later when keys are configured
 
 // Walidacja pól
 if (empty($name) || empty($email) || empty($phone) || empty($service) || empty($message)) {

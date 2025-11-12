@@ -20,9 +20,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY"></script>
-
     <link rel="stylesheet" href="../css/style-ice-blue.css">
     <link rel="stylesheet" href="../css/service-page.css">
     <link rel="stylesheet" href="../css/products-page.css">
@@ -791,9 +788,6 @@
                                 placeholder="Opcjonalnie: szczególne wymagania, pytania..."></textarea>
                         </div>
 
-                        <!-- reCAPTCHA v3 token (hidden) -->
-                        <input type="hidden" id="recaptcha_token_order" name="recaptcha_token">
-
                         <button type="submit" class="btn btn-primary btn-full">
                             <i class="fas fa-paper-plane"></i> Wyślij Zamówienie
                         </button>
@@ -847,22 +841,6 @@
     <script src="../js/script-ice-blue.js"></script>
     <script src="../js/products-page.js"></script>
 
-    <!-- reCAPTCHA v3 Script -->
-    <script>
-        // Obsługa formularza zamówień z reCAPTCHA v3
-        document.getElementById('orderForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            grecaptcha.ready(function() {
-                grecaptcha.execute('YOUR_RECAPTCHA_SITE_KEY', {action: 'order_form'}).then(function(token) {
-                    // Wstaw token do ukrytego pola
-                    document.getElementById('recaptcha_token_order').value = token;
-                    // Wyślij formularz
-                    document.getElementById('orderForm').submit();
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>
