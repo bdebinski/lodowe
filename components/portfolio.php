@@ -6,7 +6,8 @@ $folderMapping = [
     'bars' => ['folder' => 'bary', 'title' => 'Bar Lodowy', 'description' => 'Wesele'],
     'shows' => ['folder' => 'pokazy', 'title' => 'Pokaz Lodowy', 'description' => 'Event'],
     'workshops' => ['folder' => 'warsztaty', 'title' => 'Warsztaty Lodowe', 'description' => 'Integracja'],
-    'products' => ['folder' => 'products', 'title' => 'Produkt', 'description' => 'Oferta']
+    'products' => ['folder' => 'products', 'title' => 'Produkt', 'description' => 'Oferta'],
+    'wosp' => ['folder' => 'wosp', 'title' => 'WOŚP', 'description' => 'Wielka Orkiestra Świątecznej Pomocy']
 ];
 
 // Funkcja do pobrania wszystkich obrazków z folderu
@@ -72,6 +73,7 @@ foreach ($folderMapping as $category => $config) {
             <button class="filter-btn" data-filter="shows">Pokazy</button>
             <button class="filter-btn" data-filter="workshops">Warsztaty</button>
             <button class="filter-btn" data-filter="products">Produkty</button>
+            <button class="filter-btn" data-filter="wosp">WOŚP</button>
         </div>
         <div class="portfolio-wrapper" id="portfolioWrapper">
             <div class="portfolio-grid">
