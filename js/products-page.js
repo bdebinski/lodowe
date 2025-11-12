@@ -251,55 +251,70 @@
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
                 }
 
+                // Funkcja do wysyłania formularza
+                function submitOrderForm(recaptchaToken = '') {
+                    // Dodaj token do formularza jeśli istnieje
+                    if (recaptchaToken) {
+                        document.getElementById('recaptcha_token_order').value = recaptchaToken;
+                    }
+
+                    // Wyślij formularz przez AJAX
+                    const formData = new FormData(form);
+
+                    fetch('../order-products.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showNotification('Sukces!', data.message, 'success');
+                            // Wyczyść formularz po sukcesie
+                            form.reset();
+                            // Wyczyść produkty i dodaj jeden pusty wiersz
+                            const container = document.getElementById('products-container');
+                            container.innerHTML = '';
+                            productCounter = 0;
+                            addProductRow();
+                        } else {
+                            showNotification('Błąd', data.message, 'error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showNotification('Błąd', 'Nie udało się wysłać zamówienia. Spróbuj ponownie.', 'error');
+                    })
+                    .finally(() => {
+                        // Odblokuj przycisk
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij Zamówienie';
+                        }
+                    });
+                }
+
+                // Check if reCAPTCHA is properly configured
+                const hasValidRecaptcha = typeof grecaptcha !== 'undefined' &&
+                                         window.recaptchaSiteKey &&
+                                         window.recaptchaSiteKey !== 'YOUR_SITE_KEY_HERE';
+
                 // Generuj token reCAPTCHA przed wysyłką
-                if (typeof grecaptcha !== 'undefined' && window.recaptchaSiteKey) {
+                if (hasValidRecaptcha) {
+                    console.log('Attempting reCAPTCHA verification for order form...');
                     grecaptcha.ready(function() {
                         grecaptcha.execute(window.recaptchaSiteKey, {action: 'order_form'}).then(function(token) {
-                            // Dodaj token do formularza
-                            document.getElementById('recaptcha_token_order').value = token;
-
-                            // Teraz wyślij formularz przez AJAX
-                            const formData = new FormData(form);
-
-                            fetch('../order-products.php', {
-                                method: 'POST',
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.success) {
-                                    showNotification('Sukces!', data.message, 'success');
-                                    // Wyczyść formularz po sukcesie
-                                    form.reset();
-                                    // Wyczyść produkty i dodaj jeden pusty wiersz
-                                    const container = document.getElementById('products-container');
-                                    container.innerHTML = '';
-                                    productCounter = 0;
-                                    addProductRow();
-                                } else {
-                                    showNotification('Błąd', data.message, 'error');
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                                showNotification('Błąd', 'Nie udało się wysłać zamówienia. Spróbuj ponownie.', 'error');
-                            })
-                            .finally(() => {
-                                // Odblokuj przycisk
-                                if (submitButton) {
-                                    submitButton.disabled = false;
-                                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij Zamówienie';
-                                }
-                            });
+                            console.log('reCAPTCHA token received for order');
+                            submitOrderForm(token);
+                        }).catch(function(error) {
+                            console.error('reCAPTCHA error:', error);
+                            // Send without reCAPTCHA if verification fails
+                            submitOrderForm();
                         });
                     });
                 } else {
-                    // Jeśli reCAPTCHA nie jest załadowana, pokaż błąd
-                    showNotification('Błąd', 'reCAPTCHA nie została załadowana. Sprawdź konfigurację.', 'error');
-                    if (submitButton) {
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij Zamówienie';
-                    }
+                    // Jeśli reCAPTCHA nie jest załadowana lub nie skonfigurowana, wyślij bez niej
+                    console.log('reCAPTCHA not configured for order form, sending without verification');
+                    submitOrderForm();
                 }
             });
         }

@@ -263,10 +263,17 @@ function initContactForm() {
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
 
+            // Check if reCAPTCHA is properly configured
+            const hasValidRecaptcha = typeof grecaptcha !== 'undefined' &&
+                                     window.recaptchaSiteKey &&
+                                     window.recaptchaSiteKey !== 'YOUR_SITE_KEY_HERE';
+
             // Execute reCAPTCHA v3 and send form
-            if (typeof grecaptcha !== 'undefined') {
+            if (hasValidRecaptcha) {
+                console.log('Attempting reCAPTCHA verification...');
                 grecaptcha.ready(function() {
                     grecaptcha.execute(window.recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+                        console.log('reCAPTCHA token received');
                         // Add reCAPTCHA token to form
                         document.getElementById('recaptcha_token').value = token;
 
@@ -280,7 +287,8 @@ function initContactForm() {
                     });
                 });
             } else {
-                // If reCAPTCHA is not loaded, send without it (fallback)
+                // If reCAPTCHA is not loaded or not configured, send without it (fallback)
+                console.log('reCAPTCHA not configured, sending without verification');
                 sendFormData(form, submitBtn, originalBtnText);
             }
         });
