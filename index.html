@@ -29,8 +29,8 @@
     <!-- GLightbox -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
-    <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY"></script>
+    <!-- Google reCAPTCHA v3 - zmień YOUR_SITE_KEY_HERE na swój klucz z config.php -->
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY_HERE" async defer></script>
 
     <link rel="stylesheet" href="css/style-ice-blue.css">
 </head>
@@ -674,22 +674,6 @@
         });
     </script>
 
-    <!-- reCAPTCHA v3 Script -->
-    <script>
-        // Obsługa formularza kontaktowego z reCAPTCHA v3
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            grecaptcha.ready(function() {
-                grecaptcha.execute('YOUR_RECAPTCHA_SITE_KEY', {action: 'contact_form'}).then(function(token) {
-                    // Wstaw token do ukrytego pola
-                    document.getElementById('recaptcha_token').value = token;
-                    // Wyślij formularz
-                    document.getElementById('contactForm').submit();
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>
