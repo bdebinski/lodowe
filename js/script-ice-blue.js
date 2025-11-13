@@ -401,9 +401,14 @@ function initContactForm() {
                 return;
             }
 
+            // Użyj odpowiedniego API (enterprise lub standardowe)
+            const recaptchaAPI = window.recaptchaIsEnterprise && grecaptcha.enterprise
+                ? grecaptcha.enterprise
+                : grecaptcha;
+
             // Generuj token reCAPTCHA przed wysyłką
-            grecaptcha.ready(function() {
-                grecaptcha.execute(window.recaptchaSiteKey, {action: 'contact_form'}).then(function(token) {
+            recaptchaAPI.ready(function() {
+                recaptchaAPI.execute(window.recaptchaSiteKey, {action: 'contact_form'}).then(function(token) {
                     // Dodaj token do formularza
                     document.getElementById('recaptcha_token').value = token;
 

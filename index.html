@@ -29,19 +29,27 @@
     <!-- GLightbox -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
-    <!-- Configuration -->
+    <!-- Configuration (must load first) -->
     <script src="js/config.js"></script>
 
-    <!-- Google reCAPTCHA v3 -->
+    <!-- Google reCAPTCHA Enterprise - Loaded dynamically after config -->
     <script>
-        // Load reCAPTCHA dynamically after config is loaded
-        (function() {
-            const script = document.createElement('script');
-            script.src = `https://www.google.com/recaptcha/api.js?render=${window.recaptchaSiteKey}`;
-            script.async = true;
-            script.defer = true;
-            document.head.appendChild(script);
-        })();
+        // Wait for config to be loaded, then load reCAPTCHA
+        window.addEventListener('DOMContentLoaded', function() {
+            if (window.recaptchaSiteKey && window.recaptchaSiteKey !== 'YOUR_SITE_KEY_HERE') {
+                const script = document.createElement('script');
+                const apiUrl = window.recaptchaIsEnterprise
+                    ? 'https://www.google.com/recaptcha/enterprise.js'
+                    : 'https://www.google.com/recaptcha/api.js';
+                script.src = `${apiUrl}?render=${window.recaptchaSiteKey}`;
+                script.async = true;
+                script.defer = true;
+                document.head.appendChild(script);
+                console.log('✅ reCAPTCHA script loaded with key:', window.recaptchaSiteKey.substring(0, 20) + '...');
+            } else {
+                console.error('❌ reCAPTCHA site key not configured in js/config.js');
+            }
+        });
     </script>
 
     <link rel="stylesheet" href="css/style-ice-blue.css">
