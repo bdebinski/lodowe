@@ -25,6 +25,9 @@ define('ENVIRONMENT', 'production');
 // Wyświetlanie błędów (dla development ustaw true)
 define('DISPLAY_ERRORS', ENVIRONMENT === 'development');
 
+// Dozwolone hosty dla reCAPTCHA (whitelist domen)
+define('RECAPTCHA_ALLOWED_HOSTS', ['lodowe.com.pl', 'www.lodowe.com.pl', 'localhost']);
+
 return [
     'recaptcha' => [
         'secret_key' => RECAPTCHA_SECRET_KEY,

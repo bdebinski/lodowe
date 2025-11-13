@@ -66,7 +66,9 @@ function verify_recaptcha($token, $secret_key, $expected_action = 'order_form') 
         'http' => array(
             'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
             'method'  => 'POST',
-            'content' => http_build_query($data)
+            'content' => http_build_query($data),
+            'timeout' => 10,  // Timeout 10 sekund dla zapytania do Google API
+            'ignore_errors' => true  // Pozwala na odczyt błędów HTTP
         )
     );
 
@@ -79,6 +81,12 @@ function verify_recaptcha($token, $secret_key, $expected_action = 'order_form') 
     }
 
     $response = json_decode($result);
+
+    // Sprawdź czy JSON został poprawnie zdekodowany
+    if ($response === null) {
+        error_log("reCAPTCHA API returned invalid JSON: " . $result);
+        return false;
+    }
 
     // Pełna weryfikacja zgodnie z wymogami Google reCAPTCHA v3:
     // 1. Sprawdź czy weryfikacja powiodła się
@@ -101,7 +109,7 @@ function verify_recaptcha($token, $secret_key, $expected_action = 'order_form') 
 
     // 4. Zweryfikuj hostname (opcjonalnie)
     if (isset($response->hostname)) {
-        $allowed_hostnames = ['lodowe.com.pl', 'www.lodowe.com.pl', 'localhost'];
+        $allowed_hostnames = defined('RECAPTCHA_ALLOWED_HOSTS') ? RECAPTCHA_ALLOWED_HOSTS : ['lodowe.com.pl', 'www.lodowe.com.pl', 'localhost'];
         if (!in_array($response->hostname, $allowed_hostnames)) {
             error_log("reCAPTCHA hostname not allowed: " . $response->hostname);
             return false;
