@@ -168,9 +168,11 @@
     // Handle order form submission
     function initOrderForm() {
         const form = document.getElementById('orderForm');
+        console.log('[DEBUG] initOrderForm - form found:', !!form);
 
         if (form) {
             form.addEventListener('submit', function(e) {
+                console.log('[DEBUG] Form submitted!');
                 e.preventDefault();
 
                 // Walidacja
@@ -244,25 +246,31 @@
                 }
 
                 const submitButton = form.querySelector('button[type="submit"]');
+                console.log('[DEBUG] Submit button found:', !!submitButton);
 
                 // Zablokuj przycisk podczas wysyłania
                 if (submitButton) {
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
+                    console.log('[DEBUG] Button disabled and spinner shown');
                 }
 
                 // Safety timeout - odblokuj przycisk po 30 sekundach na wypadek problemów
                 const safetyTimeout = setTimeout(() => {
-                    console.warn('Safety timeout triggered - unlocking submit button');
+                    console.warn('[DEBUG] Safety timeout triggered - unlocking submit button');
                     if (submitButton) {
                         submitButton.disabled = false;
                         submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij Zamówienie';
                     }
                 }, 30000);
 
+                console.log('[DEBUG] Checking reCAPTCHA config...');
+                console.log('[DEBUG] window.recaptchaSiteKey:', window.recaptchaSiteKey);
+                console.log('[DEBUG] typeof grecaptcha:', typeof grecaptcha);
+
                 // Sprawdź konfigurację reCAPTCHA
                 if (!window.recaptchaSiteKey || window.recaptchaSiteKey === 'YOUR_SITE_KEY_HERE') {
-                    console.error('reCAPTCHA site key is not configured properly:', window.recaptchaSiteKey);
+                    console.error('[DEBUG] reCAPTCHA site key is not configured properly:', window.recaptchaSiteKey);
                     showNotification('Błąd konfiguracji', 'Klucz reCAPTCHA nie został skonfigurowany. Skontaktuj się z administratorem.', 'error');
                     clearTimeout(safetyTimeout);
                     if (submitButton) {
@@ -285,21 +293,31 @@
                 }
 
                 // Generuj token reCAPTCHA przed wysyłką
+                console.log('[DEBUG] Calling grecaptcha.ready()...');
                 grecaptcha.ready(function() {
+                    console.log('[DEBUG] grecaptcha.ready() callback executed!');
+                    console.log('[DEBUG] Calling grecaptcha.execute()...');
                     grecaptcha.execute(window.recaptchaSiteKey, {action: 'order_form'}).then(function(token) {
+                        console.log('[DEBUG] grecaptcha.execute() success! Token:', token.substring(0, 20) + '...');
                         // Dodaj token do formularza
                         document.getElementById('recaptcha_token_order').value = token;
 
                         // Teraz wyślij formularz przez AJAX
+                        console.log('[DEBUG] Sending form via AJAX...');
                         const formData = new FormData(form);
 
                         fetch('../order-products.php', {
                             method: 'POST',
                             body: formData
                         })
-                        .then(response => response.json())
+                        .then(response => {
+                            console.log('[DEBUG] Response received. Status:', response.status);
+                            return response.json();
+                        })
                         .then(data => {
+                            console.log('[DEBUG] Response data:', data);
                             if (data.success) {
+                                console.log('[DEBUG] Success!');
                                 showNotification('Sukces!', data.message, 'success');
                                 // Wyczyść formularz po sukcesie
                                 form.reset();
@@ -309,23 +327,26 @@
                                 productCounter = 0;
                                 addProductRow();
                             } else {
+                                console.log('[DEBUG] Error from server:', data.message);
                                 showNotification('Błąd', data.message, 'error');
                             }
                         })
                         .catch(error => {
-                            console.error('Error:', error);
+                            console.error('[DEBUG] Fetch error:', error);
                             showNotification('Błąd', 'Nie udało się wysłać zamówienia. Spróbuj ponownie.', 'error');
                         })
                         .finally(() => {
+                            console.log('[DEBUG] Finally block - re-enabling button');
                             // Wyczyść safety timeout i odblokuj przycisk
                             clearTimeout(safetyTimeout);
                             if (submitButton) {
                                 submitButton.disabled = false;
                                 submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij Zamówienie';
+                                console.log('[DEBUG] Button re-enabled');
                             }
                         });
                     }).catch(function(error) {
-                        console.error('reCAPTCHA execute error:', error);
+                        console.error('[DEBUG] reCAPTCHA execute error:', error);
                         showNotification('Błąd', 'Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.', 'error');
                         clearTimeout(safetyTimeout);
                         if (submitButton) {
