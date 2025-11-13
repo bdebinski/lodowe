@@ -368,10 +368,20 @@ function initContactForm() {
                 submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
             }
 
+            // Safety timeout - odblokuj przycisk po 30 sekundach na wypadek problemów
+            const safetyTimeout = setTimeout(() => {
+                console.warn('Safety timeout triggered - unlocking submit button');
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
+                }
+            }, 30000);
+
             // Sprawdź konfigurację reCAPTCHA
             if (!window.recaptchaSiteKey || window.recaptchaSiteKey === 'YOUR_SITE_KEY_HERE') {
                 console.error('reCAPTCHA site key is not configured properly:', window.recaptchaSiteKey);
                 showNotification('Błąd konfiguracji', 'Klucz reCAPTCHA nie został skonfigurowany. Skontaktuj się z administratorem.', 'error');
+                clearTimeout(safetyTimeout);
                 if (submitButton) {
                     submitButton.disabled = false;
                     submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
@@ -383,6 +393,7 @@ function initContactForm() {
             if (typeof grecaptcha === 'undefined') {
                 console.error('grecaptcha is not loaded. Check if the reCAPTCHA script is blocked or failed to load.');
                 showNotification('Błąd ładowania', 'Nie można załadować reCAPTCHA. Sprawdź połączenie internetowe lub wyłącz adblocker.', 'error');
+                clearTimeout(safetyTimeout);
                 if (submitButton) {
                     submitButton.disabled = false;
                     submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
@@ -417,7 +428,8 @@ function initContactForm() {
                         showNotification('Błąd', 'Nie udało się wysłać wiadomości. Spróbuj ponownie.', 'error');
                     })
                     .finally(() => {
-                        // Odblokuj przycisk
+                        // Wyczyść safety timeout i odblokuj przycisk
+                        clearTimeout(safetyTimeout);
                         if (submitButton) {
                             submitButton.disabled = false;
                             submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
@@ -426,6 +438,7 @@ function initContactForm() {
                 }).catch(function(error) {
                     console.error('reCAPTCHA execute error:', error);
                     showNotification('Błąd', 'Weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie.', 'error');
+                    clearTimeout(safetyTimeout);
                     if (submitButton) {
                         submitButton.disabled = false;
                         submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij zapytanie';
