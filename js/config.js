@@ -1,6 +1,7 @@
 // Konfiguracja reCAPTCHA
-// Klucz publiczny (site key) dla reCAPTCHA v3
+// Klucz publiczny (site key) dla reCAPTCHA Enterprise
 // Uzyskaj go na: https://www.google.com/recaptcha/admin
-window.recaptchaSiteKey = 'YOUR_SITE_KEY_HERE';
+window.recaptchaSiteKey = '6LeFPwosAAAAAOdAxpjgN4jq4ACjIzKqY5kvWFDB';
 
-// Jeśli masz już klucz, zamień 'YOUR_SITE_KEY_HERE' na swój rzeczywisty klucz
+// Flaga określająca czy używamy Enterprise API
+window.recaptchaIsEnterprise = true;
