@@ -455,11 +455,11 @@ if (file_exists(__DIR__ . '/../config.php')) {
                             <span class="feature-tag"><i class="fas fa-check"></i> Do rzeźbienia</span>
                         </div>
                         <div class="product-pricing">
-                            <div class="price-label">Wycena:</div>
-                            <div class="price-value">Indywidualna</div>
+                            <div class="price-label">Cena brutto:</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> Od 1000-1500zł</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Blok lodowy">
-                            <i class="fas fa-phone"></i> Zapytaj o Wycenę
+                            <i class="fas fa-shopping-cart"></i> Zamów Teraz
                         </button>
                     </div>
                 </div>
@@ -588,29 +588,27 @@ if (file_exists(__DIR__ . '/../config.php')) {
         </div>
     </section>
 
-    <!-- Packaging & Logistics -->
+    <!-- Delivery Info -->
     <section class="logistics-section">
         <div class="container">
             <div class="section-header-center">
-                <h2>Pakowanie i Minimum Logistyczne</h2>
-                <p>Szczegółowe informacje o naszych produktach</p>
+                <h2>Dostawa</h2>
+                <p>Informacje o dostawie naszych produktów</p>
             </div>
 
             <div class="logistics-grid">
                 <div class="logistics-card">
                     <div class="logistics-icon">
-                        <i class="fas fa-boxes"></i>
+                        <i class="fas fa-truck"></i>
                     </div>
-                    <h3>Minimum Logistyczne</h3>
+                    <h3>Warunki Dostawy</h3>
                     <ul class="logistics-list">
-                        <li><strong>Lód w kostkach:</strong> 5 kg</li>
-                        <li><strong>Lód kruszony:</strong> 5 kg</li>
-                        <li><strong>Suchy lód:</strong> 5 kg</li>
-                        <li><strong>Kieliszki/szklanki lodowe:</strong> 20 szt.</li>
-                        <li><strong>Duża kostka XXL:</strong> 20 szt.</li>
-                        <li><strong>Diamenty lodowe:</strong> 10 szt.</li>
-                        <li><strong>Spiry:</strong> 10 szt.</li>
-                        <li><strong>Japońskie kule:</strong> 10 szt.</li>
+                        <li><i class="fas fa-check"></i> Łódź i okolice</li>
+                        <li><i class="fas fa-check"></i> Transport chłodniczy</li>
+                        <li><i class="fas fa-check"></i> Dostawa w 24h (Łódź)</li>
+                        <li><i class="fas fa-check"></i> Bezpieczne pakowanie</li>
+                        <li><i class="fas fa-check"></i> Gwarancja jakości</li>
+                        <li><i class="fas fa-gift"></i> <strong>Darmowa dostawa przy zamówieniu za min. 250zł</strong></li>
                     </ul>
                     <p style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #e0f2fe; font-size: 0.9rem; color: #0891B2;">
                         <strong>Uwaga:</strong> Wszystkie ceny są cenami brutto.<br>
@@ -638,24 +636,20 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         <li><strong>Diamenty:</strong> 10 szt.</li>
                         <li><strong>Spiry:</strong> 10 szt.</li>
                     </ul>
-                    <p style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #e0f2fe; font-size: 0.9rem; color: #0891B2;">
-                        <strong>Uwaga:</strong> Wszystkie ceny są cenami brutto.<br>
-                        <small>Wyjątek: boxy termiczne, zamrażarki na lód i przewóz mroźniczo-chłodniczy.</small>
-                    </p>
                 </div>
 
                 <div class="logistics-card">
                     <div class="logistics-icon">
-                        <i class="fas fa-truck"></i>
+                        <i class="fas fa-info-circle"></i>
                     </div>
-                    <h3>Dostawa</h3>
+                    <h3>Dodatkowe Informacje</h3>
                     <ul class="logistics-list">
-                        <li><i class="fas fa-check"></i> Łódź i okolice</li>
-                        <li><i class="fas fa-check"></i> Transport chłodniczy</li>
-                        <li><i class="fas fa-check"></i> Dostawa w 24h (Łódź)</li>
-                        <li><i class="fas fa-check"></i> Bezpieczne pakowanie</li>
-                        <li><i class="fas fa-check"></i> Gwarancja jakości</li>
-                        <li><i class="fas fa-info-circle"></i> Koszt dostawy: ustalany indywidualnie</li>
+                        <li><i class="fas fa-certificate"></i> Certyfikowana woda</li>
+                        <li><i class="fas fa-filter"></i> Wielokrotna filtracja</li>
+                        <li><i class="fas fa-shield-alt"></i> Standardy HACCP</li>
+                        <li><i class="fas fa-snowflake"></i> Kontrolowana temperatura</li>
+                        <li><i class="fas fa-handshake"></i> Obsługa B2B i B2C</li>
+                        <li><i class="fas fa-phone"></i> Wsparcie telefoniczne</li>
                     </ul>
                 </div>
             </div>
