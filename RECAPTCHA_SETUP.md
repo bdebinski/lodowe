@@ -4,7 +4,7 @@
 
 Google reCAPTCHA v3 została zintegrowana z:
 - ✉️ **Formularz kontaktowy** (index.html)
-- 🛒 **Formularz zamówień** (uslugi/produkty-z-lodu.html)
+- 🛒 **Formularz zamówień** (uslugi/produkty-z-lodu.php)
 
 ## 📝 Krok 1: Rejestracja w Google reCAPTCHA
 
@@ -31,8 +31,20 @@ Google reCAPTCHA v3 została zintegrowana z:
 
 ## 🛠️ Krok 2: Konfiguracja kluczy na stronie
 
-### A) Frontend (pliki HTML)
+### A) Frontend (pliki HTML i PHP)
 
+Możesz skonfigurować Site Key na dwa sposoby:
+
+**Opcja 1: Przez plik config.php (zalecane)**
+Utwórz plik `config.php` w głównym katalogu projektu:
+```php
+<?php
+define('RECAPTCHA_SITE_KEY', '6LcXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+define('RECAPTCHA_SECRET_KEY', '6LcYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+?>
+```
+
+**Opcja 2: Bezpośrednio w plikach**
 Otwórz i zaktualizuj **3 miejsca** gdzie jest `YOUR_RECAPTCHA_SITE_KEY`:
 
 #### 1️⃣ **index.html** (linia 33)
@@ -56,51 +68,45 @@ Zamień na:
 grecaptcha.execute('6LcXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', {action: 'contact_form'})
 ```
 
-#### 3️⃣ **uslugi/produkty-z-lodu.html** (linia 24)
-```html
-<!-- Google reCAPTCHA v3 -->
-<script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY"></script>
+#### 3️⃣ **uslugi/produkty-z-lodu.php** (linia 32)
+Plik .php dynamicznie wczytuje klucz z zmiennej PHP:
+```php
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo htmlspecialchars($recaptcha_site_key); ?>" async defer></script>
 ```
 
-Zamień na:
-```html
-<script src="https://www.google.com/recaptcha/api.js?render=6LcXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"></script>
+**Uwaga:** Klucz jest wczytywany automatycznie z config.php (jeśli istnieje) lub można go ustawić bezpośrednio w linii 3 pliku produkty-z-lodu.php:
+```php
+$recaptcha_site_key = 'YOUR_SITE_KEY_HERE';
 ```
 
-#### 4️⃣ **uslugi/produkty-z-lodu.html** (linia 770)
+#### 4️⃣ **js/products-page.js** (linia 289)
+JavaScript używa dynamicznie wczytanego klucza z zmiennej `window.recaptchaSiteKey`:
 ```javascript
-grecaptcha.execute('YOUR_RECAPTCHA_SITE_KEY', {action: 'order_form'})
+grecaptcha.execute(window.recaptchaSiteKey, {action: 'order_form'})
 ```
 
-Zamień na:
-```javascript
-grecaptcha.execute('6LcXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', {action: 'order_form'})
-```
+**Uwaga:** Zmienna `window.recaptchaSiteKey` jest ustawiana automatycznie przez plik produkty-z-lodu.php. Nie wymaga ręcznej zmiany w pliku JS.
 
 ---
 
 ### B) Backend (pliki PHP)
 
-Zaktualizuj **2 pliki PHP** gdzie jest `YOUR_RECAPTCHA_SECRET_KEY`:
+**WAŻNE:** Pliki backend (send-message.php i order-products.php) WYMAGAJĄ pliku config.php!
 
-#### 5️⃣ **send-message.php** (linia 79)
+#### 5️⃣ **config.php** (wymagane)
+Utwórz plik `config.php` w głównym katalogu projektu i dodaj klucze:
 ```php
-$recaptcha_secret = 'YOUR_RECAPTCHA_SECRET_KEY';
+<?php
+define('RECAPTCHA_SITE_KEY', '6LcXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+define('RECAPTCHA_SECRET_KEY', '6LcYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+?>
 ```
 
-Zamień `YOUR_RECAPTCHA_SECRET_KEY` na **Secret Key**:
+Pliki **send-message.php** (linia 10) i **order-products.php** (linia 10) automatycznie wczytują te klucze z config.php:
 ```php
-$recaptcha_secret = '6LcYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY';
-```
-
-#### 6️⃣ **order-products.php** (linia 92)
-```php
-$recaptcha_secret = 'YOUR_RECAPTCHA_SECRET_KEY';
-```
-
-Zamień na:
-```php
-$recaptcha_secret = '6LcYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY';
+require_once __DIR__ . '/config.php';
+// ...
+verify_recaptcha($token, RECAPTCHA_SECRET_KEY, 'contact_form');
 ```
 
 ---
@@ -216,8 +222,9 @@ W razie problemów skontaktuj się z administratorem strony:
 
 - [ ] Zarejestrowano domenę w Google reCAPTCHA Admin
 - [ ] Skopiowano Site Key i Secret Key
-- [ ] Zaktualizowano 4 miejsca z Site Key (2x index.html, 2x produkty-z-lodu.html)
-- [ ] Zaktualizowano 2 miejsca z Secret Key (send-message.php, order-products.php)
+- [ ] Utworzono plik config.php z kluczami (zalecane) LUB zaktualizowano klucze bezpośrednio w plikach
+- [ ] Zaktualizowano Site Key w index.html (2 miejsca - linie 33 i 670)
+- [ ] Zaktualizowano Site Key w produkty-z-lodu.php (linia 3) lub config.php
 - [ ] Przetestowano formularz kontaktowy
 - [ ] Przetestowano formularz zamówień
 - [ ] Sprawdzono statystyki w Google Admin
