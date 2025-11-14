@@ -254,7 +254,6 @@ if (file_exists(__DIR__ . '/../config.php')) {
                     <div class="product-badge new">NOWOŚĆ!</div>
                     <div class="product-image">
                         <div class="image-placeholder">
-                            "D:\ze starego kompa\lodowe\wp-content\uploads\new\other\lodowe3_33.jpg"
                             <img src="../static/images/other/lodowe3_33.jpg" alt="" loading="lazy">
                         </div>
                     </div>
@@ -319,7 +318,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/other/ice-breaker-10.webp" alt="" loading="lazy">
+                            <img src="../static/images/other/ice-breaker-10.jpg" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -377,7 +376,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/other/kule-na-paletach.webp" alt="" loading="lazy">
+                            <img src="../static/images/other/kule-na-paletach.jpg" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
