@@ -1,0 +1,491 @@
+/* WOŚP Timeline Styles */
+
+/* Hero Section */
+.wosp-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FF4444 0%, #CC0000 100%);
+    overflow: hidden;
+    padding: 120px 0 80px;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.wosp-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.wosp-hero .hero-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wosp-logo-heart {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    10%, 30% { transform: scale(1.1); }
+    20%, 40% { transform: scale(1); }
+}
+
+.wosp-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.wosp-hero .hero-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    color: #FFFFFF;
+    opacity: 1;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+.wosp-hero .hero-stats-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.wosp-hero .stat-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.wosp-hero .stat-badge:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+}
+
+.wosp-hero .stat-badge i {
+    font-size: 1.5rem;
+}
+
+.wosp-hero .stat-badge strong {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Timeline Section */
+.timeline-section {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 20px 0;
+}
+
+/* Central Line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #FF4444, #CC0000);
+    border-radius: 2px;
+}
+
+/* Timeline Item */
+.timeline-item {
+    position: relative;
+    margin-bottom: 80px;
+    width: 50%;
+    padding-right: 60px;
+    opacity: 0;
+    animation: fadeInLeft 0.8s ease forwards;
+}
+
+.timeline-item:nth-child(even) {
+    animation: fadeInRight 0.8s ease forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Right Side Items */
+.timeline-item-right {
+    margin-left: 50%;
+    padding-left: 60px;
+    padding-right: 0;
+}
+
+/* Timeline Marker */
+.timeline-marker {
+    position: absolute;
+    top: 0;
+    right: -24px;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #FF4444, #CC0000);
+    border: 4px solid white;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
+    z-index: 10;
+}
+
+.timeline-item-right .timeline-marker {
+    left: -24px;
+    right: auto;
+}
+
+/* Timeline Content */
+.timeline-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+}
+
+.timeline-year {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF4444, #CC0000);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 1rem;
+}
+
+.timeline-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 2rem;
+}
+
+/* Timeline Gallery */
+.timeline-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.timeline-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timeline-image:hover {
+    transform: scale(1.05);
+}
+
+.timeline-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.timeline-image:hover img {
+    filter: brightness(1.1);
+}
+
+/* View More Button */
+.view-more-btn {
+    background: linear-gradient(135deg, #FF4444, #CC0000);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.view-more-btn:hover {
+    background: linear-gradient(135deg, #CC0000, #990000);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 68, 68, 0.3);
+}
+
+/* Thank You Box */
+.thank-you-box {
+    background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+    border: 2px solid #FFD54F;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
+.thank-you-box i {
+    font-size: 2rem;
+    color: #F57C00;
+    margin-top: 0.25rem;
+}
+
+.thank-you-box h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #E65100;
+    margin-bottom: 0.5rem;
+}
+
+.thank-you-box p {
+    font-size: 1rem;
+    color: #5D4037;
+    margin-bottom: 1rem;
+}
+
+.view-certificate-btn {
+    background: linear-gradient(135deg, #F57C00, #E65100);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.view-certificate-btn:hover {
+    background: linear-gradient(135deg, #E65100, #D84315);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 124, 0, 0.3);
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+    color: white;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wosp-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .wosp-hero .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .wosp-logo-heart {
+        font-size: 3rem;
+    }
+
+    .wosp-hero .hero-stats-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .wosp-hero .stat-badge {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    /* Mobile Timeline */
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item,
+    .timeline-item-right {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 60px;
+        padding-right: 0;
+    }
+
+    .timeline-marker,
+    .timeline-item-right .timeline-marker {
+        left: -4px;
+        right: auto;
+        width: 40px;
+        height: 40px;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+    }
+
+    .timeline-title {
+        font-size: 1.5rem;
+    }
+
+    .timeline-description {
+        font-size: 1rem;
+    }
+
+    .timeline-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .cta-content p {
+        font-size: 1.1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .thank-you-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .thank-you-box i {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .wosp-hero {
+        min-height: 60vh;
+        padding: 100px 20px 60px;
+    }
+
+    .wosp-hero h1 {
+        font-size: 2rem;
+    }
+
+    .timeline-year {
+        font-size: 0.9rem;
+        padding: 0.4rem 1.2rem;
+    }
+
+    .timeline-title {
+        font-size: 1.25rem;
+    }
+
+    .view-more-btn,
+    .view-certificate-btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}

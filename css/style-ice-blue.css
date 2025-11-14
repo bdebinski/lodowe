@@ -197,8 +197,7 @@ button {
     transition: var(--transition-base);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.nav-link:hover::after {
     width: 100%;
 }
 
@@ -1392,7 +1391,7 @@ section {
     align-items: center;
     justify-content: center;
     margin-bottom: var(--spacing-lg);
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     border-radius: var(--radius-md);
     padding: var(--spacing-md);
 }
@@ -1833,5 +1832,48 @@ span[class*="gpowered"] {
 
     .stat-item h3 {
         font-size: 2rem;
+    }
+}
+
+/* ===================================
+   WOŚP Navigation Link Special Styling
+   =================================== */
+
+.nav-link-wosp {
+    background: linear-gradient(135deg, #FF4444, #CC0000);
+    color: white !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Usuń podkreślenie z linku WOŚP */
+.nav-link-wosp::after {
+    display: none;
+}
+
+.nav-link-wosp:hover {
+    background: linear-gradient(135deg, #CC0000, #990000);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+}
+
+.nav-link-wosp i {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    10%, 30% { transform: scale(1.15); }
+    20%, 40% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .nav-link-wosp {
+        justify-content: center;
+        margin: 0.5rem 0;
     }
 }
