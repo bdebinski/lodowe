@@ -112,7 +112,7 @@
                             <a href="static/images/wosp/wosp-31-2023-14.webp" class="glightbox" data-gallery="wosp-2023" style="display:none"></a>
                             <a href="static/images/wosp/wosp-31-2023-15.webp" class="glightbox" data-gallery="wosp-2023" style="display:none"></a>
                         </div>
-                        <button class="view-more-btn" onclick="document.querySelector('[data-gallery=\"wosp-2023\"]').click()">
+                        <button class="view-more-btn" data-gallery-trigger="wosp-2023">
                             <i class="fas fa-images"></i> Zobacz wszystkie zdjęcia (15)
                         </button>
                     </div>
@@ -147,7 +147,7 @@
                             <a href="static/images/wosp/wosp-30-2022-15.webp" class="glightbox" data-gallery="wosp-2022" style="display:none"></a>
                             <a href="static/images/wosp/wosp-30-2022-16.webp" class="glightbox" data-gallery="wosp-2022" style="display:none"></a>
                         </div>
-                        <button class="view-more-btn" onclick="document.querySelector('[data-gallery=\"wosp-2022\"]').click()">
+                        <button class="view-more-btn" data-gallery-trigger="wosp-2022">
                             <i class="fas fa-images"></i> Zobacz wszystkie zdjęcia (8)
                         </button>
                     </div>
@@ -179,7 +179,7 @@
                             <!-- Więcej zdjęć ukrytych w galerii -->
                             <a href="static/images/wosp/wosp-28-2020-5.webp" class="glightbox" data-gallery="wosp-2020" style="display:none"></a>
                         </div>
-                        <button class="view-more-btn" onclick="document.querySelector('[data-gallery=\"wosp-2020\"]').click()">
+                        <button class="view-more-btn" data-gallery-trigger="wosp-2020">
                             <i class="fas fa-images"></i> Zobacz wszystkie zdjęcia (5)
                         </button>
                     </div>
@@ -215,7 +215,7 @@
                             <a href="static/images/wosp/wosp-27-2019-8.webp" class="glightbox" data-gallery="wosp-2019" style="display:none"></a>
                             <a href="static/images/wosp/wosp-27-2019-9.webp" class="glightbox" data-gallery="wosp-2019" style="display:none"></a>
                         </div>
-                        <button class="view-more-btn" onclick="document.querySelector('[data-gallery=\"wosp-2019\"]').click()">
+                        <button class="view-more-btn" data-gallery-trigger="wosp-2019">
                             <i class="fas fa-images"></i> Zobacz wszystkie zdjęcia (9)
                         </button>
                     </div>
@@ -247,7 +247,7 @@
                             <!-- Więcej zdjęć ukrytych w galerii -->
                             <a href="static/images/wosp/wosp-26-2018-5.webp" class="glightbox" data-gallery="wosp-2018" style="display:none"></a>
                         </div>
-                        <button class="view-more-btn" onclick="document.querySelector('[data-gallery=\"wosp-2018\"]').click()">
+                        <button class="view-more-btn" data-gallery-trigger="wosp-2018">
                             <i class="fas fa-images"></i> Zobacz wszystkie zdjęcia (5)
                         </button>
 
@@ -312,6 +312,23 @@
             loop: true,
             openEffect: 'zoom',
             closeEffect: 'fade'
+        });
+
+        // Obsługa przycisków "Zobacz wszystkie zdjęcia"
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryButtons = document.querySelectorAll('[data-gallery-trigger]');
+
+            galleryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const galleryName = this.getAttribute('data-gallery-trigger');
+                    // Znajdź pierwszy widoczny obrazek z timeline-image dla danej galerii
+                    const firstImage = document.querySelector(`.timeline-image[data-gallery="${galleryName}"]`);
+
+                    if (firstImage) {
+                        firstImage.click();
+                    }
+                });
+            });
         });
     </script>
 

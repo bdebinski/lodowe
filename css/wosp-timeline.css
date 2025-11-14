@@ -59,10 +59,13 @@
     font-size: 1.25rem;
     line-height: 1.8;
     margin-bottom: 2.5rem;
-    opacity: 0.95;
+    color: #FFFFFF;
+    opacity: 1;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
 }
 
 .wosp-hero .hero-stats-row {
