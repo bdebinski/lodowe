@@ -105,16 +105,33 @@ function fixPortfolioPaths() {
     const portfolioItems = document.querySelectorAll('.portfolio-item');
 
     portfolioItems.forEach(item => {
+        // Fix href for lightbox links
         const link = item.getAttribute('href');
-        if (link && !link.startsWith('http') && !link.startsWith(basePath)) {
+        if (link && !link.startsWith('http') && !link.startsWith(basePath) && !link.startsWith('/')) {
             item.setAttribute('href', basePath + link);
         }
 
+        // Fix img src
         const img = item.querySelector('img');
         if (img) {
             const src = img.getAttribute('src');
-            if (src && !src.startsWith('http') && !src.startsWith(basePath)) {
+            if (src && !src.startsWith('http') && !src.startsWith('data:') && !src.startsWith(basePath) && !src.startsWith('/')) {
                 img.setAttribute('src', basePath + src);
+            }
+
+            // Fix data-src for lazy loading
+            const dataSrc = img.getAttribute('data-src');
+            if (dataSrc && !dataSrc.startsWith('http') && !dataSrc.startsWith('data:') && !dataSrc.startsWith(basePath) && !dataSrc.startsWith('/')) {
+                img.setAttribute('data-src', basePath + dataSrc);
+            }
+        }
+
+        // Fix placeholder background
+        const placeholderBg = item.querySelector('.placeholder-bg');
+        if (placeholderBg) {
+            const bgSrc = placeholderBg.getAttribute('data-bg-src');
+            if (bgSrc && !bgSrc.startsWith('http') && !bgSrc.startsWith('data:') && !bgSrc.startsWith(basePath) && !bgSrc.startsWith('/')) {
+                placeholderBg.setAttribute('data-bg-src', basePath + bgSrc);
             }
         }
     });
