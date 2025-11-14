@@ -197,8 +197,7 @@ button {
     transition: var(--transition-base);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.nav-link:hover::after {
     width: 100%;
 }
 
@@ -1849,6 +1848,11 @@ span[class*="gpowered"] {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+/* Usuń podkreślenie z linku WOŚP */
+.nav-link-wosp::after {
+    display: none;
 }
 
 .nav-link-wosp:hover {
