@@ -1835,3 +1835,41 @@ span[class*="gpowered"] {
         font-size: 2rem;
     }
 }
+
+/* ===================================
+   WOŚP Navigation Link Special Styling
+   =================================== */
+
+.nav-link-wosp {
+    background: linear-gradient(135deg, #FF4444, #CC0000);
+    color: white !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link-wosp:hover {
+    background: linear-gradient(135deg, #CC0000, #990000);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+}
+
+.nav-link-wosp i {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    10%, 30% { transform: scale(1.15); }
+    20%, 40% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .nav-link-wosp {
+        justify-content: center;
+        margin: 0.5rem 0;
+    }
+}
