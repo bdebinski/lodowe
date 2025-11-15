@@ -1,0 +1,13 @@
+# Robots.txt dla Lodowe.com.pl
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lodowe.com.pl/sitemap.xml
+
+# Blokada prywatnych plików
+Disallow: /js/config.js
+Disallow: /send-message.php
+
+# Crawl-delay (opcjonalnie)
+Crawl-delay: 1

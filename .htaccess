@@ -1,0 +1,239 @@
+# ========================================
+# .htaccess dla Lodowe.com.pl
+# Bezpieczeństwo + SEO + Wydajność
+# ========================================
+
+# ========================================
+# 1. SECURITY HEADERS
+# ========================================
+<IfModule mod_headers.c>
+    # Zapobieganie XSS (Cross-Site Scripting)
+    Header set X-XSS-Protection "1; mode=block"
+
+    # Zapobieganie clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Zapobieganie MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+
+    # Referrer Policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions Policy (nowa wersja Feature-Policy)
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+    # Content Security Policy (CSP)
+    # Dostosowane do używanych CDN i YouTube
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; frame-src https://www.youtube.com https://www.google.com; connect-src 'self' https://www.google.com;"
+
+    # HTTPS Strict Transport Security (odkomentuj gdy masz SSL)
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ========================================
+# 2. OCHRONA WRAŻLIWYCH PLIKÓW
+# ========================================
+
+# Blokada dostępu do plików konfiguracyjnych
+<FilesMatch "^(config\.php|\.env|\.htaccess|\.htpasswd|\.git.*|composer\.(json|lock)|package(-lock)?\.json)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Blokada dostępu do katalogów .git
+RedirectMatch 404 /\.git
+
+# Wyłącz listowanie katalogów
+Options -Indexes
+
+# ========================================
+# 3. WYMUSZENIE HTTPS (odkomentuj gdy masz certyfikat SSL)
+# ========================================
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# ========================================
+# 4. KOMPRESJA GZIP (przyspieszenie strony)
+# ========================================
+<IfModule mod_deflate.c>
+    # Kompresja tekstowych plików
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/atom_xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+
+    # Wyłącz kompresję dla starych przeglądarek
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# ========================================
+# 5. CACHE CONTROL (SEO + wydajność)
+# ========================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Obrazy - 1 rok
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # CSS i JavaScript - 1 miesiąc
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+
+    # Fonty - 1 rok
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+
+    # HTML - 1 godzina
+    ExpiresByType text/html "access plus 1 hour"
+
+    # JSON, XML - 0 cache
+    ExpiresByType application/json "access plus 0 seconds"
+    ExpiresByType application/xml "access plus 0 seconds"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+    # Obrazy - długi cache
+    <FilesMatch "\.(webp|png|jpg|jpeg|gif|svg|ico)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # CSS i JS - średni cache
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+
+    # HTML - krótki cache
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+
+    # PHP - no cache
+    <FilesMatch "\.(php)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires 0
+    </FilesMatch>
+</IfModule>
+
+# ========================================
+# 6. URL REWRITING (przyjazne URL)
+# ========================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Usuń trailing slash (opcjonalnie)
+    # RewriteCond %{REQUEST_FILENAME} !-d
+    # RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Blokuj złośliwe requesty
+    RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+    RewriteRule ^(.*)$ index.html [F,L]
+</IfModule>
+
+# ========================================
+# 7. MIME TYPES
+# ========================================
+<IfModule mod_mime.c>
+    # JavaScript
+    AddType application/javascript js
+    AddType text/javascript js
+
+    # JSON
+    AddType application/json json
+
+    # WebP
+    AddType image/webp webp
+
+    # SVG
+    AddType image/svg+xml svg svgz
+
+    # Fonts
+    AddType font/woff woff
+    AddType font/woff2 woff2
+    AddType font/ttf ttf
+    AddType font/otf otf
+</IfModule>
+
+# ========================================
+# 8. PHP SETTINGS (jeśli używasz PHP)
+# ========================================
+<IfModule mod_php7.c>
+    # Wyłącz wyświetlanie błędów w produkcji
+    php_flag display_errors Off
+    php_flag display_startup_errors Off
+
+    # Włącz logowanie błędów
+    php_flag log_errors On
+
+    # Ustaw wielkość uploadu
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+
+    # Session security
+    php_value session.cookie_httponly 1
+    php_value session.cookie_secure 0
+    # Zmień na 1 gdy masz HTTPS:
+    # php_value session.cookie_secure 1
+</IfModule>
+
+# ========================================
+# 9. STRONY BŁĘDÓW (opcjonalnie)
+# ========================================
+# ErrorDocument 404 /404.html
+# ErrorDocument 403 /403.html
+# ErrorDocument 500 /500.html
+
+# ========================================
+# 10. DOMYŚLNE STRONY
+# ========================================
+DirectoryIndex index.html index.php
+
+# ========================================
+# 11. BLOKADA BOTS I SCRAPER (opcjonalnie)
+# ========================================
+# Odkomentuj jeśli masz problem ze złośliwymi botami
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTP_USER_AGENT} ^.*(bot|crawl|slurp|spider|mediapartners).*$ [NC]
+#     RewriteCond %{HTTP_USER_AGENT} !^.*(google|bing).*$ [NC]
+#     RewriteRule .* - [F,L]
+# </IfModule>
+
+# ========================================
+# KONIEC KONFIGURACJI
+# ========================================
