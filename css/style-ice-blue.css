@@ -294,6 +294,33 @@ button {
     box-shadow: var(--shadow-lg);
 }
 
+.nav-social {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.nav-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 50%;
+    color: var(--primary-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.nav-social-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
 .hidden-item {
     display: none;
 }
@@ -1194,6 +1221,37 @@ section {
     color: var(--primary-color);
 }
 
+.contact-social {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+}
+
+.contact-social-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.1));
+    border-radius: var(--radius-md);
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.contact-social-link:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.contact-social-link i {
+    font-size: 1.2rem;
+}
+
 /* ===================================
    FOOTER
    =================================== */
@@ -1784,6 +1842,21 @@ span[class*="gpowered"] {
         display: flex;
     }
 
+    .btn-phone {
+        font-size: 0.85rem;
+        padding: var(--spacing-xs);
+    }
+
+    .nav-social {
+        gap: var(--spacing-xs);
+    }
+
+    .nav-social-link {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
     .hamburger.active span:nth-child(1) {
         transform: rotate(45deg) translate(8px, 8px);
     }
@@ -1821,6 +1894,16 @@ span[class*="gpowered"] {
 @media (max-width: 480px) {
     html {
         font-size: 14px;
+    }
+
+    .btn-phone {
+        display: none;
+    }
+
+    .nav-social-link {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
     }
 
     .hero-stats {
