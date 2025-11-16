@@ -1669,6 +1669,11 @@ span[class*="gpowered"] {
     /* Ensure text is visible on mobile */
     .hero-content {
         color: var(--white) !important;
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+        backdrop-filter: none;
+        box-shadow: none;
     }
 
     .hero-content p {
