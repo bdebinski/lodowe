@@ -13,9 +13,24 @@ if (file_exists(__DIR__ . '/../config.php')) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Produkty z lodu - kostki, lód kruszony, spiry lodowe, diamenty, japońskie kule, bloki lodowe i więcej. Profesjonalna produkcja lodu w Łodzi. ✓ Certyfikowana woda ✓ Dostawa">
+        content="Produkty z lodu: kostki, spiry, diamenty, japońskie kule. Certyfikowana woda, profesjonalna produkcja w Łodzi. Dostawa w Polsce.">
     <meta name="keywords"
         content="kostki lodu, lód kruszony, spiry lodowe, diamenty lodowe, japońskie kule, blok lodowy, suchy lód, produkty lodowe, Łódź">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lodowe.com.pl/uslugi/produkty-z-lodu.php">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Produkty z Lodu - Kostki, Spiry, Diamenty | Lodowe.com.pl">
+    <meta property="og:description" content="Produkty z lodu: kostki, spiry, diamenty, japońskie kule. Certyfikowana woda, profesjonalna produkcja w Łodzi.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lodowe.com.pl/uslugi/produkty-z-lodu.php">
+    <meta property="og:site_name" content="Lodowe.com.pl">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Produkty z Lodu | Lodowe.com.pl">
+    <meta name="twitter:description" content="Kostki, spiry, diamenty, japońskie kule. Certyfikowana woda, dostawa w Polsce.">
 
     <title>Produkty z Lodu - Kostki, Spiry, Diamenty | Lodowe.com.pl</title>
 
@@ -38,6 +53,89 @@ if (file_exists(__DIR__ . '/../config.php')) {
     <link rel="stylesheet" href="../css/style-ice-blue.css">
     <link rel="stylesheet" href="../css/service-page.css">
     <link rel="stylesheet" href="../css/products-page.css">
+
+    <!-- Structured Data - JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Produkty z Lodu",
+        "name": "Produkty Lodowe - Kostki, Spiry, Diamenty",
+        "description": "Profesjonalne produkty z lodu: kostki, lód kruszony, spiry lodowe, diamenty, japońskie kule, bloki lodowe. Certyfikowana woda.",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Lodowe.com.pl",
+            "telephone": "+48511110265",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Srebrzyńska 63",
+                "addressLocality": "Łódź",
+                "postalCode": "91-074",
+                "addressCountry": "PL"
+            }
+        },
+        "areaServed": "Polska",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Katalog Produktów Lodowych",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Product",
+                        "name": "Kostki Lodu",
+                        "description": "Profesjonalne kostki lodu z certyfikowanej wody"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Product",
+                        "name": "Spiry Lodowe",
+                        "description": "Lód w kształcie kolumny do drinków premium"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Product",
+                        "name": "Diamenty Lodowe",
+                        "description": "Luksusowe diamenty z lodu do champagne i koktajli VIP"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Product",
+                        "name": "Japońskie Kule Lodowe",
+                        "description": "Kule lodowe o średnicy 6cm do whisky"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Strona główna",
+                "item": "https://lodowe.com.pl/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Produkty z Lodu",
+                "item": "https://lodowe.com.pl/uslugi/produkty-z-lodu.php"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -91,7 +189,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                     <div class="product-badge">Najpopularniejsze</div>
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/kostki-lodu.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/kostki-lodu.webp" alt="Profesjonalne kostki lodu z certyfikowanej wody - pakowanie 1kg, 2kg, 10kg" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -125,7 +223,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/lod-kruszony-oferta.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/lod-kruszony-oferta.webp" alt="Lód kruszony do koktajli i smoothie - drobna frakcja, szybkie chłodzenie" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -160,7 +258,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                     <div class="product-badge new">NOWOŚĆ!</div>
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/spiry-lodowe.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/spiry-lodowe.webp" alt="Spiry lodowe z różnymi wzorami - lód w kształcie kolumny do drinków premium" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -192,7 +290,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                     <div class="product-badge new">NOWOŚĆ!</div>
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/other/lodowe3_30.jpg" alt="" loading="lazy">
+                            <img src="../static/images/other/lodowe3_30.jpg" alt="Spiry lodowe z zamrożonymi owocami i ziołami wewnątrz - innowacyjne kostki premium" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -223,7 +321,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/kostki-xxl.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/kostki-xxl.webp" alt="Duże kostki lodu XXL 5x5cm do whisky i alkoholi premium - wolne topnienie" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -254,7 +352,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                     <div class="product-badge new">NOWOŚĆ!</div>
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/other/lodowe3_33.jpg" alt="" loading="lazy">
+                            <img src="../static/images/other/lodowe3_33.jpg" alt="Kostki XXL z zamrożonymi owocami i dekoracjami - luksusowy lód do drinków" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -285,7 +383,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/szklanki.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/szklanki.webp" alt="Szklanki i kieliszki z lodu - naczynia wykonane w 100% z lodu na eventy" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -318,7 +416,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/other/ice-breaker-10.jpg" alt="" loading="lazy">
+                            <img src="../static/images/other/ice-breaker-10.jpg" alt="Kubki i butelki z lodu - praktyczne naczynia lodowe na imprezy i eventy" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -347,7 +445,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/diamenty-lodowe-2-1.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/diamenty-lodowe-2-1.webp" alt="Luksusowe diamenty lodowe - kształt diamentu do champagne i koktajli VIP" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -440,7 +538,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/other/kule-na-paletach.jpg" alt="" loading="lazy">
+                            <img src="../static/images/other/kule-na-paletach.jpg" alt="Japońskie kule lodowe średnica 6cm - najwolniejsze topnienie do whisky" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -470,7 +568,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/suchy-lod-1.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/suchy-lod-1.webp" alt="Suchy lód CO2 do efektów specjalnych - spektakularna mgła na eventach" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -502,7 +600,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/blok-lodowy.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/blok-lodowy.webp" alt="Wielki blok lodowy do rzeźbienia - możliwość zatopienia przedmiotów wewnątrz" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -532,7 +630,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/zamrazarki-na-lod.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/zamrazarki-na-lod.webp" alt="Profesjonalne zamrażarki na lód - wynajem i sprzedaż dla gastronomii" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -561,7 +659,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/termobox.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/termobox.webp" alt="Boxy termiczne na lód gastronomiczny - wynajem termoboxów do transportu lodu" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -591,7 +689,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/pokazy-lodowe.webp" alt="" loading="lazy">
+                            <img src="../static/images/products/pokazy-lodowe.webp" alt="Pokazy rzeźbienia w lodzie i warsztaty ice carving - integracje firmowe" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -811,6 +909,19 @@ if (file_exists(__DIR__ . '/../config.php')) {
                             <li><i class="fas fa-check"></i> Konkurencyjne ceny</li>
                             <li><i class="fas fa-check"></i> Obsługa B2B i B2C</li>
                         </ul>
+                    </div>
+
+                    <div class="order-social">
+                        <h4>Śledź Nas</h4>
+                        <p style="margin-bottom: 10px; color: #64748B; font-size: 0.9rem;">Zobacz nasze realizacje i nowości</p>
+                        <div class="contact-social">
+                            <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="contact-social-link">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="contact-social-link">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                        </div>
                     </div>
                 </div>
 
