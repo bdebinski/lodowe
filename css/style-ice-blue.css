@@ -321,6 +321,10 @@ button {
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
+.nav-menu-social {
+    display: none;
+}
+
 .hidden-item {
     display: none;
 }
@@ -1848,13 +1852,22 @@ span[class*="gpowered"] {
     }
 
     .nav-social {
-        gap: var(--spacing-xs);
+        display: none;
     }
 
-    .nav-social-link {
-        width: 32px;
-        height: 32px;
-        font-size: 0.9rem;
+    .nav-menu-social {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg) 0;
+        margin-top: auto;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu-social .nav-social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
     }
 
     .hamburger.active span:nth-child(1) {
@@ -1897,13 +1910,8 @@ span[class*="gpowered"] {
     }
 
     .btn-phone {
-        display: none;
-    }
-
-    .nav-social-link {
-        width: 28px;
-        height: 28px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        padding: 6px 10px;
     }
 
     .hero-stats {
