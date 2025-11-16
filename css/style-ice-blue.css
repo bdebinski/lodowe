@@ -387,6 +387,10 @@ button {
     max-width: 900px;
     position: relative;
     z-index: 1;
+}
+
+/* Tło tylko na stronie głównej */
+.hero:not(.service-hero) .hero-content {
     background: rgba(15, 23, 42, 0.75);
     background-attachment: fixed;
     padding: var(--spacing-2xl);
