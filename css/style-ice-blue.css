@@ -391,8 +391,10 @@ button {
 
 /* Tło tylko na stronie głównej */
 .hero:not(.service-hero) .hero-content {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
     background: rgba(15, 23, 42, 0.75);
-    background-attachment: fixed;
     padding: var(--spacing-2xl);
     border-radius: 24px;
     backdrop-filter: blur(12px);
