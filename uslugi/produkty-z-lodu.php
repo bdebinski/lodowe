@@ -56,7 +56,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 </p>
                 <div class="hero-stats-row">
                     <div class="stat-badge">
-                        <strong>16</strong> produktów
+                        <strong>18</strong> produktów
                     </div>
                     <div class="stat-badge">
                         <strong>Certyfikowana</strong> woda
@@ -367,6 +367,70 @@ if (file_exists(__DIR__ . '/../config.php')) {
                             <div class="price-value">10 szt.</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Diamenty lodowe">
+                            <i class="fas fa-shopping-cart"></i> Zamów Teraz
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product: Rzeźba Lodowa -->
+                <div class="product-card featured">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3>Rzeźba Lodowa</h3>
+                        <p class="product-tagline">Dzieło sztuki z lodu...</p>
+                        <p class="product-description">
+                            Spektakularne rzeźby lodowe na zamówienie. Idealne na wesela, eventy firmowe,
+                            gale i imprezy okolicznościowe. Każda rzeźba to unikatowe dzieło sztuki
+                            wykonane przez doświadczonych artystów.
+                        </p>
+                        <div class="product-features">
+                            <span class="feature-tag"><i class="fas fa-star"></i> Projekt na zamówienie</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Logo firmy w lodzie</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Dowolna tematyka</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Podświetlenie LED</span>
+                        </div>
+                        <div class="product-pricing">
+                            <div class="price-label">Cena brutto:</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> Od 800zł</div>
+                        </div>
+                        <button class="btn btn-primary btn-order" data-product="Rzeźba lodowa">
+                            <i class="fas fa-shopping-cart"></i> Zamów Teraz
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product: Misa Lodowa Łabędź -->
+                <div class="product-card featured">
+                    <div class="product-badge new">NOWOŚĆ!</div>
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-dove"></i>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3>Misa Lodowa Łabędź</h3>
+                        <p class="product-tagline">Elegancka dekoracja na stół...</p>
+                        <p class="product-description">
+                            Przepiękna misa lodowa w kształcie łabędzia. Idealna do serwowania owoców,
+                            owoców morza, sushi lub deserów. Gwarantuje efekt WOW na każdym przyjęciu.
+                            Symbol elegancji i wyrafinowania.
+                        </p>
+                        <div class="product-features">
+                            <span class="feature-tag"><i class="fas fa-star"></i> Elegancki design</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Do serwowania potraw</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Efekt WOW</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Wesela i eventy</span>
+                        </div>
+                        <div class="product-pricing">
+                            <div class="price-label">Cena brutto:</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> Od 1200zł</div>
+                        </div>
+                        <button class="btn btn-primary btn-order" data-product="Misa lodowa łabędź">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
                         </button>
                     </div>

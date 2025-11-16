@@ -13,6 +13,8 @@
         'Kostki XXL z wzorami',
         'Naczynia lodowe (szklanki/kieliszki)',
         'Diamenty lodowe',
+        'Rzeźba lodowa',
+        'Misa lodowa łabędź',
         'Japońskie kule lodowe',
         'Suchy lód',
         'Wielki blok lodowy',
