@@ -305,10 +305,9 @@
 }
 
 .quality-content {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 60px;
-    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .quality-text h2 {
@@ -327,7 +326,9 @@
 
 .quality-features {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 25px;
+    text-align: left;
 }
 
 .quality-feature {
