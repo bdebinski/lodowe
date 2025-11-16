@@ -377,7 +377,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                     <div class="product-badge">Bestseller</div>
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <i class="fas fa-gem"></i>
+                            <img src="../static/images/rzezby/galeria-rzezby-78-filter.webp" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -396,7 +396,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena brutto:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> Od 800zł</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> Od 1500zł</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Rzeźba lodowa">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -409,7 +409,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                     <div class="product-badge new">NOWOŚĆ!</div>
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <i class="fas fa-dove"></i>
+                            <img src="../static/images/naczynia/galeria-naczynia-14-grey.webp" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
@@ -417,7 +417,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         <p class="product-tagline">Elegancka dekoracja na stół...</p>
                         <p class="product-description">
                             Przepiękna misa lodowa w kształcie łabędzia. Idealna do serwowania owoców,
-                            owoców morza, sushi lub deserów. Gwarantuje efekt WOW na każdym przyjęciu.
+                            deserów, misę można wypełnić lodem i serwować w niej alkohol. Gwarantuje efekt WOW na każdym przyjęciu.
                             Symbol elegancji i wyrafinowania.
                         </p>
                         <div class="product-features">
@@ -428,7 +428,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena brutto:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> Od 1200zł</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> Od 600zł</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Misa lodowa łabędź">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
