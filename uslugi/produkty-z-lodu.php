@@ -812,6 +812,19 @@ if (file_exists(__DIR__ . '/../config.php')) {
                             <li><i class="fas fa-check"></i> Obsługa B2B i B2C</li>
                         </ul>
                     </div>
+
+                    <div class="order-social">
+                        <h4>Śledź Nas</h4>
+                        <p style="margin-bottom: 10px; color: #64748B; font-size: 0.9rem;">Zobacz nasze realizacje i nowości</p>
+                        <div class="contact-social">
+                            <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="contact-social-link">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="contact-social-link">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="order-form-wrapper">

@@ -302,7 +302,8 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                showNotification('Sukces!', data.message, 'success');
+                                const successMessage = data.message + '<br><br><span style="font-size: 0.9em; opacity: 0.9;">Śledź nas na social media:</span><br><a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: underline; margin-right: 15px;"><i class="fab fa-facebook-f"></i> Facebook</a><a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: underline;"><i class="fab fa-instagram"></i> Instagram</a>';
+                                showNotification('Sukces!', successMessage, 'success');
                                 // Wyczyść formularz po sukcesie
                                 form.reset();
                                 // Wyczyść produkty i dodaj jeden pusty wiersz
