@@ -134,18 +134,18 @@ function initNavigation() {
 // ===================================
 
 function initScrollEffects() {
-    // Parallax effect for hero (subtle)
-    const hero = document.querySelector('.hero');
+    // Parallax effect for hero - disabled to prevent scrolling issues
+    // const hero = document.querySelector('.hero');
 
-    if (hero) {
-        window.addEventListener('scroll', throttle(function () {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.3;
-            if (scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${parallax}px)`;
-            }
-        }, 16));
-    }
+    // if (hero) {
+    //     window.addEventListener('scroll', throttle(function () {
+    //         const scrolled = window.pageYOffset;
+    //         const parallax = scrolled * 0.3;
+    //         if (scrolled < window.innerHeight) {
+    //             hero.style.transform = `translateY(${parallax}px)`;
+    //         }
+    //     }, 16));
+    // }
 
     // Fade in elements on scroll
     const observerOptions = {
