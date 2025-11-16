@@ -383,15 +383,15 @@ button {
 
 .hero-content {
     text-align: center;
-    color: var(--text-primary);
+    color: var(--white);
     max-width: 900px;
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(15, 23, 42, 0.75);
     padding: var(--spacing-2xl);
-    border-radius: var(--radius-2xl);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .hero-title {
@@ -400,12 +400,13 @@ button {
     line-height: 1.1;
     margin-bottom: var(--spacing-md);
     letter-spacing: -2px;
+    color: var(--white);
 }
 
 .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.25rem);
     margin-bottom: var(--spacing-2xl);
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.9);
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -425,9 +426,8 @@ button {
 
 .stat-item i {
     font-size: 2.5rem;
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--accent-color);
+    -webkit-text-fill-color: var(--accent-color);
     margin-bottom: var(--spacing-sm);
 }
 
@@ -435,12 +435,12 @@ button {
     font-size: 2.5rem;
     font-weight: 900;
     margin-bottom: var(--spacing-xs);
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 .stat-item p {
     font-size: 0.95rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .hero-cta {
