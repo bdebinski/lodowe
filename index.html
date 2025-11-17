@@ -230,6 +230,24 @@
         min-height: 100vh;
         transform: translate(-50%, -50%);
         object-fit: cover;
+        /* Ensure perfect centering on all resolutions */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Additional centering fix for different aspect ratios */
+    @media (min-aspect-ratio: 16/9) {
+        .video-background iframe {
+            width: 100vw;
+            height: 56.25vw;
+        }
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+        .video-background iframe {
+            width: 177.77vh;
+            height: 100vh;
+        }
     }
 
     /* Ciemniejszy filtr (nakładka) */
@@ -638,14 +656,31 @@
                 </div>
             </div>
 
+            <!-- Google Reviews Widget Placeholder -->
+            <div id="google-reviews-widget" class="google-reviews-section" style="margin-top: 40px; text-align: center;">
+                <!--
+                    INSTRUKCJA DODANIA GOOGLE REVIEWS:
+                    1. Załóż konto na jednej z platform: EmbedSocial, Elfsight, Trustindex, lub SociableKIT
+                    2. Połącz swój Google Business Profile
+                    3. Wklej tutaj wygenerowany kod embed z wybranej platformy
+
+                    Przykład dla Elfsight:
+                    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+                    <div class="elfsight-app-TWOJ_ID"></div>
+                -->
+            </div>
+
             <div class="testimonials-social" style="text-align: center; margin-top: 40px;">
                 <p style="margin-bottom: 15px; color: #64748B; font-size: 1rem;">Zobacz więcej opinii i realizacji na naszych profilach</p>
-                <div style="display: flex; justify-content: center; gap: 15px;">
+                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                     <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
                         <i class="fab fa-facebook-f"></i> Facebook
                     </a>
                     <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
                         <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fab fa-google"></i> Google Reviews
                     </a>
                 </div>
             </div>
