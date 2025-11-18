@@ -84,8 +84,8 @@ function initPortfolioControls() {
     // Obsługa zdarzeń
     toggleBtn.addEventListener("click", () => {
         // Smooth expand animation
-        const currentHeight = wrapper.scrollHeight;
-        wrapper.style.maxHeight = currentHeight + 'px';
+        // Remove inline max-height to let CSS class take effect
+        wrapper.style.maxHeight = '';
 
         requestAnimationFrame(() => {
             wrapper.classList.add("expanded");
@@ -99,6 +99,8 @@ function initPortfolioControls() {
         wrapper.classList.remove("expanded");
         floatingBtn.classList.remove("show");
         toggleBtn.style.display = "block";
+        // Reset inline max-height to let CSS default take effect
+        wrapper.style.maxHeight = '';
 
         // Smooth scroll to portfolio section
         setTimeout(() => {
