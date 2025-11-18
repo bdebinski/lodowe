@@ -83,16 +83,27 @@ function initPortfolioControls() {
 
     // Obsługa zdarzeń
     toggleBtn.addEventListener("click", () => {
-        wrapper.classList.add("expanded");
-        toggleBtn.style.display = "none";
-        floatingBtn.classList.add("show");
+        // Smooth expand animation
+        const currentHeight = wrapper.scrollHeight;
+        wrapper.style.maxHeight = currentHeight + 'px';
+
+        requestAnimationFrame(() => {
+            wrapper.classList.add("expanded");
+            toggleBtn.style.display = "none";
+            floatingBtn.classList.add("show");
+        });
     });
 
     floatingBtn.addEventListener("click", () => {
+        // Smooth collapse animation
         wrapper.classList.remove("expanded");
         floatingBtn.classList.remove("show");
         toggleBtn.style.display = "block";
-        wrapper.scrollIntoView({ behavior: "smooth" });
+
+        // Smooth scroll to portfolio section
+        setTimeout(() => {
+            wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
     });
 }
 function fixPortfolioPaths() {

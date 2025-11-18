@@ -76,6 +76,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    /* Fix dla mobile viewport height */
+    height: -webkit-fill-available;
 }
 
 body {
@@ -84,6 +86,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     background: var(--white);
+    /* Fix dla mobile viewport height */
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
 }
 
 img {
@@ -545,6 +550,33 @@ button {
     gap: var(--spacing-sm);
 }
 
+/* Button outline style for social links */
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition-base);
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-outline i {
+    font-size: 1.1rem;
+}
+
 /* ===================================
    SECTIONS
    =================================== */
@@ -927,12 +959,17 @@ section {
     position: relative;
     max-height: 600px;
     overflow: hidden;
-    transition: max-height 0.6s ease;
+    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-wrapper.expanded {
-    max-height: none;
-    /* Wyświetla wszystkie obrazy bez limitu po rozwinięciu */
+    max-height: 10000px;
+    /* Smooth animation with large max-height instead of none */
+}
+
+.portfolio-wrapper.expanded .portfolio-fade {
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .portfolio-fade {
@@ -944,6 +981,7 @@ section {
     background: linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
     z-index: 10;
     pointer-events: none;
+    transition: opacity 0.5s ease;
 }
 
 /* --- Pływający przycisk (tylko gdy portfolio otwarte) --- */
@@ -1062,6 +1100,18 @@ section {
 .author-info p {
     font-size: 0.9rem;
     color: var(--text-secondary);
+}
+
+/* Improve social buttons visibility */
+.testimonials-social .btn-outline,
+.faq-social .btn-outline {
+    box-shadow: var(--shadow-sm);
+    min-width: 140px;
+}
+
+.testimonials-social .btn-outline:hover,
+.faq-social .btn-outline:hover {
+    box-shadow: var(--shadow-lg);
 }
 
 /* ===================================
@@ -1845,15 +1895,29 @@ span[class*="gpowered"] {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
+        height: calc(100dvh - 70px); /* Dynamic viewport height for mobile */
+        max-height: calc(100vh - 70px);
+        max-height: calc(100dvh - 70px);
         background: var(--white);
         flex-direction: column;
-        padding: var(--spacing-xl);
+        padding: var(--spacing-md) var(--spacing-lg);
+        padding-bottom: 0;
         box-shadow: var(--shadow-xl);
-        transition: var(--transition-base);
+        transition: left var(--transition-base);
+        overflow-y: auto;
+        overflow-x: hidden;
+        /* Ensure content doesn't get cut off */
+        -webkit-overflow-scrolling: touch;
+        display: flex;
     }
 
     .nav-menu.active {
         left: 0;
+    }
+
+    .nav-menu > li {
+        flex-shrink: 0;
+        padding: var(--spacing-xs) 0;
     }
 
     .hamburger {
@@ -1873,15 +1937,36 @@ span[class*="gpowered"] {
         display: flex;
         justify-content: center;
         gap: var(--spacing-md);
-        padding: var(--spacing-lg) 0;
+        padding: var(--spacing-lg) var(--spacing-md);
         margin-top: auto;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
+        /* Ensure social icons are always visible and not cut off */
+        flex-shrink: 0;
+        min-height: 90px;
+        align-items: center;
+        background: var(--white);
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
     }
 
     .nav-menu-social .nav-social-link {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+        /* Enhanced visibility */
+        background: var(--primary-color);
+        color: var(--white);
+        border: none;
+        box-shadow: var(--shadow-md);
+        flex-shrink: 0;
+    }
+
+    .nav-menu-social .nav-social-link:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
     }
 
     .hamburger.active span:nth-child(1) {
@@ -1903,6 +1988,10 @@ span[class*="gpowered"] {
     .btn {
         width: 100%;
         justify-content: center;
+        /* Limit button width to prevent oversized buttons */
+        max-width: 280px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .about-features {
@@ -1916,6 +2005,28 @@ span[class*="gpowered"] {
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Fix social buttons on mobile */
+    .btn-outline {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+        width: auto;
+        max-width: none;
+    }
+
+    .testimonials-social > div,
+    .faq-social > div {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px !important;
+    }
+
+    .testimonials-social .btn-outline,
+    .faq-social .btn-outline,
+    .faq-social .btn-primary {
+        min-width: 200px;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1926,6 +2037,32 @@ span[class*="gpowered"] {
     .btn-phone {
         font-size: 0.8rem;
         padding: 6px 10px;
+    }
+
+    /* Further optimize hamburger menu for small screens */
+    .nav-menu {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .nav-menu > li {
+        padding: 4px 0;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: var(--spacing-xs) 0;
+    }
+
+    .nav-menu-social {
+        padding: var(--spacing-md);
+        min-height: 70px;
+        gap: var(--spacing-sm);
+    }
+
+    .nav-menu-social .nav-social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
     }
 
     .hero-stats {
@@ -1952,6 +2089,7 @@ span[class*="gpowered"] {
         width: 100%;
         justify-content: center;
         padding: var(--spacing-md) var(--spacing-lg);
+        max-width: 260px;
     }
 
     .btn-phone {
@@ -1965,6 +2103,63 @@ span[class*="gpowered"] {
 
     .stat-item h3 {
         font-size: 2rem;
+    }
+
+    /* Fix uneven spacing on mobile */
+    section {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .section-header {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    /* Consistent card spacing */
+    .service-card,
+    .testimonial-card,
+    .brand-card {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* FAQ spacing fixes */
+    .faq-container {
+        padding: 0;
+    }
+
+    .faq-item {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .faq-question {
+        padding: var(--spacing-md);
+        font-size: 1rem;
+    }
+
+    .faq-answer p {
+        padding: 0 var(--spacing-md) var(--spacing-md);
+        font-size: 0.95rem;
+    }
+
+    /* Testimonials spacing */
+    .testimonials-grid {
+        gap: var(--spacing-md);
+    }
+
+    .testimonial-text {
+        font-size: 0.95rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* Social section spacing on mobile */
+    .testimonials-social,
+    .faq-social {
+        margin-top: var(--spacing-xl) !important;
+        padding: var(--spacing-lg) !important;
     }
 }
 
