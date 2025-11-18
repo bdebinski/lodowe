@@ -83,26 +83,47 @@ function initPortfolioControls() {
 
     // Obsługa zdarzeń
     toggleBtn.addEventListener("click", () => {
-        // Smooth expand animation
-        // Remove inline max-height to let CSS class take effect
-        wrapper.style.maxHeight = '';
+        // KROK 1: Ustaw aktualną wysokość jako punkt wyjścia dla animacji
+        const currentHeight = wrapper.scrollHeight;
+        wrapper.style.maxHeight = '600px';
 
+        // KROK 2: Poczekaj na przeliczenie layoutu
         requestAnimationFrame(() => {
-            wrapper.classList.add("expanded");
-            toggleBtn.style.display = "none";
-            floatingBtn.classList.add("show");
+            requestAnimationFrame(() => {
+                // KROK 3: Teraz ustaw target height dla smooth transition
+                wrapper.style.maxHeight = currentHeight + 'px';
+                wrapper.classList.add("expanded");
+
+                // KROK 4: Ukryj przycisk z opóźnieniem (po rozpoczęciu animacji)
+                setTimeout(() => {
+                    toggleBtn.style.display = "none";
+                    floatingBtn.classList.add("show");
+                }, 100);
+            });
         });
     });
 
     floatingBtn.addEventListener("click", () => {
-        // Smooth collapse animation
-        wrapper.classList.remove("expanded");
-        floatingBtn.classList.remove("show");
-        toggleBtn.style.display = "block";
-        // Reset inline max-height to let CSS default take effect
-        wrapper.style.maxHeight = '';
+        // KROK 1: Ustaw aktualną wysokość jako punkt wyjścia
+        const currentHeight = wrapper.scrollHeight;
+        wrapper.style.maxHeight = currentHeight + 'px';
 
-        // Smooth scroll to portfolio section
+        // KROK 2: Poczekaj na przeliczenie layoutu
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                // KROK 3: Animuj z powrotem do 600px
+                wrapper.style.maxHeight = '600px';
+                wrapper.classList.remove("expanded");
+
+                // KROK 4: Po animacji pokaż przycisk i ukryj pływający
+                setTimeout(() => {
+                    floatingBtn.classList.remove("show");
+                    toggleBtn.style.display = "block";
+                }, 800); // Czas animacji z CSS (0.8s)
+            });
+        });
+
+        // KROK 5: Smooth scroll do portfolio po zakończeniu animacji
         setTimeout(() => {
             wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 100);
