@@ -1102,19 +1102,6 @@ section {
     color: var(--text-secondary);
 }
 
-/* Google Reviews Section */
-.google-reviews-section {
-    margin-top: var(--spacing-2xl);
-    padding: var(--spacing-xl);
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-}
-
-.google-reviews-section:empty {
-    display: none;
-}
-
 /* Improve social buttons visibility */
 .testimonials-social .btn-outline,
 .faq-social .btn-outline {
