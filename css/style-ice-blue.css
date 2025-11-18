@@ -1909,19 +1909,28 @@ span[class*="gpowered"] {
         width: 100%;
         height: calc(100vh - 70px);
         height: calc(100dvh - 70px); /* Dynamic viewport height for mobile */
+        max-height: calc(100vh - 70px);
+        max-height: calc(100dvh - 70px);
         background: var(--white);
         flex-direction: column;
-        padding: var(--spacing-xl);
-        padding-bottom: var(--spacing-md);
+        padding: var(--spacing-md) var(--spacing-lg);
+        padding-bottom: 0;
         box-shadow: var(--shadow-xl);
-        transition: var(--transition-base);
+        transition: left var(--transition-base);
         overflow-y: auto;
+        overflow-x: hidden;
         /* Ensure content doesn't get cut off */
         -webkit-overflow-scrolling: touch;
+        display: flex;
     }
 
     .nav-menu.active {
         left: 0;
+    }
+
+    .nav-menu > li {
+        flex-shrink: 0;
+        padding: var(--spacing-xs) 0;
     }
 
     .hamburger {
@@ -1944,11 +1953,16 @@ span[class*="gpowered"] {
         padding: var(--spacing-lg) var(--spacing-md);
         margin-top: auto;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
-        /* Ensure social icons are always visible */
+        /* Ensure social icons are always visible and not cut off */
         flex-shrink: 0;
-        min-height: 80px;
+        min-height: 90px;
         align-items: center;
         background: var(--white);
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
     }
 
     .nav-menu-social .nav-social-link {
@@ -1960,6 +1974,7 @@ span[class*="gpowered"] {
         color: var(--white);
         border: none;
         box-shadow: var(--shadow-md);
+        flex-shrink: 0;
     }
 
     .nav-menu-social .nav-social-link:hover {
@@ -2035,6 +2050,32 @@ span[class*="gpowered"] {
     .btn-phone {
         font-size: 0.8rem;
         padding: 6px 10px;
+    }
+
+    /* Further optimize hamburger menu for small screens */
+    .nav-menu {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .nav-menu > li {
+        padding: 4px 0;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: var(--spacing-xs) 0;
+    }
+
+    .nav-menu-social {
+        padding: var(--spacing-md);
+        min-height: 70px;
+        gap: var(--spacing-sm);
+    }
+
+    .nav-menu-social .nav-social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
     }
 
     .hero-stats {
