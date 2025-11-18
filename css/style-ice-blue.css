@@ -963,8 +963,9 @@ section {
 }
 
 .portfolio-wrapper.expanded {
-    max-height: 10000px;
-    /* Smooth animation with large max-height instead of none */
+    /* Klasa expanded jest teraz używana jako marker, */
+    /* a faktyczna wysokość jest kontrolowana przez inline style */
+    overflow: visible;
 }
 
 .portfolio-wrapper.expanded .portfolio-fade {
