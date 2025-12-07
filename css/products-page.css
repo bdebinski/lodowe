@@ -214,7 +214,6 @@
 }
 
 .price-list li::before {
-    content: '❄';
     margin-right: 8px;
     font-size: 0.9rem;
     color: #0891B2;

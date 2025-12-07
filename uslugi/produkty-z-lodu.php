@@ -207,10 +207,10 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         <div class="product-pricing">
                             <div class="price-label">Ceny brutto:</div>
                             <ul class="price-list">
-                                <li><i class="fas fa-snowflake"></i> 5kg - 20zł</li>
-                                <li><i class="fas fa-snowflake"></i> 6x2kg - 50zł</li>
-                                <li><i class="fas fa-snowflake"></i> 12x1kg - 50zł</li>
-                                <li><i class="fas fa-snowflake"></i> 10kg - 40zł</li>
+                                <li><i class="fas fa-snowflake"></i> 20zł / 5kg</li>
+                                <li><i class="fas fa-snowflake"></i> 50zł / 6x2kg</li>
+                                <li><i class="fas fa-snowflake"></i> 50zł / 12x1kg</li>
+                                <li><i class="fas fa-snowflake"></i> 40zł / 10kg</li>
                             </ul>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Lód w kostkach">
@@ -277,7 +277,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 10 szt. - 35zł</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 35zł / 10 sztuk</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Spiry lodowe">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -309,7 +309,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena brutto:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 50 szt. - 200zł</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 200zł / 50 sztuk</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Spiry lodowe z zamrożonym dodatkiem">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -339,7 +339,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 20 szt. - 70zł</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 70zł / 20 sztuk </div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Kostki XXL">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -371,7 +371,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena brutto:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 60 szt. - 240zł</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 240zł / 60 sztuk</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Kostki XXL z zamrożonym dodatkiem">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -433,7 +433,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena brutto:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 4,00 zł / sztuka</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 4 zł / sztuka</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Kubek i butelka lodowa">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -462,7 +462,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Minimum zamówienia:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 35,00 zł / 10 sztuk</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 35 zł / 10 sztuk</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Diamenty lodowe">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -556,7 +556,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 10 szt. - 35zł</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 35zł / 10 sztuk</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Japońskie kule">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
