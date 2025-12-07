@@ -367,11 +367,11 @@ if (file_exists(__DIR__ . '/../config.php')) {
                             <span class="feature-tag"><i class="fas fa-star"></i> Z dodatkami wewnątrz</span>
                             <span class="feature-tag"><i class="fas fa-check"></i> Duży rozmiar (5x5cm)</span>
                             <span class="feature-tag"><i class="fas fa-check"></i> Wolne topnienie</span>
-                            <span class="feature-tag"><i class="fas fa-check"></i> Pakowanie 50 szt.</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i> Pakowanie 60 szt.</span>
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena brutto:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 50 szt. - 200zł</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 60 szt. - 240zł</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Kostki XXL z zamrożonym dodatkiem">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -433,7 +433,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena brutto:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 3,50zł / sztuka</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 4,00 zł / sztuka</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Kubek i butelka lodowa">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -462,7 +462,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Minimum zamówienia:</div>
-                            <div class="price-value">10 szt.</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 35,00 zł / 10 sztuk</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Diamenty lodowe">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
@@ -915,12 +915,23 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         <h4>Śledź Nas</h4>
                         <p style="margin-bottom: 10px; color: #64748B; font-size: 0.9rem;">Zobacz nasze realizacje i nowości</p>
                         <div class="contact-social">
-                            <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="contact-social-link">
-                                <i class="fab fa-facebook-f"></i> Facebook
-                            </a>
-                            <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="contact-social-link">
-                                <i class="fab fa-instagram"></i> Instagram
-                            </a>
+                            <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                        <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.tiktok.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok" style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-tiktok"></i> TikTok
+                        </a>
+
+                        <a href="https://www.youtube.com/@lodowecompl9692" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube" style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-youtube"></i> YouTube
+                        </a>
                         </div>
                     </div>
                 </div>
