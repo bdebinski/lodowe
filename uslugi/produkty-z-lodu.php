@@ -433,7 +433,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                         </div>
                         <div class="product-pricing">
                             <div class="price-label">Cena brutto:</div>
-                            <div class="price-value"><i class="fas fa-snowflake"></i> 4 zł / sztuka</div>
+                            <div class="price-value"><i class="fas fa-snowflake"></i> 96 zł / 24 sztuki</div>
                         </div>
                         <button class="btn btn-primary btn-order" data-product="Kubek i butelka lodowa">
                             <i class="fas fa-shopping-cart"></i> Zamów Teraz
