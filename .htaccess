@@ -146,7 +146,11 @@ Options -Indexes
         Header set Expires 0
     </FilesMatch>
 </IfModule>
+RewriteEngine On
 
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.lodowe\.com\.pl$ [NC]
+RewriteRule ^(.*)$ https://lodowe.com.pl/$1 [L,R=301]
 # ========================================
 # 6. URL REWRITING (przyjazne URL)
 # ========================================
