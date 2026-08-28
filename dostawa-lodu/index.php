@@ -444,32 +444,32 @@ if (file_exists(__DIR__ . '/../config.php')) {
                     </div>
                 </div>
 
-                <!-- Product 5a: Kubek lodowy -->
+                <!-- Product 5a: Kubek z lodem spożywczym -->
                 <div class="product-card" data-category="art">
                     <div class="product-image">
                         <div class="image-placeholder">
                             <img src="../static/images/other/ice-breaker-10.jpg"
-                                alt="Kubki z lodu - praktyczne naczynia lodowe na imprezy i eventy"
+                                alt="Kubek z lodem spożywczym - poręczne kubki z lodem na imprezy i eventy"
                                 width="600" height="400" loading="lazy">
                         </div>
                     </div>
                     <div class="product-content">
-                        <h3>Kubek Lodowy</h3>
-                        <p class="product-tagline"><i class="fas fa-info-circle"></i> Formowane kufle ze stężonego lodu</p>
+                        <h3>Kubek z Lodem Spożywczym</h3>
+                        <p class="product-tagline"><i class="fas fa-info-circle"></i> Poręczne kubki wypełnione lodem spożywczym</p>
                         <p class="product-description">
-                            Kufle wykonane w całości z lodu. Przeznaczone do podawania alkoholi i napojów, wyjątkowo długo trzymają chłód.
+                            Poręczne kubki wypełnione krystalicznie czystym lodem spożywczym. Gotowe do natychmiastowego serwowania napojów i drinków na imprezach, plenerach i eventach.
                         </p>
                         <div class="product-features">
-                            <span class="feature-tag"><i class="fas fa-beer"></i> Lodowe Kufle</span>
-                            <span class="feature-tag"><i class="fas fa-snowflake"></i> Utrzymują chłód</span>
-                            <span class="feature-tag"><i class="fas fa-box"></i> 24 szt. w zestawie</span>
+                            <span class="feature-tag"><i class="fas fa-glass-martini-alt"></i> Lód spożywczy</span>
+                            <span class="feature-tag"><i class="fas fa-bolt"></i> Gotowe do użycia</span>
+                            <span class="feature-tag"><i class="fas fa-box"></i> Wygodna porcja</span>
                         </div>
                         <div class="product-pricing">
                             <div class="variant-pills" aria-label="Wybierz wariant">
                                 <button type="button" class="variant-pill active" data-value="24 sztuki (96zł)">24 sztuki — 96zł</button>
                             </div>
                         </div>
-                        <button class="btn btn-primary btn-order" data-product="Kubek lodowy">
+                        <button class="btn btn-primary btn-order" data-product="Kubek z lodem spożywczym">
                             <i class="fas fa-plus"></i> Do Koszyka
                         </button>
                     </div>
