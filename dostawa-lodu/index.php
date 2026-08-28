@@ -219,7 +219,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <!-- Product 1: Kostki Lodu -->
                 <div class="product-card" data-category="drink">
                     <div class="product-badge">Najpopularniejsze</div>
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/kostki-lodu.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/kostki-lodu.webp"
                                 alt="Profesjonalne kostki lodu z certyfikowanej wody - pakowanie 1kg, 2kg, 10kg"
@@ -253,7 +253,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 2: Lód Kruszony -->
                 <div class="product-card" data-category="drink">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/lod-kruszony-oferta.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/lod-kruszony-oferta.webp"
                                 alt="Lód kruszony do koktajli i smoothie - drobna frakcja, szybkie chłodzenie"
@@ -288,7 +288,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <!-- Product 3: Spiry Lodowe -->
                 <div class="product-card featured" data-category="premium">
                     <div class="product-badge new">NOWOŚĆ!</div>
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/spiry-lodowe.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/spiry-lodowe.webp"
                                 alt="Spiry lodowe z różnymi wzorami - lód w kształcie kolumny do drinków premium"
@@ -320,7 +320,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <!-- Product 3a: Spiry Lodowe z zamrożonym dodatkiem -->
                 <div class="product-card featured" data-category="premium">
                     <div class="product-badge new">NOWOŚĆ!</div>
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/other/lodowe3_30.jpg');">
                         <div class="image-placeholder">
                             <img src="../static/images/other/lodowe3_30.jpg"
                                 alt="Spiry lodowe z zamrożonymi owocami i ziołami wewnątrz - innowacyjne kostki premium"
@@ -351,7 +351,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 4: Kostki XXL -->
                 <div class="product-card" data-category="premium">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/kostki-xxl.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/kostki-xxl.webp"
                                 alt="Duże kostki lodu XXL 5x5cm do whisky i alkoholi premium - wolne topnienie"
@@ -383,7 +383,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <!-- Product 4a: Kostki XXL z zamrożonym dodatkiem -->
                 <div class="product-card featured" data-category="premium">
                     <div class="product-badge new">NOWOŚĆ!</div>
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/other/lodowe3_33.jpg');">
                         <div class="image-placeholder">
                             <img src="../static/images/other/lodowe3_33.jpg"
                                 alt="Kostki XXL z zamrożonymi owocami i dekoracjami - luksusowy lód do drinków"
@@ -414,7 +414,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 5: Naczynia Lodowe -->
                 <div class="product-card" data-category="art">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/szklanka-z-lodu.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/szklanka-z-lodu.webp"
                                 alt="Szklanki i kieliszki z lodu - naczynia wykonane w 100% z lodu na eventy"
@@ -446,7 +446,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 5a: Kubek z lodem spożywczym -->
                 <div class="product-card" data-category="art">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/kubek-z-lodu.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/kubek-z-lodu.webp"
                                 alt="Kubek z lodem spożywczym - poręczne kubki z lodem na imprezy i eventy"
@@ -477,7 +477,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 6: Diamenty Lodowe -->
                 <div class="product-card" data-category="premium">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/diamenty-lodowe-2-1.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/diamenty-lodowe-2-1.webp"
                                 alt="Luksusowe diamenty lodowe - kształt diamentu do champagne i koktajli VIP"
@@ -509,7 +509,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <!-- Product: Rzeźba Lodowa -->
                 <div class="product-card featured" data-category="art">
                     <div class="product-badge">Bestseller</div>
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/rzezby/galeria-rzezby-78-filter.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/rzezby/galeria-rzezby-78-filter.webp" alt="" width="600" height="400" loading="lazy">
                         </div>
@@ -539,7 +539,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <!-- Product: Misa Lodowa Łabędź -->
                 <div class="product-card featured" data-category="art">
                     <div class="product-badge new">NOWOŚĆ!</div>
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/naczynia/galeria-naczynia-14-grey.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/naczynia/galeria-naczynia-14-grey.webp" alt="" width="600" height="400" loading="lazy">
                         </div>
@@ -568,7 +568,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 7: Japońskie Kule -->
                 <div class="product-card" data-category="premium">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/other/kule-na-paletach.jpg');">
                         <div class="image-placeholder">
                             <img src="../static/images/other/kule-na-paletach.jpg"
                                 alt="Japońskie kule lodowe średnica 6cm - najwolniejsze topnienie do whisky"
@@ -599,7 +599,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 8: Suchy Lód -->
                 <div class="product-card" data-category="equipment">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/suchy-lod-1.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/suchy-lod-1.webp"
                                 alt="Suchy lód CO2 do efektów specjalnych - spektakularna mgła na eventach"
@@ -631,7 +631,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 9: Wielki Blok -->
                 <div class="product-card" data-category="art">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/blok-lodowy.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/blok-lodowy.webp"
                                 alt="Wielki blok lodowy do rzeźbienia - możliwość zatopienia przedmiotów wewnątrz"
@@ -662,7 +662,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 10: Zamrażarki -->
                 <div class="product-card" data-category="equipment">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/zamrazarki-na-lod.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/zamrazarki-na-lod.webp"
                                 alt="Profesjonalne zamrażarki na lód - wynajem i sprzedaż dla gastronomii"
@@ -693,7 +693,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 11: Termoboxy -->
                 <div class="product-card" data-category="equipment">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/termobox.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/termobox.webp"
                                 alt="Boxy termiczne na lód gastronomiczny - wynajem termoboxów do transportu lodu"
@@ -723,7 +723,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 </div>
                 <!-- Product 12: Warsztaty i pokazy -->
                 <div class="product-card" data-category="art">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/pokazy-lodowe.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/pokazy-lodowe.webp"
                                 alt="Pokazy rzeźbienia w lodzie i warsztaty ice carving - integracje firmowe"
@@ -754,7 +754,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
 
                 <!-- Product 13: Przewóz i wynajem samochodu -->
                 <div class="product-card" data-category="equipment">
-                    <div class="product-image">
+                    <div class="product-image" style="--product-img-bg: url('../static/images/products/transport.webp');">
                         <div class="image-placeholder">
                             <img src="../static/images/products/transport.webp" alt="Przewóz mroźniczo-chłodniczy - samochód chłodnia" width="600" height="400" loading="lazy">
                         </div>
