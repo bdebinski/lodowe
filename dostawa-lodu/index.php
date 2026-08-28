@@ -416,7 +416,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card" data-category="art">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/other/ice-breaker-10.jpg"
+                            <img src="../static/images/products/szklanka-z-lodu.webp"
                                 alt="Szklanki i kieliszki z lodu - naczynia wykonane w 100% z lodu na eventy"
                                 width="600" height="400" loading="lazy">
                         </div>
@@ -448,7 +448,7 @@ if (file_exists(__DIR__ . '/../config.php')) {
                 <div class="product-card" data-category="art">
                     <div class="product-image">
                         <div class="image-placeholder">
-                            <img src="../static/images/products/szklanki.webp"
+                            <img src="../static/images/products/kubek-z-lodu.webp"
                                 alt="Kubek z lodem spożywczym - poręczne kubki z lodem na imprezy i eventy"
                                 width="600" height="400" loading="lazy">
                         </div>
