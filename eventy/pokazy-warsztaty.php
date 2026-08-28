@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Pokazy Rzeźbienia w Lodzie & Warsztaty Łódź | Lodowe.com.pl</title>
+    <meta name="description"
+        content="Spektakularne pokazy rzeźbienia na żywo (Live Carving Show) oraz warsztaty pracy w lodzie dla grup i firm w Łodzi. Zaskocz swoich gości! Tel: 511 110 265.">
+    <meta name="keywords"
+        content="pokazy rzeźbienia w lodzie łódź, live carving show łódź, warsztaty lodowe dla firm, atrakcje eventowe łódź, ice show łódź">
+    <link rel="canonical" href="https://lodowe.com.pl/eventy/pokazy-warsztaty.php">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lodowe.com.pl/eventy/pokazy-warsztaty.php">
+    <meta property="og:site_name" content="Lodowe.com.pl">
+    <meta property="og:title" content="Pokazy Rzeźbienia w Lodzie & Warsztaty Łódź | Lodowe.com.pl">
+    <meta property="og:description"
+        content="Profesjonalne pokazy lodowe i warsztaty ice carving w Łodzi. Ice show na żywo, warsztaty integracyjne dla firm. Zadzwoń: 511 110 265.">
+    <meta property="og:image" content="https://lodowe.com.pl/static/images/logo.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://lodowe.com.pl/eventy/pokazy-warsztaty.php">
+    <meta name="twitter:title" content="Pokazy Rzeźbienia w Lodzie & Warsztaty Łódź | Lodowe.com.pl">
+    <meta name="twitter:description"
+        content="Profesjonalne pokazy lodowe i warsztaty ice carving w Łodzi. Ice show na żywo, warsztaty integracyjne.">
+    <meta name="twitter:image" content="https://lodowe.com.pl/static/images/logo.webp">
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PL-LD">
+    <meta name="geo.placename" content="Łódź">
+    <meta name="geo.position" content="51.7592;19.4560">
+    <meta name="ICBM" content="51.7592, 19.4560">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GLightbox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+    <link rel="stylesheet" href="../css/style-ice-blue.css">
+    <link rel="stylesheet" href="../css/service-page.css">
+    <link rel="stylesheet" href="../css/products-page.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Pokazy Lodowe i Warsztaty",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Lodowe.com.pl",
+        "telephone": "+48511110265",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Żeromskiego 49 lok 1 u",
+          "addressLocality": "Łódź",
+          "postalCode": "90-624",
+          "addressCountry": "PL"
+        }
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Polska"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pokazy i Warsztaty Lodowe",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "ICE SHOW",
+              "description": "Widowiskowe pokazy rzeźbienia w lodzie na żywo. Spektakularne występy artystów lodowych."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Warsztaty Integracyjne",
+              "description": "Kreatywne warsztaty lodowe dla zespołów firmowych. Rozwijanie współpracy i kreatywności."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Szkolenia Profesjonalne",
+              "description": "Szkolenia z technik obróbki lodu dla branży gastronomicznej."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": "https://lodowe.com.pl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Pokazy i Warsztaty",
+          "item": "https://lodowe.com.pl/eventy/pokazy-warsztaty.php"
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <?php include __DIR__ . '/../components/nav.php'; ?>
+
+    <!-- Hero Section -->
+    <section class="service-hero products-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Profesjonalne szkolenia, unikatowa integracja firmowa, lodowe ICE SHOW</h1>
+                <p class="hero-subtitle">
+                    Lodowe łączy sztukę, emocje i rzemiosło.
+                    Tworzymy widowiskowe pokazy ICE SHOW, kreatywne warsztaty integracyjne oraz profesjonalne szkolenia
+                    z lodem dla branży gastronomicznej.
+                    Odkryj, jak magia lodu potrafi zachwycić, połączyć i zainspirować.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="workshop-section" id="warsztaty">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>Nasza oferta</h2>
+                <p>Wybierz idealny produkt lodowy dla swojej branży</p>
+            </div>
+
+            <div class="workshop-grid">
+                <!-- Product 1: Profejsonalne warsztaty -->
+                <div class="workshop-card">
+                    <div class="workshop-image">
+                        <img src="../static/images/warsztaty/galeria-warsztaty-2.webp" alt="Szkolenia barmańskie"
+                            width="600" height="400" loading="lazy">
+                    </div>
+                    <div class="workshop-content">
+                        <h3>Profesjonalne szkolenia</h3>
+                        <p class="workshop-tagline">Dla branży gastronomicznej</p>
+                        <p class="workshop-description">
+                            Warsztaty skierowane do branży gastronomicznej, barmańskiej i hotelarskiej.
+                            Uczestnicy poznają techniki przygotowania lodu premium do koktajli oraz rzeźbienia elementów
+                            dekoracyjnych.
+                        </p>
+                        <div class="workshop-features">
+                            <span class="feature-tag"><i class="fas fa-check"></i>Techniki cięcia i formowania lodu</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Przygotowanie klarownych bloków lodowych</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Tworzenie lodowych kul i kostek do drinków</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Dekoracje lodowe do ekspozycji</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Przechowywanie i transport lodu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Warsztaty Integracyjne -->
+                <div class="workshop-card">
+                    <div class="workshop-image">
+                        <img src="../static/images/warsztaty/galeria-warsztaty-15.webp" alt="Warsztaty integracyjne i dla dzieci"
+                            width="600" height="400" loading="lazy">
+                    </div>
+                    <div class="workshop-content">
+                        <h3>Warsztaty, integracje firmowe, warsztaty dla dzieci</h3>
+                        <p class="workshop-tagline">Kreatywny team-building</p>
+                        <p class="workshop-description">
+                            Warsztaty lodowe to kreatywna forma team-buildingu, która angażuje i integruje uczestników.
+                            Pod okiem instruktora zespoły uczą się podstaw rzeźbienia w lodzie i tworzą wspólne dzieła.
+                        </p>
+                        <div class="workshop-features">
+                            <span class="feature-tag"><i class="fas fa-check"></i>Warsztaty dla firm</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Warsztaty dla dzieci</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Praca w zespołach</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Doświadczony instruktor</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Sprzęt zapewniony</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Tworzenie wspólnych projektów</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Pokazy Ice Show -->
+                <div class="workshop-card">
+                    <div class="workshop-image">
+                        <img src="../static/images/pokazy/lodowe3_41.webp" alt="Pokazy ICE SHOW" width="600" height="400" loading="lazy">
+                    </div>
+                    <div class="workshop-content">
+                        <h3>Pokazy ICE SHOW</h3>
+                        <p class="workshop-tagline">Widowiskowe przedstawienie</p>
+                        <p class="workshop-description">
+                            Pokazy ICE SHOW to widowiska pełne emocji, światła i muzyki.
+                            Na oczach publiczności powstają lodowe rzeźby, a każdy gest artysty zamienia blok lodu w
+                            dzieło sztuki.
+                            Idealne jako punkt kulminacyjny eventu, gali czy imprezy firmowej. W zależności od
+                            ustalonego wariantu pokaz zawiera:
+                        </p>
+                        <div class="workshop-features">
+                            <span class="feature-tag"><i class="fas fa-check"></i>Oprawa muzyczna</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Oprawa świetlna</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Dym sceniczny</span>
+                            <span class="feature-tag"><i class="fas fa-check"></i>Pokaz pirotechniki</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio Section -->
+    <?php include __DIR__ . '/../components/portfolio.php'; ?>
+
+    <!-- Related Services -->
+    <section class="related-services">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>Powiązane Usługi</h2>
+                <p>Sprawdź inne atrakcje lodowe</p>
+            </div>
+
+            <div class="related-grid">
+                <a href="rzezby-lodowe.php" class="related-card">
+                    <div class="related-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Rzeźby Lodowe</h3>
+                    <p>Spektakularne dzieła sztuki z lodu</p>
+                    <span class="related-link">Zobacz więcej <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <a href="bary-lodowe.php" class="related-card">
+                    <div class="related-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Bary Lodowe</h3>
+                    <p>Bary wykonane z prawdziwego lodu</p>
+                    <span class="related-link">Zobacz więcej <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <a href="produkty-z-lodu.php" class="related-card">
+                    <div class="related-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Produkty z Lodu</h3>
+                    <p>Kostki, spiry, diamenty i wiele więcej</p>
+                    <span class="related-link">Zobacz więcej <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta" id="kontakt">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Chcesz zamówić pokaz lub warsztaty?</h2>
+                <p>Skontaktuj się z nami i stwórzmy razem niezapomniany event!</p>
+                <div class="cta-buttons">
+                    <a href="tel:+48511110265" class="btn btn-white">
+                        <i class="fas fa-phone"></i> Zadzwoń: 511 110 265
+                    </a>
+                    <a href="index.php#contact" class="btn btn-outline-white">
+                        <i class="fas fa-envelope"></i> Formularz Kontaktowy
+                    </a>
+                </div>
+                <div class="cta-info">
+                    <div class="cta-info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Odpowiadamy w 24h</span>
+                    </div>
+                    <div class="cta-info-item">
+                        <i class="fas fa-calculator"></i>
+                        <span>Darmowa wycena</span>
+                    </div>
+                    <div class="cta-info-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Transport w całej Polsce</span>
+                    </div>
+                </div>
+                <div class="cta-social" style="margin-top: 25px;">
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 12px; font-size: 0.95rem;">Zobacz nasze
+                        realizacje:</p>
+                    <div style="display: flex; justify-content: center; gap: 12px;">
+                        <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                        <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.tiktok.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-tiktok"></i> TikTok
+                        </a>
+
+                        <a href="https://www.youtube.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-youtube"></i> YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <?php include __DIR__ . '/../components/footer.php'; ?>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="../js/script-ice-blue.js"></script>
+    <script src="../js/components-loader.js"></script>
+    <script>
+        window.addEventListener('portfolioLoaded', function () {
+            // Reinicjalizuj GLightbox po dynamicznym wczytaniu HTML
+            if (window.lightboxInstance) {
+                window.lightboxInstance.destroy();
+            }
+
+            window.lightboxInstance = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                openEffect: 'zoom',
+                closeEffect: 'fade'
+            });
+
+            console.log('✅ GLightbox zainicjalizowany po portfolioLoaded');
+        });
+    </script>

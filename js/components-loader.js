@@ -76,63 +76,70 @@ function initPortfolioControls() {
     if (!floatingBtn) {
         floatingBtn = document.createElement("button");
         floatingBtn.id = "floatingCollapseBtn";
-        floatingBtn.classList = "btn btn-primary";
-        floatingBtn.textContent = "Zwiń";
+        floatingBtn.className = "btn btn-primary";
+        floatingBtn.textContent = "Zwiń portfolio";
         document.body.appendChild(floatingBtn);
     }
 
-    // Obsługa zdarzeń
-    toggleBtn.addEventListener("click", () => {
-        // KROK 1: Ustaw aktualną wysokość jako punkt wyjścia dla animacji
-        const currentHeight = wrapper.scrollHeight;
+    // Obsługa kliknięcia "Zobacz więcej"
+    toggleBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // KROK 1: Usuń tymczasowo ograniczenie, aby zmierzyć rzeczywistą wysokość zawartości
+        wrapper.style.maxHeight = 'none';
+        const fullHeight = wrapper.scrollHeight;
+
+        // KROK 2: Przywróć 600px jako punkt startowy animacji CSS
         wrapper.style.maxHeight = '600px';
 
-        // KROK 2: Poczekaj na przeliczenie layoutu
+        // KROK 3: Animuj płynnie do pełnej wysokości
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                // KROK 3: Teraz ustaw target height dla smooth transition
-                wrapper.style.maxHeight = currentHeight + 'px';
+                wrapper.style.maxHeight = fullHeight + 'px';
                 wrapper.classList.add("expanded");
 
-                // KROK 4: Ukryj przycisk z opóźnieniem (po rozpoczęciu animacji)
                 setTimeout(() => {
+                    wrapper.style.maxHeight = 'none';
                     toggleBtn.style.display = "none";
-                    floatingBtn.classList.add("show");
-                }, 100);
+                    if (floatingBtn) floatingBtn.classList.add("show");
+                }, 800);
             });
         });
     });
 
-    floatingBtn.addEventListener("click", () => {
-        // KROK 1: Ustaw aktualną wysokość jako punkt wyjścia
-        const currentHeight = wrapper.scrollHeight;
-        wrapper.style.maxHeight = currentHeight + 'px';
+    // Obsługa kliknięcia "Zwiń portfolio"
+    floatingBtn.addEventListener("click", (e) => {
+        e.preventDefault();
 
-        // KROK 2: Poczekaj na przeliczenie layoutu
+        // KROK 1: Ustaw aktualną wysokość jako punkt wyjścia dla zwijania
+        wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                // KROK 3: Animuj z powrotem do 600px
+                // KROK 2: Zwiń z powrotem do 600px
                 wrapper.style.maxHeight = '600px';
                 wrapper.classList.remove("expanded");
 
-                // KROK 4: Po animacji pokaż przycisk i ukryj pływający
                 setTimeout(() => {
-                    floatingBtn.classList.remove("show");
+                    if (floatingBtn) floatingBtn.classList.remove("show");
                     toggleBtn.style.display = "block";
-                }, 800); // Czas animacji z CSS (0.8s)
+                }, 800);
             });
         });
 
-        // KROK 5: Smooth scroll do portfolio po zakończeniu animacji
+        // KROK 3: Smooth scroll do sekcji portfolio
         setTimeout(() => {
-            wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+            const portfolioSection = document.getElementById("portfolio");
+            if (portfolioSection) {
+                portfolioSection.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
         }, 100);
     });
 }
 function fixPortfolioPaths() {
     function getBasePath() {
         const path = window.location.pathname;
-        return path.includes('/uslugi/') ? '../' : './';
+        return (path.includes('/uslugi/') || path.includes('/dostawa-lodu/') || path.includes('/eventy/')) ? '../' : './';
     }
 
     const basePath = getBasePath();
@@ -193,8 +200,8 @@ function fixPortfolioPaths() {
     // Determine the base path based on current location
     function getBasePath() {
         const path = window.location.pathname;
-        // If we're in a subdirectory (like /uslugi/), go up one level
-        if (path.includes('/uslugi/')) {
+        // If we're in a subdirectory, go up one level
+        if (path.includes('/uslugi/') || path.includes('/dostawa-lodu/') || path.includes('/eventy/')) {
             return '../';
         }
         return './';
@@ -204,32 +211,22 @@ function fixPortfolioPaths() {
     document.addEventListener('DOMContentLoaded', async function () {
         const basePath = getBasePath();
 
-        // Load navigation and wait for it
-        await loadComponent('nav-placeholder', basePath + 'components/nav.html');
-
-        // Dispatch custom event to signal navigation is loaded
+        // Navigation is loaded server-side via PHP now
+        // Dispatch custom event to signal navigation is loaded for other scripts
         window.dispatchEvent(new CustomEvent('navigationLoaded'));
 
-        // Load portfolio (PHP for automatic image loading)
-        const portfolioLoaded = await loadComponent('portfolio-placeholder', basePath + 'components/portfolio.php');
+        // Portfolio is loaded server-side via PHP now
+        initPortfolioControls();
+        fixPortfolioPaths();
+        initLazyLoading();
 
-        if (portfolioLoaded) {
-            initPortfolioControls();
-            fixPortfolioPaths();
-            initLazyLoading(); // Inicjalizuj lazy loading
-
-            // Czekaj chwilę aż DOM się zaktualizuje, potem inicjalizuj filtry
-            setTimeout(() => {
-                if (typeof initPortfolioFilters === 'function') {
-                    initPortfolioFilters();
-                    console.log('✅ Portfolio filters initialized from components-loader');
-                }
-            }, 100);
-
-            window.dispatchEvent(new CustomEvent('portfolioLoaded'));
+        if (typeof initPortfolioFilters === 'function') {
+            initPortfolioFilters();
+            console.log('✅ Portfolio filters initialized from components-loader');
         }
 
-        // Load footer
-        await loadComponent('footer-placeholder', basePath + 'components/footer.html');
+        window.dispatchEvent(new CustomEvent('portfolioLoaded'));
+
+        // Footer is loaded server-side via PHP now
     });
 })();

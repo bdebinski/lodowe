@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Bary Lodowe na Wesela i Eventy Łódź | Lodowe.com.pl</title>
+    <meta name="description"
+        content="Ekskluzywne mobilne bary lodowe z pełnym podświetleniem LED i obsługą barmańską. Wyjątkowa atrakcja na wesele i event firmowy w Łodzi. Tel: 511 110 265.">
+    <meta name="keywords"
+        content="bary lodowe łódź, bar z lodu na wesele, mobilny bar lodowy, barman przy barze lodowym łódź, ice bar łódź">
+    <link rel="canonical" href="https://lodowe.com.pl/eventy/bary-lodowe.php">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lodowe.com.pl/eventy/bary-lodowe.php">
+    <meta property="og:site_name" content="Lodowe.com.pl">
+    <meta property="og:title" content="Bary Lodowe na Wesela i Eventy Łódź | Lodowe.com.pl">
+    <meta property="og:description"
+        content="Profesjonalne bary lodowe w Łodzi. Ręcznie wykonane z lodu z podświetleniem LED. Od 1230 zł brutto. Dostawa w całej Polsce.">
+    <meta property="og:image" content="https://lodowe.com.pl/static/images/bary/galeria-bary-2.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://lodowe.com.pl/eventy/bary-lodowe.php">
+    <meta name="twitter:title" content="Bary Lodowe na Wesela i Eventy Łódź | Lodowe.com.pl">
+    <meta name="twitter:description"
+        content="Profesjonalne bary lodowe w Łodzi. Ręcznie wykonane z lodu z podświetleniem LED. Od 1230 zł brutto.">
+    <meta name="twitter:image" content="https://lodowe.com.pl/static/images/bary/galeria-bary-2.webp">
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PL-LD">
+    <meta name="geo.placename" content="Łódź">
+    <meta name="geo.position" content="51.7592;19.4560">
+    <meta name="ICBM" content="51.7592, 19.4560">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GLightbox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+    <link rel="stylesheet" href="../css/style-ice-blue.css">
+    <link rel="stylesheet" href="../css/service-page.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Bary Lodowe",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Lodowe.com.pl",
+        "telephone": "+48511110265",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Żeromskiego 49 lok 1 u",
+          "addressLocality": "Łódź",
+          "postalCode": "90-624",
+          "addressCountry": "PL"
+        }
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Polska"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Rodzaje Barów Lodowych",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Klasyczny Bar Lodowy",
+              "description": "Prosty, elegancki bar o geometrycznej formie. Konstrukcja 2-3 metry."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Tematyczny Bar Lodowy",
+              "description": "Bar lodowy z logo, napisami i elementami dekoracyjnymi. LED RGB."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Drink Luge Bar",
+              "description": "Bar z kanałem do zjeżdżania napojów po lodzie."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Bar Wielosegmentowy",
+              "description": "Rozbudowany bar składający się z 2-6 sekcji roboczych."
+            }
+          }
+        ]
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "PLN",
+        "price": "1230",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "PLN",
+          "price": "1230",
+          "valueAddedTaxIncluded": true
+        }
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": "https://lodowe.com.pl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bary Lodowe",
+          "item": "https://lodowe.com.pl/eventy/bary-lodowe.php"
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Jak długo utrzymuje się bar lodowy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bar lodowy w temperaturze pokojowej utrzymuje swoją formę przez około 6-8 godzin, w zależności od rozmiaru i temperatury otoczenia. Dzięki specjalnym podstawom i chłodzeniu może być używany nawet do 10 godzin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy bar lodowy jest funkcjonalny?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak! Bary lodowe są w pełni użytkowe - można na nich przygotowywać i serwować napoje. Powierzchnia robocza jest gładka i stabilna, a woda z topnienia odprowadzana specjalnym systemem odpływowym."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy bar można podświetlić?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oczywiście! Podświetlenie LED to standard w naszych realizacjach. Oferujemy światło białe lub kolorowe RGB, które nadaje barowi wyjątkowy klimat, szczególnie po zmroku."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <?php include __DIR__ . '/../components/nav.php'; ?>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bary Lodowe</h1>
+                <p class="hero-subtitle">
+                    Spektakularne bary wykonane w całości z lodu – idealne na eventy, wesela i gale.
+                    Połączenie elegancji, funkcjonalności i efektu WOW, który Twoi goście zapamiętają na długo.
+                </p>
+                <div class="hero-stats-row">
+                    <div class="stat-badge">
+                        <strong>20+</strong> lat tradycji
+                    </div>
+                    <div class="stat-badge">
+                        <strong>200+</strong> zrealizowanych barów
+                    </div>
+                    <div class="stat-badge">
+                        <strong>100%</strong> satysfakcji
+                    </div>
+                </div>
+                <div class="hero-cta-row">
+                    <a href="#kontakt" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Zapytaj o wycenę
+                    </a>
+                    <a href="#galeria" class="btn btn-secondary">
+                        <i class="fas fa-images"></i> Zobacz realizacje
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Service -->
+    <section class="service-about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Czym są bary lodowe?</h2>
+                    <p>
+                        Bary lodowe to wyjątkowe konstrukcje stworzone w całości z krystalicznie czystego lodu.
+                        Mogą pełnić funkcję zarówno praktyczną – do serwowania napojów, jak i dekoracyjną,
+                        przyciągając uwagę wszystkich gości swoją oryginalnością i elegancją.
+                    </p>
+                    <p>
+                        Każdy bar projektujemy indywidualnie – dostosowując jego kształt, rozmiar, elementy graficzne
+                        (logo, napisy, symbole) i oświetlenie LED do charakteru wydarzenia. Tworzymy zarówno
+                        klasyczne prostokątne bary, jak i wielopoziomowe konstrukcje z rzeźbami i efektami świetlnymi.
+                    </p>
+
+                    <div class="highlight-box">
+                        <i class="fas fa-snowflake"></i>
+                        <div>
+                            <h4>Dlaczego warto wybrać bar lodowy?</h4>
+                            <p>Bar lodowy to nie tylko miejsce serwowania drinków – to efektowny punkt centralny każdej
+                                imprezy. Symbol luksusu i wyjątkowego stylu, który robi niezapomniane wrażenie.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <img src="../static/images/bary/galeria-bary-2.webp"
+                        alt="Bar lodowy z podświetleniem LED - profesjonalna konstrukcja na wesele i event firmowy w Łodzi"
+                        loading="lazy" width="600" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Types of Bars -->
+    <section class="sculpture-types">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>Rodzaje Barów Lodowych</h2>
+                <p>Od eleganckich konstrukcji po spektakularne, tematyczne projekty</p>
+            </div>
+
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-cocktail"></i>
+                    </div>
+                    <h3>Klasyczny Bar Lodowy</h3>
+                    <p>
+                        Prosty, elegancki bar o geometrycznej formie. Idealny na wesela, bankiety i gale,
+                        gdzie liczy się prestiż i styl.
+                    </p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> Konstrukcja 2–3 metry</li>
+                        <li><i class="fas fa-check"></i> Gładka powierzchnia robocza</li>
+                        <li><i class="fas fa-check"></i> Miejsce na butelki i szkło</li>
+                        <li><i class="fas fa-check"></i> Możliwość grawerowania logo</li>
+                    </ul>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Tematyczny Bar Lodowy</h3>
+                    <p>
+                        Tworzony na motywach imprezy – tropikalny, firmowy, zimowy lub futurystyczny.
+                        Każdy detal dopasowany do klimatu wydarzenia.
+                    </p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> Spersonalizowany design</li>
+                        <li><i class="fas fa-check"></i> Logo, napisy, symbole</li>
+                        <li><i class="fas fa-check"></i> Elementy dekoracyjne</li>
+                        <li><i class="fas fa-check"></i> LED RGB – pełna gama kolorów</li>
+                    </ul>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <h3>Drink Luge Bar</h3>
+                    <p>
+                        Bar połączony z funkcją „luge” – kanałem do zjeżdżania napojów po lodzie.
+                        Gwarantuje widowiskowy sposób serwowania drinków.
+                    </p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> 1 lub 2 tory do napojów</li>
+                        <li><i class="fas fa-check"></i> Funkcja chłodzenia trunków</li>
+                        <li><i class="fas fa-check"></i> Pełne podświetlenie LED</li>
+                        <li><i class="fas fa-check"></i> Efekt WOW dla gości</li>
+                    </ul>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Bar Wielosegmentowy</h3>
+                    <p>
+                        Rozbudowany bar lodowy składający się z kilku sekcji.
+                        Idealny na duże imprezy z obsługą barmanów i serwowaniem wielu napojów.
+                    </p>
+                    <ul class="type-features">
+                        <li><i class="fas fa-check"></i> 2–6 sekcji roboczych</li>
+                        <li><i class="fas fa-check"></i> Wbudowane półki i blaty</li>
+                        <li><i class="fas fa-check"></i> Możliwość montażu logotypu</li>
+                        <li><i class="fas fa-check"></i> Transport i montaż w cenie</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <?php include __DIR__ . '/../components/portfolio.php'; ?>
+
+    <!-- FAQ -->
+    <section class="service-faq">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>Najczęściej Zadawane Pytania</h2>
+                <p>O barach lodowych</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Jak długo utrzymuje się bar lodowy?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Bar lodowy w temperaturze pokojowej utrzymuje swoją formę przez około 6–8 godzin, w
+                            zależności od rozmiaru i temperatury otoczenia. Dzięki specjalnym podstawom i chłodzeniu
+                            może być używany nawet do 10 godzin.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Czy bar jest funkcjonalny?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Tak! Bary lodowe są w pełni użytkowe – można na nich przygotowywać i serwować napoje.
+                            Powierzchnia robocza jest gładka i stabilna, a woda z topnienia odprowadzana specjalnym
+                            systemem odpływowym.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Czy bar można podświetlić?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oczywiście! Podświetlenie LED to standard w naszych realizacjach. Oferujemy światło białe lub
+                            kolorowe RGB, które nadaje barowi wyjątkowy klimat, szczególnie po zmroku.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Ile waży bar lodowy?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>W zależności od wielkości, bar może ważyć od 300 do 800 kg. Dostarczamy go w segmentach,
+                            które składamy na miejscu wydarzenia. Nie wymaga specjalnych instalacji – wystarczy stabilne
+                            podłoże.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Czy można zamówić bar według własnego projektu?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Tak! Wykonujemy bary w pełni spersonalizowane – z logotypem firmy, nazwą eventu, motywem
+                            przewodnim czy dedykowanymi elementami graficznymi. Wystarczy przesłać nam pomysł lub
+                            inspirację.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="related-services">
+        <div class="container">
+            <div class="section-header-center">
+                <h2>Powiązane Usługi</h2>
+                <p>Sprawdź inne atrakcje lodowe</p>
+            </div>
+
+            <div class="related-grid">
+                <a href="rzezby-lodowe.php" class="related-card">
+                    <div class="related-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Rzeźby Lodowe</h3>
+                    <p>Spektakularne dzieła sztuki z lodu</p>
+                    <span class="related-link">Zobacz więcej <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <a href="pokazy-warsztaty.php" class="related-card">
+                    <div class="related-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Pokazy i Warsztaty</h3>
+                    <p>Rzeźbienie na żywo przed publicznością</p>
+                    <span class="related-link">Zobacz więcej <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <a href="produkty-z-lodu.php" class="related-card">
+                    <div class="related-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Produkty z Lodu</h3>
+                    <p>Kostki, spiry, diamenty i wiele więcej</p>
+                    <span class="related-link">Zobacz więcej <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta" id="kontakt">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Chcesz zamówić bar lodowy?</h2>
+                <p>Skontaktuj się z nami i stwórzmy razem niezapomniany efekt!</p>
+                <div class="cta-buttons">
+                    <a href="tel:+48511110265" class="btn btn-white">
+                        <i class="fas fa-phone"></i> Zadzwoń: 511 110 265
+                    </a>
+                    <a href="index.php#contact" class="btn btn-outline-white">
+                        <i class="fas fa-envelope"></i> Formularz Kontaktowy
+                    </a>
+                </div>
+                <div class="cta-info">
+                    <div class="cta-info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Odpowiadamy w 24h</span>
+                    </div>
+                    <div class="cta-info-item">
+                        <i class="fas fa-calculator"></i>
+                        <span>Ceny od 1230zł brutto</span>
+                    </div>
+                    <div class="cta-info-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Transport w całej Polsce</span>
+                    </div>
+                </div>
+                <div class="cta-social" style="margin-top: 25px;">
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 12px; font-size: 0.95rem;">Zobacz nasze
+                        realizacje:</p>
+                    <div style="display: flex; justify-content: center; gap: 12px;">
+                        <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                        <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.tiktok.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                            aria-label="TikTok"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-tiktok"></i> TikTok
+                        </a>
+
+                        <a href="https://www.youtube.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube"
+                            style="color: white; background: rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s;">
+                            <i class="fab fa-youtube"></i> YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <?php include __DIR__ . '/../components/footer.php'; ?>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="../js/script-ice-blue.js"></script>
+    <script src="../js/components-loader.js"></script>
+    <script>
+        window.addEventListener('portfolioLoaded', function () {
+            // Reinicjalizuj GLightbox po dynamicznym wczytaniu HTML
+            if (window.lightboxInstance) {
+                window.lightboxInstance.destroy();
+            }
+
+            window.lightboxInstance = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                openEffect: 'zoom',
+                closeEffect: 'fade'
+            });
+
+            console.log('✅ GLightbox zainicjalizowany po portfolioLoaded');
+        });
+    </script>
+</body>
+
+</html>

@@ -23,8 +23,8 @@
     Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 
     # Content Security Policy (CSP)
-    # Dostosowane do używanych CDN i YouTube
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; frame-src https://www.youtube.com https://www.google.com; connect-src 'self' https://www.google.com;"
+    # Dostosowane do używanych CDN i YouTube oraz Google Maps
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; frame-src https://www.youtube.com https://www.google.com https://maps.google.com; connect-src 'self' https://www.google.com;"
 
     # HTTPS Strict Transport Security (odkomentuj gdy masz SSL)
     # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
@@ -146,11 +146,7 @@ Options -Indexes
         Header set Expires 0
     </FilesMatch>
 </IfModule>
-RewriteEngine On
 
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\.lodowe\.com\.pl$ [NC]
-RewriteRule ^(.*)$ https://lodowe.com.pl/$1 [L,R=301]
 # ========================================
 # 6. URL REWRITING (przyjazne URL)
 # ========================================
@@ -158,15 +154,15 @@ RewriteRule ^(.*)$ https://lodowe.com.pl/$1 [L,R=301]
     RewriteEngine On
     RewriteBase /
 
-    # Usuń trailing slash (opcjonalnie)
-    # RewriteCond %{REQUEST_FILENAME} !-d
-    # RewriteRule ^(.*)/$ /$1 [L,R=301]
+    # Przekieruj wpisy z index.php na czysty URL w pasku adresu (np. /eventy/index.php -> /eventy/)
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/(.*)index\.php[?\s] [NC]
+    RewriteRule ^(.*)index\.php$ /%1 [R=301,L]
 
     # Blokuj złośliwe requesty
     RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
     RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
     RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
-    RewriteRule ^(.*)$ index.html [F,L]
+    RewriteRule ^(.*)$ index.php [F,L]
 </IfModule>
 
 # ========================================
@@ -225,7 +221,7 @@ RewriteRule ^(.*)$ https://lodowe.com.pl/$1 [L,R=301]
 # ========================================
 # 10. DOMYŚLNE STRONY
 # ========================================
-DirectoryIndex index.html index.php
+DirectoryIndex index.php index.html
 
 # ========================================
 # 11. BLOKADA BOTS I SCRAPER (opcjonalnie)

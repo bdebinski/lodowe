@@ -2,12 +2,12 @@
 // Mapowanie folderów na kategorie i nazwy
 $folderMapping = [
     'sculptures' => ['folder' => 'rzezby', 'title' => 'Rzeźba Lodowa', 'description' => 'Gala'],
-    'blocks' => ['folder' => 'bryly', 'title' => 'Bryła z Logo', 'description' => 'Prezent firmowy'],
-    'bars' => ['folder' => 'bary', 'title' => 'Bar Lodowy', 'description' => 'Wesele'],
-    'shows' => ['folder' => 'pokazy', 'title' => 'Pokaz Lodowy', 'description' => 'Event'],
-    'workshops' => ['folder' => 'warsztaty', 'title' => 'Warsztaty Lodowe', 'description' => 'Integracja'],
-    'products' => ['folder' => 'products', 'title' => 'Produkt', 'description' => 'Oferta'],
-    'wosp' => ['folder' => 'wosp', 'title' => 'WOŚP', 'description' => 'Wielka Orkiestra Świątecznej Pomocy']
+    'blocks'     => ['folder' => 'bryly', 'title' => 'Bryła z Logo', 'description' => 'Prezent firmowy'],
+    'bars'       => ['folder' => 'bary', 'title' => 'Bar Lodowy', 'description' => 'Wesele'],
+    'shows'      => ['folder' => 'pokazy', 'title' => 'Pokaz Lodowy', 'description' => 'Event'],
+    'workshops'  => ['folder' => 'warsztaty', 'title' => 'Warsztaty Lodowe', 'description' => 'Integracja'],
+    'products'   => ['folder' => 'products', 'title' => 'Produkt Lodowy', 'description' => 'Oferta'],
+    'wosp'       => ['folder' => 'wosp', 'title' => 'Realizacja WOŚP', 'description' => 'Finał WOŚP']
 ];
 
 // Funkcja do pobrania wszystkich obrazków z folderu
@@ -38,14 +38,14 @@ foreach ($folderMapping as $category => $config) {
     $images = getImagesFromFolder($folderPath);
 
     foreach ($images as $image) {
-        $imagePath = 'static/images/' . $config['folder'] . '/' . $image;
+        $imagePath = '/static/images/' . $config['folder'] . '/' . $image;
 
         // Ścieżka do miniatury (thumbnail)
         $imageNameWithoutExt = pathinfo($image, PATHINFO_FILENAME);
-        $thumbnailPath = 'static/images/' . $config['folder'] . '/thumbs/' . $imageNameWithoutExt . '.webp';
+        $thumbnailPath = '/static/images/' . $config['folder'] . '/thumbs/' . $imageNameWithoutExt . '.webp';
 
         // Sprawdź czy miniatura istnieje, jeśli nie użyj oryginalnego obrazu
-        $thumbExists = file_exists(__DIR__ . '/../' . $thumbnailPath);
+        $thumbExists = file_exists(__DIR__ . '/../static/images/' . $config['folder'] . '/thumbs/' . $imageNameWithoutExt . '.webp');
 
         $portfolioItems[] = [
             'category' => $category,
@@ -82,13 +82,11 @@ foreach ($folderMapping as $category => $config) {
                     data-category="<?php echo htmlspecialchars($item['category']); ?>" data-gallery="portfolio"
                     data-glightbox="title: <?php echo htmlspecialchars($item['title']); ?>; description: <?php echo htmlspecialchars($item['description']); ?>">
                     <div class="portfolio-placeholder">
-                        <!-- Rozmyte tło z obrazem -->
-                        <div class="placeholder-bg" data-bg-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"></div>
-                        <!-- Wszystkie obrazy z lazy loading - ładowane tylko gdy widoczne lub po kliknięciu filtra -->
-                        <img data-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
+                        <img src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
+                             data-src="<?php echo htmlspecialchars($item['thumbnailPath']); ?>"
                              alt="<?php echo htmlspecialchars($item['alt']); ?>"
-                             class="portfolio-image lazy-load"
-                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23e0f2fe'/%3E%3C/svg%3E">
+                             width="600" height="400"
+                             loading="lazy">
                     </div>
                     <div class="portfolio-overlay">
                         <h3><?php echo htmlspecialchars($item['title']); ?></h3>

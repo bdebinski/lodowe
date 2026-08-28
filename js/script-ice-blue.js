@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initScrollEffects();
     initFAQ();
     initPortfolioFilters();
+    initServiceAutoSelect();
     initContactForm();
     initScrollToTop();
     initSmoothScroll();
@@ -55,19 +56,40 @@ window.addEventListener('portfolioLoaded', function () {
 // ===================================
 
 function initNavigation() {
+    const globalHeader = document.querySelector('.global-header');
     const navbar = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
 
+    highlightActiveWorldTab();
+
     // Sticky navbar on scroll
     window.addEventListener('scroll', function () {
         if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
+            if (globalHeader) globalHeader.classList.add('scrolled');
+            if (navbar) navbar.classList.add('scrolled');
         } else {
-            navbar.classList.remove('scrolled');
+            if (globalHeader) globalHeader.classList.remove('scrolled');
+            if (navbar) navbar.classList.remove('scrolled');
         }
     });
+
+function highlightActiveWorldTab() {
+    const path = window.location.pathname;
+    const tabEvents = document.getElementById('worldTabEvents');
+    const tabDelivery = document.getElementById('worldTabDelivery');
+
+    if (tabEvents && tabDelivery) {
+        if (path.includes('/dostawa-lodu/')) {
+            tabDelivery.classList.add('active');
+            tabEvents.classList.remove('active');
+        } else {
+            tabEvents.classList.add('active');
+            tabDelivery.classList.remove('active');
+        }
+    }
+}
 
     // Mobile menu toggle
     if (hamburger && navMenu) {
@@ -276,6 +298,24 @@ function initPortfolioFilters() {
                         initLazyLoading();
                     }
                 }, 100);
+            }
+        });
+    });
+}
+
+// ===================================
+// AUTO-SELECT SERVICE IN FORM
+// ===================================
+
+function initServiceAutoSelect() {
+    document.querySelectorAll('.btn-inquire-service').forEach(link => {
+        link.addEventListener('click', function (e) {
+            const serviceVal = this.getAttribute('data-service');
+            const select = document.getElementById('service');
+            if (select && serviceVal) {
+                select.value = serviceVal;
+                select.classList.add('highlight-select');
+                setTimeout(() => select.classList.remove('highlight-select'), 1500);
             }
         });
     });

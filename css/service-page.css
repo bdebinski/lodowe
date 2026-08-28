@@ -838,3 +838,183 @@
         padding: 60px 0;
     }
 }
+
+/* Rich SEO Content Section */
+.seo-content-section {
+    padding: 70px 0;
+    background: #E2E8F0;
+    border-top: 2px solid #CBD5E1;
+    border-bottom: 2px solid #CBD5E1;
+}
+
+.seo-content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    margin-top: 40px;
+}
+
+.seo-content-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 35px;
+    border: 1px solid #CBD5E1;
+    border-top: 4px solid #0284C7;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+    transition: all 0.3s ease;
+}
+
+.seo-content-card:hover {
+    border-top-color: #0369A1;
+    box-shadow: 0 12px 35px rgba(2, 132, 199, 0.12);
+}
+
+.seo-content-card .card-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0284C7, #0891B2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.seo-content-card h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.seo-content-card p {
+    color: #475569;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.seo-content-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.seo-content-card ul li {
+    position: relative;
+    padding-left: 24px;
+    color: #334155;
+    font-size: 0.93rem;
+    margin-bottom: 8px;
+}
+
+.seo-content-card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #0284C7;
+    font-weight: 700;
+}
+
+@media (max-width: 992px) {
+    .seo-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================================
+   WORKSHOP CARDS (For Events & Show Page)
+   ========================================================================= */
+.workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.workshop-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #E2E8F0;
+    display: flex;
+    flex-direction: column;
+}
+
+.workshop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(8, 145, 178, 0.15);
+    border-color: #0891B2;
+}
+
+.workshop-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: #F1F5F9;
+}
+
+.workshop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.workshop-card:hover .workshop-image img {
+    transform: scale(1.05);
+}
+
+.workshop-content {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.workshop-content h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 8px;
+}
+
+.workshop-tagline {
+    font-size: 0.95rem;
+    color: #0891B2;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.workshop-description {
+    color: #64748B;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.workshop-features {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.workshop-features .feature-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #334155;
+}
+
+.workshop-features .feature-tag i {
+    color: #0891B2;
+    font-size: 0.9rem;
+}

@@ -5,49 +5,56 @@
     <!-- Strona główna -->
     <url>
         <loc>https://lodowe.com.pl/</loc>
-        <lastmod>2025-11-15</lastmod>
+        <lastmod>2026-08-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- Usługi - Rzeźby Lodowe -->
+    <!-- Strefa Dostawa Lodu (B2B) -->
     <url>
-        <loc>https://lodowe.com.pl/uslugi/rzezby-lodowe.html</loc>
-        <lastmod>2025-11-15</lastmod>
+        <loc>https://lodowe.com.pl/dostawa-lodu/</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.95</priority>
+    </url>
+
+    <!-- Strefa Eventy -->
+    <url>
+        <loc>https://lodowe.com.pl/eventy/</loc>
+        <lastmod>2026-08-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+    </url>
+
+    <!-- Eventy - Rzeźby Lodowe -->
+    <url>
+        <loc>https://lodowe.com.pl/eventy/rzezby-lodowe.php</loc>
+        <lastmod>2026-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- Usługi - Bary Lodowe -->
+    <!-- Eventy - Bary Lodowe -->
     <url>
-        <loc>https://lodowe.com.pl/uslugi/bary-lodowe.html</loc>
-        <lastmod>2025-11-15</lastmod>
+        <loc>https://lodowe.com.pl/eventy/bary-lodowe.php</loc>
+        <lastmod>2026-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- Usługi - Pokazy i Warsztaty -->
+    <!-- Eventy - Pokazy i Warsztaty -->
     <url>
-        <loc>https://lodowe.com.pl/uslugi/pokazy-warsztaty.html</loc>
-        <lastmod>2025-11-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <!-- Usługi - Produkty z Lodu -->
-    <url>
-        <loc>https://lodowe.com.pl/uslugi/produkty-z-lodu.php</loc>
-        <lastmod>2025-11-15</lastmod>
+        <loc>https://lodowe.com.pl/eventy/pokazy-warsztaty.php</loc>
+        <lastmod>2026-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <!-- WOSP -->
     <url>
-        <loc>https://lodowe.com.pl/wosp.html</loc>
-        <lastmod>2025-11-15</lastmod>
+        <loc>https://lodowe.com.pl/wosp.php</loc>
+        <lastmod>2026-08-07</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
-
 </urlset>

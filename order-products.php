@@ -95,8 +95,8 @@ function verify_recaptcha($token, $secret_key, $expected_action = 'order_form') 
         return false;
     }
 
-    // 2. Sprawdź score (>= 0.5 dla standardowej ochrony)
-    if ($response->score < 0.5) {
+    // 2. Sprawdź score (>= 0.3 dla optymalnego wyważenia bez false positives)
+    if ($response->score < 0.3) {
         error_log("reCAPTCHA score too low: " . $response->score);
         return false;
     }
@@ -108,8 +108,8 @@ function verify_recaptcha($token, $secret_key, $expected_action = 'order_form') 
     }
 
     // 4. Zweryfikuj hostname (opcjonalnie)
-    if (isset($response->hostname)) {
-        $allowed_hostnames = defined('RECAPTCHA_ALLOWED_HOSTS') ? RECAPTCHA_ALLOWED_HOSTS : ['lodowe.com.pl', 'www.lodowe.com.pl', 'localhost'];
+    if (isset($response->hostname) && !empty($response->hostname)) {
+        $allowed_hostnames = defined('RECAPTCHA_ALLOWED_HOSTS') ? RECAPTCHA_ALLOWED_HOSTS : ['lodowe.com.pl', 'www.lodowe.com.pl', 'localhost', '127.0.0.1'];
         if (!in_array($response->hostname, $allowed_hostnames)) {
             error_log("reCAPTCHA hostname not allowed: " . $response->hostname);
             return false;
@@ -142,14 +142,19 @@ $address = sanitize_input($_POST['address'] ?? '');
 $notes   = sanitize_input($_POST['notes']   ?? '');
 $recaptcha_token = $_POST['recaptcha_token'] ?? '';
 
-// Weryfikacja reCAPTCHA v3
-if (empty($recaptcha_token)) {
-    sendJsonResponse(false, 'Weryfikacja reCAPTCHA nie powiodła się.', 400);
-}
+// Weryfikacja reCAPTCHA v3 (tylko w przypadku poprawnej konfiguracji)
+if (defined('RECAPTCHA_SECRET_KEY') && RECAPTCHA_SECRET_KEY !== 'YOUR_SECRET_KEY_HERE' && !empty(RECAPTCHA_SECRET_KEY)) {
+    if (empty($recaptcha_token)) {
+        sendJsonResponse(false, 'Weryfikacja reCAPTCHA nie powiodła się. Token reCAPTCHA jest pusty. Odśwież stronę i spróbuj ponownie.', 400);
+    }
 
-if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY, 'order_form')) {
-    error_log("reCAPTCHA verification failed for order from: $email");
-    sendJsonResponse(false, 'Wykryto podejrzaną aktywność. Spróbuj ponownie lub skontaktuj się telefonicznie.', 403);
+    if (!verify_recaptcha($recaptcha_token, RECAPTCHA_SECRET_KEY, 'order_form')) {
+        error_log("reCAPTCHA verification failed for order from: $email");
+        sendJsonResponse(false, 'Wykryto podejrzaną aktywność lub weryfikacja reCAPTCHA nie powiodła się. Spróbuj ponownie lub skontaktuj się telefonicznie.', 403);
+    }
+} else {
+    // Środowisko testowe / brak klucza Google - pomijamy weryfikację
+    error_log("OSTRZEŻENIE: reCAPTCHA nie jest skonfigurowana. Blokada antyspamowa jest WYŁĄCZONA na order-products.php.");
 }
 
 // Walidacja wymaganych pól

@@ -1,0 +1,1002 @@
+<?php
+// Wymagane dla tagu WOŚP w navbarze
+$is_wosp = false;
+?>
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Rzeźby Lodowe Łódź - Bary Lodowe, Kostki Lodu | Lodowe.com.pl</title>
+    <meta name="description"
+        content="Profesjonalne rzeźby lodowe, bary lodowe i kostki lodu w Łodzi. ✓ 20+ lat tradycji ✓ 500+ eventów ✓ Dostawa w całej Polsce ✓ Wesela, eventy firmowe, gastronomia">
+    <meta name="author" content="Lodowe.com.pl">
+    <link rel="canonical" href="https://lodowe.com.pl/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lodowe.com.pl/">
+    <meta property="og:site_name" content="Lodowe.com.pl">
+    <meta property="og:title" content="Rzeźby Lodowe Łódź - Bary Lodowe, Kostki Lodu | Lodowe.com.pl">
+    <meta property="og:description"
+        content="Profesjonalne rzeźby lodowe, bary lodowe i kostki lodu w Łodzi. 20+ lat tradycji. Dostawa w całej Polsce.">
+    <meta property="og:image" content="https://lodowe.com.pl/static/images/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pl_PL">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://lodowe.com.pl/">
+    <meta name="twitter:title" content="Rzeźby Lodowe Łódź - Bary Lodowe, Kostki Lodu | Lodowe.com.pl">
+    <meta name="twitter:description"
+        content="Profesjonalne rzeźby lodowe, bary lodowe i kostki lodu w Łodzi. 20+ lat tradycji. Dostawa w całej Polsce.">
+    <meta name="twitter:image" content="https://lodowe.com.pl/static/images/logo.webp">
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PL-LD">
+    <meta name="geo.placename" content="Łódź">
+    <meta name="geo.position" content="51.7592;19.4560">
+    <meta name="ICBM" content="51.7592, 19.4560">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GLightbox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+    <!-- Configuration (must load first) -->
+    <script src="../js/config.js?v=<?php echo filemtime(__DIR__ . '/../js/config.js'); ?>"></script>
+
+    <!-- Google reCAPTCHA Enterprise - Loaded dynamically after config -->
+    <script>
+        // Wait for config to be loaded, then load reCAPTCHA
+        window.addEventListener('DOMContentLoaded', function () {
+            if (window.recaptchaSiteKey && window.recaptchaSiteKey !== 'YOUR_SITE_KEY_HERE') {
+                const script = document.createElement('script');
+                const apiUrl = window.recaptchaIsEnterprise
+                    ? 'https://www.google.com/recaptcha/enterprise.js'
+                    : 'https://www.google.com/recaptcha/api.js';
+                script.src = `${apiUrl}?render=${window.recaptchaSiteKey}`;
+                script.async = true;
+                script.defer = true;
+                document.head.appendChild(script);
+                console.log('✅ reCAPTCHA script loaded with key:', window.recaptchaSiteKey.substring(0, 20) + '...');
+            } else {
+                console.error('❌ reCAPTCHA site key not configured in js/config.js');
+            }
+        });
+    </script>
+
+    <link rel="stylesheet" href="../css/style-ice-blue.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://lodowe.com.pl/#organization",
+      "name": "Lodowe.com.pl",
+      "alternateName": "Lodowe - Rzeźby Lodowe Łódź",
+      "url": "https://lodowe.com.pl",
+      "logo": "https://lodowe.com.pl/static/images/logo.webp",
+      "image": "https://lodowe.com.pl/static/images/logo.webp",
+      "description": "Profesjonalne rzeźby lodowe, bary lodowe i kostki lodu w Łodzi. 20+ lat tradycji w branży eventowej.",
+      "telephone": "+48511110265",
+      "email": "biuro@lodowe.com.pl",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ul. Żeromskiego 49 lok 1 u",
+        "addressLocality": "Łódź",
+        "postalCode": "90-624",
+        "addressRegion": "łódzkie",
+        "addressCountry": "PL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.7592",
+        "longitude": "19.4560"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      "priceRange": "$$",
+      "servesCuisine": "Event Services",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Polska"
+      },
+      "foundingDate": "2006",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "150",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "sameAs": [
+        "https://www.facebook.com/lodowecompl",
+        "https://www.instagram.com/lodowe.com.pl/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Usługi Lodowe",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Rzeźby Lodowe",
+              "description": "Spektakularne, autorskie rzeźby lodowe na wesela i eventy firmowe"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bary Lodowe",
+              "description": "Profesjonalne bary wykonane w całości z lodu z podświetleniem LED"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Kostki Lodu",
+              "description": "Wysokiej jakości kostki lodu dla gastronomii i eventów"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pokazy Lodowe",
+              "description": "Spektakularne pokazy rzeźbienia w lodzie na żywo"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lodowe.com.pl",
+      "url": "https://lodowe.com.pl",
+      "logo": "https://lodowe.com.pl/static/images/logo.webp",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+48511110265",
+        "contactType": "customer service",
+        "areaServed": "PL",
+        "availableLanguage": "Polish"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": "https://lodowe.com.pl/"
+        }
+      ]
+    }
+    </script>
+</head>
+<style>
+    .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        /* żeby tło było za treścią, ale nad body */
+    }
+
+    .video-background iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100vw;
+        height: 56.25vw;
+        /* proporcje 16:9 */
+        min-width: 177.77vh;
+        min-height: 100vh;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        /* Ensure perfect centering on all resolutions */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Additional centering fix for different aspect ratios */
+    @media (min-aspect-ratio: 16/9) {
+        .video-background iframe {
+            width: 100vw;
+            height: 56.25vw;
+        }
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+        .video-background iframe {
+            width: 177.77vh;
+            height: 100vh;
+        }
+    }
+
+    /* Ciemniejszy filtr (nakładka) */
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.55);
+        /* <-- tu kontrolujesz ciemność */
+        z-index: 0;
+    }
+
+    /* Treść sekcji hero */
+    .hero-content {
+        z-index: 1;
+        color: #fff;
+        text-align: center;
+
+        font-family: 'Poppins', sans-serif;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-content .stat-item {
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        text-shadow: none;
+    }
+
+    .hero-content .btn {
+        text-shadow: none;
+    }
+
+    /* Tekst */
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+        color: white;
+    }
+</style>
+
+<body>
+    <!-- Navigation -->
+    <?php include '../components/nav.php'; ?>
+
+    <div class="video-background">
+        <iframe
+            src="https://www.youtube.com/embed/Mr38VMFiWG4?start=10&controls=0&autoplay=1&mute=1&loop=1&playlist=Mr38VMFiWG4&modestbranding=1&rel=0&showinfo=0&fs=0"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+    </div>
+    <div class="video-overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Tworzymy<br>
+                    lodowe dzieła sztuki
+                </h1>
+                <p>
+                    Profesjonalne rzeźby lodowe i wysokiej jakości lód dla eventów,<br>
+                    restauracji i barów w całej Polsce
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-medal"></i>
+                        <h3>20+</h3>
+                        <p>Lat tradycji</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>500+</h3>
+                        <p>Zrealizowanych eventów</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <h3>100%</h3>
+                        <p>Zadowolonych klientów</p>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#portfolio" class="btn btn-secondary">
+                        <i class="fas fa-images"></i> Zobacz Realizacje
+                    </a>
+                    <a href="/dostawa-lodu/" class="btn btn-primary">
+                        <i class="fas fa-shopping-cart"></i> Złóż zamówienie
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Skontaktuj się
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#about">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-subtitle">O nas</span>
+                    <h2 class="section-title">Pasja zamrożona w lodzie</h2>
+                    <p class="about-text">
+                        Od ponad dekady tworzymy spektakularne rzeźby lodowe i dostarczamy profesjonalny lód dla
+                        najbardziej wymagających klientów. Każde dzieło to połączenie artystycznej wizji, precyzji
+                        wykonania i najwyższej jakości surowca.
+                    </p>
+                    <p class="about-text">
+                        Współpracujemy z największymi eventami w Polsce, restauracjami i prestiżowymi hotelami. Nasze
+                        lodowe kreacje zachwycają gości na weselach, galach, konferencjach i imprezach firmowych.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certyfikowana jakość</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Dostawa w całej Polsce</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Projekty na zamówienie</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 wsparcie</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-image">
+                        <div class="image-placeholder">
+                            <img src="../static/images/crew.webp"
+                                alt="Zespół artystów lodowych Lodowe.com.pl - profesjonaliści z 20+ letnią tradycją w rzeźbieniu w lodzie"
+                                loading="lazy" width="600" height="400">
+                        </div>
+                    </div>
+                    <div class="about-badge">
+                        <div class="badge-number">20+</div>
+                        <div class="badge-text">LAT TRADYCJI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Nasza Oferta</span>
+                <h2 class="section-title">Kompleksowe Usługi Lodowe</h2>
+                <p class="section-description">
+                    Od spektakularnych rzeźb po profesjonalny lód gastronomiczny
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="service-title">Rzeźby Lodowe</h3>
+                    <p class="service-description">
+                        Spektakularne, autorskie rzeźby lodowe na każdą okazję. Przekształcamy Twoje pomysły w
+                        krystaliczne dzieła sztuki.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Projekty na zamówienie</li>
+                        <li><i class="fas fa-check"></i> Logo firm w lodzie</li>
+                        <li><i class="fas fa-check"></i> Dowolna tematyka</li>
+                    </ul>
+                    <div class="service-links">
+                        <a href="#contact" class="btn-link">
+                            Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="rzezby-lodowe.php" class="btn-link">
+                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="service-title">Warsztaty lodowe</h3>
+                    <p class="service-description">
+                        Warsztaty lodowe łączą kreatywną zabawę z praktyczną nauką.
+                        Podczas integracyjnych uczestnicy wspólnie rzeźbią w lodzie, rozwijając współpracę i
+                        kreatywność.
+                        Profesjonalne skierowane są do branży gastronomicznej – uczą technik obróbki lodu, tworzenia kul
+                        i dekoracji barowych.
+                        W obu przypadkach gwarantujemy wyjątkowe doświadczenie pracy z lodem.
+                    </p>
+                    <div class="service-links">
+                        <a href="#contact" class="btn-link">
+                            Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="pokazy-warsztaty.php" class="btn-link">
+                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wine-glass"></i>
+                    </div>
+                    <h3 class="service-title">Produkty z lodu</h3>
+                    <p class="service-description">
+                        Lód to nasza specjalność! W naszej ofercie znajdziesz nie tylko lód w kostkach, ale także lód
+                        kruszony, spiry lodowe z wzorami, kostki XXL, lodowe diamenty, naczynia z lodu, japońskie kule
+                        oraz suchy lód.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Różne wielkości kostek</li>
+                        <li><i class="fas fa-check"></i> Lód kruszony</li>
+                        <li><i class="fas fa-check"></i> Regularne dostawy</li>
+                    </ul>
+                    <div class="service-links">
+                        <a href="#contact" class="btn-link">
+                            Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="../dostawa-lodu/" class="btn-link">
+                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="service-title">Pokazy Lodowe</h3>
+                    <p class="service-description">
+                        Urozmaicimy Twój event niesamowitym pokazem rzeźbienia w lodzie. Warsztaty lodowe to
+                        niezapomniane przeżycie.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Live carving show</li>
+                        <li><i class="fas fa-check"></i> Warsztaty dla gości</li>
+                        <li><i class="fas fa-check"></i> Profesjonalni artyści</li>
+                    </ul>
+                    <div class="service-links">
+                        <a href="#contact" class="btn-link">
+                            Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="pokazy-warsztaty.php" class="btn-link">
+                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3 class="service-title">Bary Lodowe</h3>
+                    <p class="service-description">
+                        Wypełnij przestrzeń kreatywnie! Bary z prawdziwego lodu idealnie sprawdzą się na weselach i
+                        eventach firmowych.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 100% z prawdziwego lodu</li>
+                        <li><i class="fas fa-check"></i> Podświetlenie LED</li>
+                        <li><i class="fas fa-check"></i> Montaż i obsługa</li>
+                    </ul>
+                    <div class="service-links">
+                        <a href="#contact" class="btn-link">
+                            Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="bary-lodowe.php" class="btn-link">
+                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="service-title">Wynajem Sprzętu</h3>
+                    <p class="service-description">
+                        Zapewniamy wynajem zamrażarek, boxów termicznych, wózków utrzymujących ujemną temperaturę oraz
+                        przewóz mroźniczo-chłodniczy. Oferujemy również wynajem samochodów (Fiat Ducato, Doblo, Scudo)
+                        jako mobilne mroźnie.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Zamrażarki profesjonalne</li>
+                        <li><i class="fas fa-check"></i> Boxy termiczne</li>
+                        <li><i class="fas fa-check"></i> Wynajem samochodów chłodniczych</li>
+                        <li><i class="fas fa-check"></i> Transport i montaż</li>
+                    </ul>
+                    <div class="service-links">
+                        <a href="#contact" class="btn-link">
+                            Zapytaj o ofertę <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="../dostawa-lodu/" class="btn-link">
+                            Dowiedz się więcej <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <div id="portfolio-placeholder">
+        <?php include '../components/portfolio.php'; ?>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Opinie</span>
+                <h2 class="section-title">Co Mówią Nasi Klienci</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Lód do drinków? Rzeźby lodowe? Lodowe.com.pl zrealizuje większość Twoich pomysłów na
+                        urozmaicenie imprezy. Wiem z doświadczenia. Polecam."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">KD</div>
+                        <div class="author-info">
+                            <h4>Krzysztof D.</h4>
+                            <p>Łódź, Polska</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Świetne pokazy, piękne rzeźby i najlepszy lód! Goście na naszym weselu byli zachwyceni.
+                        Profesjonalna obsługa od początku do końca."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MD</div>
+                        <div class="author-info">
+                            <h4>Martyna D.</h4>
+                            <p>Łódź, Polska</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Współpracujemy już od lat. Zawsze terminowa dostawa, najwyższa jakość lodu. Idealny partner dla
+                        gastronomii. Gorąco polecamy!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DT</div>
+                        <div class="author-info">
+                            <h4>Drink Bar Tropicana</h4>
+                            <p>Łódź, Polska</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials-social" style="text-align: center; margin-top: 40px;">
+                <p style="margin-bottom: 15px; color: #64748B; font-size: 1rem;">Zobacz więcej opinii i realizacji na
+                    naszych profilach</p>
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                        aria-label="TikTok" class="btn btn-outline">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+
+                    <a href="https://www.youtube.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                        aria-label="YouTube" class="btn btn-outline">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Najczęściej zadawane pytania</span>
+                <h2 class="section-title">FAQ</h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Jak długo trzyma się rzeźba lodowa?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>W normalnych warunkach pokojowych (ok. 20°C) rzeźba lodowa utrzymuje się w dobrym stanie
+                            przez 8 godzin. Czas ten można znacząco wydłużyć stosując odpowiednie chłodzenie i
+                            zabezpieczenia.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Jaki jest minimalny termin realizacji zamówienia?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Dla kostek lodu - możliwa jest dostawa już następnego dnia. Rzeźby i bryły lodowe wymagają
+                            zwykle 3-5 dni roboczych. W wyjątkowych sytuacjach możemy przyspieszyć realizację.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Czy dostarczacie lód poza Łodzią?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Tak! Realizujemy dostawy na terenie całej Polski. Dla zamówień poza Łodzią doliczamy koszt
+                            transportu w zależności od odległości. Posiadamy specjalistyczne chłodnie transportowe.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Czy można zamówić rzeźbę według własnego projektu?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oczywiście! Specjalizujemy się w projektach na zamówienie. Wystarczy przesłać nam szkic, logo
+                            lub opis Twojej wizji, a nasi artyści przygotują projekt do akceptacji.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Ile kosztuje profesjonalna rzeźba lodowa?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ceny zależą od rozmiaru, złożoności projektu i czasu realizacji. Podstawowe rzeźby (takie jak
+                            misy lodowe w kształcie łabędzia) zaczynają się od 600 zł brutto. Duże, skomplikowane
+                            projekty
+                            mogą kosztować 1500-5000 zł brutto.
+                        </p>
+                        <p><strong>Uwaga:</strong> Wszystkie podane ceny są cenami brutto. Wyjątek stanowią: boxy
+                            termiczne, zamrażarki na lód oraz przewóz mroźniczo-chłodniczy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-social"
+                style="text-align: center; margin-top: 40px; padding: 25px; background: #F8FAFC; border-radius: 12px;">
+                <p style="margin-bottom: 15px; color: #0F172A; font-size: 1.1rem; font-weight: 500;">Masz inne pytania?
+                    Napisz do nas!</p>
+                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                        aria-label="TikTok" class="btn btn-outline">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+
+                    <a href="https://www.youtube.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                        aria-label="YouTube" class="btn btn-outline">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                    <a href="#contact" class="btn btn-primary"
+                        style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-envelope"></i> Formularz Kontaktowy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Skontaktuj się</span>
+                <h2 class="section-title">Umów Spotkanie</h2>
+                <p class="section-description">
+                    Gotowy na lodową przygodę? Napisz lub zadzwoń
+                </p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm" action="../send-message.php" method="POST">
+                        <div class="form-group">
+                            <label for="name">Imię i nazwisko *</label>
+                            <input type="text" id="name" name="name" required placeholder="Jan Kowalski">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="jan@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Telefon *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+48 123 456 789">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Rodzaj usługi *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Wybierz usługę</option>
+                                <option value="rzezby">Rzeźby lodowe</option>
+                                <option value="bryly">Bryły lodowe</option>
+                                <option value="kostki">Kostki lodu</option>
+                                <option value="pokazy">Pokazy lodowe</option>
+                                <option value="bary">Bary lodowe</option>
+                                <option value="wynajem">Wynajem sprzętu</option>
+                                <option value="inne">Inne</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Wiadomość *</label>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="Opisz swoje potrzeby..."></textarea>
+                        </div>
+
+                        <!-- reCAPTCHA v3 token (hidden) -->
+                        <input type="hidden" id="recaptcha_token" name="recaptcha_token">
+
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <i class="fas fa-paper-plane"></i> Wyślij zapytanie
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Biuro</h3>
+                        <p>ul. Żeromskiego 49 lok 1 u<br>90-624 Łódź</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Telefony</h3>
+                        <p>
+                            <a href="tel:+48511110265">+48 511 110 265</a><br>
+                            <a href="tel:+48501494787">+48 501 494 787</a><br>
+                            <a href="tel:+48608401730">+48 608 401 730</a>
+                        </p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>
+                            <a href="mailto:biuro@lodowe.com.pl">biuro@lodowe.com.pl</a>
+                        </p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3>Social Media</h3>
+                        <div class="contact-social">
+                            <a href="https://www.facebook.com/lodowecompl" target="_blank" rel="noopener noreferrer"
+                                class="contact-social-link">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="https://www.instagram.com/lodowe.com.pl/" target="_blank" rel="noopener noreferrer"
+                                class="contact-social-link">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                            <a href="https://www.tiktok.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                                aria-label="TikTok" class="contact-social-link">
+                                <i class="fab fa-tiktok"></i> TikTok
+                            </a>
+
+                            <a href="https://www.youtube.com/@lodowecompl" target="_blank" rel="noopener noreferrer"
+                                aria-label="YouTube" class="contact-social-link">
+                                <i class="fab fa-youtube"></i> YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Maps -->
+            <div class="map-container" style="margin-top: 60px;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem; color: #0F172A;">Znajdź Nas</h3>
+                <iframe
+                    src="https://maps.google.com/maps?width=100%25&amp;height=450&amp;hl=pl&amp;q=ul.%20%C5%BBeromskiego%2049%20lok%201%20u,%2090-624%20%C5%81%C3%B3d%C5%BA+(Lodowe.com.pl)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                    width="100%" height="450"
+                    style="border:0; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Brands Section -->
+    <section class="brands" id="brands">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Poznaj Nasze Marki</span>
+                <h2 class="section-title">Rodzina Firm</h2>
+                <p class="section-description">
+                    Jesteśmy częścią grupy firm oferujących kompleksowe usługi eventowe
+                </p>
+            </div>
+
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <a href="https://akademiabaru.pl/" target="_blank" rel="noopener noreferrer">
+                        <div class="brand-logo-container">
+                            <img src="/static/images/other/akademiabaru.webp"
+                                alt="Akademia Baru - profesjonalne szkolenia barmańskie w Łodzi" loading="lazy">
+                        </div>
+                        <h3>Akademia Baru</h3>
+                        <p>Profesjonalne szkolenia barmańskie, kursy i warsztaty dla pasjonatów i profesjonalistów
+                            branży gastronomicznej.</p>
+                        <span class="brand-link-arrow">
+                            Odwiedź stronę <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="brand-card">
+                    <a href="https://podano.com.pl/" target="_blank" rel="noopener noreferrer">
+                        <div class="brand-logo-container">
+                            <img src="/static/images/other/podano-logo.png"
+                                alt="PODANO - catering premium i kompleksowa obsługa eventów w Łodzi"
+                                loading="lazy">
+                        </div>
+                        <h3>PODANO</h3>
+                        <p>Catering premium i kompleksowa obsługa eventów. Tworzymy wyjątkowe doznania kulinarne na
+                            najwyższym poziomie.</p>
+                        <span class="brand-link-arrow">
+                            Odwiedź stronę <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <?php include '../components/footer.php'; ?>
+
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="../js/components-loader.js?v=<?php echo filemtime(__DIR__ . '/../js/components-loader.js'); ?>"></script>
+    <script src="../js/script-ice-blue.js?v=<?php echo filemtime(__DIR__ . '/../js/script-ice-blue.js'); ?>"></script>
+    <script>
+        window.addEventListener('portfolioLoaded', function () {
+            // Reinicjalizuj GLightbox po dynamicznym wczytaniu HTML
+            if (window.lightboxInstance) {
+                window.lightboxInstance.destroy(); // jeśli istniał wcześniej
+            }
+
+            window.lightboxInstance = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                openEffect: 'zoom',
+                closeEffect: 'fade'
+            });
+
+            console.log('✅ GLightbox zainicjalizowany po portfolioLoaded');
+        });
+    </script>
+
+</body>
+
+</html>

@@ -94,8 +94,8 @@ function verify_recaptcha($token, $secret_key, $expected_action = 'contact_form'
         return false;
     }
 
-    // 2. Sprawdź score (>= 0.5 dla standardowej ochrony)
-    if ($response->score < 0.5) {
+    // 2. Sprawdź score (>= 0.3 dla optymalnego wyważenia bez false positives)
+    if ($response->score < 0.3) {
         error_log("reCAPTCHA score too low: " . $response->score);
         return false;
     }
@@ -107,8 +107,8 @@ function verify_recaptcha($token, $secret_key, $expected_action = 'contact_form'
     }
 
     // 4. Zweryfikuj hostname (opcjonalnie)
-    if (isset($response->hostname)) {
-        $allowed_hostnames = defined('RECAPTCHA_ALLOWED_HOSTS') ? RECAPTCHA_ALLOWED_HOSTS : ['lodowe.com.pl', 'www.lodowe.com.pl', 'localhost'];
+    if (isset($response->hostname) && !empty($response->hostname)) {
+        $allowed_hostnames = defined('RECAPTCHA_ALLOWED_HOSTS') ? RECAPTCHA_ALLOWED_HOSTS : ['lodowe.com.pl', 'www.lodowe.com.pl', 'localhost', '127.0.0.1'];
         if (!in_array($response->hostname, $allowed_hostnames)) {
             error_log("reCAPTCHA hostname not allowed: " . $response->hostname);
             return false;

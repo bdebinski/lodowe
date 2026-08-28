@@ -4,4 +4,4 @@
 window.recaptchaSiteKey = '6LeFPwosAAAAAOdAxpjgN4jq4ACjIzKqY5kvWFDB';
 
 // Flaga określająca czy używamy Enterprise API
-window.recaptchaIsEnterprise = true;
+window.recaptchaIsEnterprise = false;
